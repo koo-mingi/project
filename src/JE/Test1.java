@@ -9,5 +9,6 @@ public class Test1 {
 		System.out.println("5차");
 		System.out.println("6차1");
 		System.out.println("7");
+		System.out.println("8");
 	}
 }
