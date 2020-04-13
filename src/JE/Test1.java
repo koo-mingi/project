@@ -5,6 +5,7 @@ public class Test1 {
 		System.out.println("테스트 시도1");
 		System.out.println("2차 시도");
 		System.out.println("3차 시도");
+		System.out.println("4차");
 		
 	}
 }
