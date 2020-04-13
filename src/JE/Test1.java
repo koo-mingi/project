@@ -7,6 +7,6 @@ public class Test1 {
 		System.out.println("3차 시도");
 		System.out.println("4차");
 		System.out.println("5차");
-		
+		System.out.println("6차");
 	}
 }
