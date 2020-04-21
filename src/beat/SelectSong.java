@@ -7,6 +7,7 @@ import java.awt.Image;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 
@@ -14,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+
+import com.sun.glass.ui.Screen;
 
 public class SelectSong extends JPanel {
 	
@@ -31,8 +34,7 @@ public class SelectSong extends JPanel {
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(new BorderLayout());
-		setVisible(true);
-		
+				
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.CENTER);
@@ -90,17 +92,16 @@ public class SelectSong extends JPanel {
 		lblNewLabel_4.setBounds(577, 279, 57, 15);
 		panel.add(lblNewLabel_4);
 		
-		
+		setVisible(true);
 		
 		
 	}
-	
-	public void paint(Graphics g) {
-		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-		screenGraphic = screenImage.getGraphics();
-		screenDraw(screenGraphic);
-		g.drawImage(screenImage, 0, 0, null);
+	@Override
+	protected void paintComponent(Graphics g) {
+		//super.paintComponent(g);
+		g.drawImage(selectedImage, 0, 0, null);
 	}
+
 	
 	public void screenDraw(Graphics g) {
 			if(isMainScreen) {
