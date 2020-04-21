@@ -40,22 +40,22 @@ public class Lobby extends JFrame{
 		btnStart = new JButton("시작하기");
 		
 		btnStart.setFont(new Font("굴림", Font.BOLD, 26));
-		btnStart.setBounds(235, 298, 175, 39);
+		btnStart.setBounds(133, 298, 175, 39);
 		panel.add(btnStart);
 		
 		btnRecord = new JButton("기록");
 		btnRecord.setFont(new Font("굴림", Font.BOLD, 26));
-		btnRecord.setBounds(235, 363, 175, 39);
+		btnRecord.setBounds(133, 363, 175, 39);
 		panel.add(btnRecord);
 		
 		btnRanking = new JButton("랭킹");
 		btnRanking.setFont(new Font("굴림", Font.BOLD, 26));
-		btnRanking.setBounds(235, 425, 175, 39);
+		btnRanking.setBounds(133, 425, 175, 39);
 		panel.add(btnRanking);
 		
 		btnEnd = new JButton("종료");
 		btnEnd.setFont(new Font("굴림", Font.BOLD, 26));
-		btnEnd.setBounds(235, 493, 175, 39);
+		btnEnd.setBounds(133, 488, 175, 39);
 		panel.add(btnEnd);
 		
 		JLabel lblNewLabel = new JLabel("New label");

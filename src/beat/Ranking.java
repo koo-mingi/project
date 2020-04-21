@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 public class Ranking extends JFrame{
 	private JTextField textField;
@@ -38,6 +39,7 @@ public class Ranking extends JFrame{
 	private JLabel lblGrade;
 	private JLabel lblCombo;
 	private JLabel label_3;
+	private JLabel lblNewLabel_1;
 	
 	public Ranking() {
 		
@@ -192,6 +194,11 @@ public class Ranking extends JFrame{
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setBounds(663, 218, 57, 15);
 		panel.add(label_3);
+		
+		lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Ranking.class.getResource("/images/ezgif.com-resize (6).gif")));
+		lblNewLabel_1.setBounds(0, 0, 784, 561);
+		panel.add(lblNewLabel_1);
 		
 		
 		
