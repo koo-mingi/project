@@ -32,6 +32,11 @@ public class SelectSong extends JFrame {
 	private Image background = new ImageIcon(Main.class.getResource("../images/electric_guitar.jpg")).getImage();
 	
 	private boolean isMainScreen = true;
+	
+	
+	private JButton btnStart ;
+	
+	
 	/**
 	 * Create the panel.
 	 */
@@ -75,18 +80,9 @@ public class SelectSong extends JFrame {
 		JButton btnBack = new JButton("로비로 돌아가기");
 		btnBack.setBounds(525, 428, 148, 23);
 		ImagePanel.add(btnBack);
-		btnBack.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Lobby lobby =  new Lobby();
-	        	
-	        	lobby.setVisible(true);
-	        	dispose();
-			}
-		});
 		
-		JButton btnStart = new JButton("게임 시작");
+		
+		btnStart = new JButton("게임 시작");
 		btnStart.setBounds(525, 505, 148, 23);
 		ImagePanel.add(btnStart);
 		
@@ -117,8 +113,46 @@ public class SelectSong extends JFrame {
 		repaint();
 		
 		setVisible(true);
-	}
 	
+	
+	
+	btnBack.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Lobby lobby =  new Lobby();
+        	
+        	lobby.setVisible(true);
+        	dispose();
+		}
+	});
+	
+	btnStart.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			GamePlay gameplay =  new GamePlay();
+        	
+			gameplay.setVisible(true);
+        	dispose();
+		}
+	});
+	
+
+	btnBack.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Lobby lobby =  new Lobby();
+        	
+        	lobby.setVisible(true);
+        	dispose();
+		}
+	});
+	
+	
+	
+	}
 	class ImagePanel extends JPanel{
 		
 		ImagePanel(){
@@ -149,6 +183,8 @@ public class SelectSong extends JFrame {
 			paintComponents(g);
 			this.repaint();
 			
-		}
-	}
+			}
+	
+		}				
+	
 }
