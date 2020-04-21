@@ -3,6 +3,8 @@ package beat;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
@@ -14,14 +16,14 @@ import javax.swing.JTextField;
 
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
+
 
 import com.sun.glass.ui.Screen;
 
 
 import java.awt.Color;
 
-public class SelectSong extends JPanel {
+public class SelectSong extends JFrame {
 	
 	
 	private Image screenImage;
@@ -34,100 +36,119 @@ public class SelectSong extends JPanel {
 	 * Create the panel.
 	 */
 	public SelectSong() {
+		setTitle("SelectSong"); //타이틀 이름
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
+		setResizable(false); // 창 사이즈 변경 불가
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 종료 시 스레드 종료
 		
-		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-		setLayout(null);
-				
-		
-		
-		
+		ImagePanel ImagePanel = new ImagePanel();
+		add(ImagePanel);
 		
 		
 		JLabel lblNewLabel = new JLabel("난이도 조절");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(172, 339, 75, 15);
-		add(lblNewLabel);
+		ImagePanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("속도 조절");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setBounds(172, 454, 75, 15);
-		add(lblNewLabel_1);
+		ImagePanel.add(lblNewLabel_1);
 		
 		JButton btnEasy = new JButton("Easy");
 		btnEasy.setBounds(56, 390, 97, 23);
-		add(btnEasy);
+		ImagePanel.add(btnEasy);
 		
 		JButton btnHard = new JButton("Hard");
 		btnHard.setBounds(249, 390, 97, 23);
-		add(btnHard);
+		ImagePanel.add(btnHard);
 		
 		JButton btnDecrease = new JButton("감소");
 		btnDecrease.setBounds(56, 505, 97, 23);
-		add(btnDecrease);
+		ImagePanel.add(btnDecrease);
 		
 		JButton btnIncrease = new JButton("증가");
 		btnIncrease.setBounds(249, 505, 97, 23);
-		add(btnIncrease);
+		ImagePanel.add(btnIncrease);
 		
 		JButton btnBack = new JButton("로비로 돌아가기");
 		btnBack.setBounds(525, 428, 148, 23);
-		add(btnBack);
+		ImagePanel.add(btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Lobby lobby =  new Lobby();
+	        	
+	        	lobby.setVisible(true);
+	        	dispose();
+			}
+		});
 		
 		JButton btnStart = new JButton("게임 시작");
 		btnStart.setBounds(525, 505, 148, 23);
-		add(btnStart);
+		ImagePanel.add(btnStart);
 		
 		JButton btnNewButton_6 = new JButton("좌");
 		btnNewButton_6.setBounds(12, 122, 97, 23);
-		add(btnNewButton_6);
+		ImagePanel.add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("우");
 		btnNewButton_7.setBounds(286, 122, 97, 23);
-		add(btnNewButton_7);
+		ImagePanel.add(btnNewButton_7);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setBounds(577, 126, 57, 15);
-		add(lblNewLabel_2);
+		ImagePanel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setBounds(577, 203, 57, 15);
-		add(lblNewLabel_3);
+		ImagePanel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("New label");
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setBounds(577, 279, 57, 15);
-		add(lblNewLabel_4);
+		ImagePanel.add(lblNewLabel_4);
 		
-		
+		//ImagePanel.add(panel);
+		repaint();
 		
 		setVisible(true);
-		
-		
 	}
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(selectedImage, 0, 0, null);
-		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-		screenGraphic = screenImage.getGraphics();
-		screenDraw(screenGraphic);
-		g.drawImage(screenImage, 0, 0, null);
-		
-	}
-
 	
-	public void screenDraw(Graphics g) {
-		g.drawImage(background, 0, 0, null);	
-		if(isMainScreen) {
-			
-			g.drawImage(selectedImage, 25,25, null);
+	class ImagePanel extends JPanel{
+		
+		ImagePanel(){
+			setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+			setLayout(null);
+		}
+		
+		@Override
+		public void paintComponent(Graphics g) {
+
+		
+			super.paintComponent(g);
+			g.drawImage(selectedImage, 0, 0, null);
+			screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+			screenGraphic = screenImage.getGraphics();
+			screenDraw(screenGraphic);
+			g.drawImage(screenImage, 0, 0, null);
 			
 		}
-		paintComponents(g);
-		this.repaint();
-		
+
+		public void screenDraw(Graphics g) {
+			g.drawImage(background, 0, 0, null);	
+			if(isMainScreen) {
+				
+				g.drawImage(selectedImage, 25,25, null);
+				
+			}
+			paintComponents(g);
+			this.repaint();
+			
+		}
 	}
-	
 }

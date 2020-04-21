@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.glass.ui.Timer;
+
 
 public class Lobby extends JFrame{
 	
@@ -69,15 +71,16 @@ public class Lobby extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				panel.setVisible(false);
-				getContentPane().remove(panel);
-				selectSong = new SelectSong();
-				getContentPane().add(selectSong, BorderLayout.CENTER);
+//				panel.setVisible(false);
+//				getContentPane().remove(panel);
+//				selectSong = new SelectSong();
+//				getContentPane().add(selectSong, BorderLayout.CENTER);
 				
-//				SelectSong  selectSong =  new SelectSong();
-//	        	
-//				selectSong.setVisible(true);
-//	        	dispose();
+				SelectSong  selectSong =  new SelectSong();
+	        	
+				selectSong.setVisible(true);
+			
+	        	dispose();
 				
 				
 			}
