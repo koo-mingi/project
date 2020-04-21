@@ -1,22 +1,15 @@
 package beat;
 
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.ImageIcon;
-import javax.swing.JApplet;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Font;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 public class Lobby extends JFrame{
@@ -24,9 +17,10 @@ public class Lobby extends JFrame{
 //	private Image background=new ImageIcon(Main2.class.getResource("../images/electric_guitar.jpg")).getImage();
 	
 	private JButton btnStart,btnRecord,btnRanking,btnEnd; 
+	
 	private SelectSong selectSong;
-	
-	
+	private Record record;
+	private Ranking ranking;
 	
 	private int mouseX, mouseY;
 	
@@ -74,19 +68,51 @@ public class Lobby extends JFrame{
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
 				panel.setVisible(false);
 				getContentPane().remove(panel);
 				selectSong = new SelectSong();
 				getContentPane().add(selectSong, BorderLayout.CENTER);
+				
+//				SelectSong  selectSong =  new SelectSong();
+//	        	
+//				selectSong.setVisible(true);
+//	        	dispose();
+				
+				
+			}
+		});
+		
+		btnRecord.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+//				panel.setVisible(false);
+//				getContentPane().remove(panel);
+//				record = new Record();
+				Record  record =  new Record();
+	        	
+	        	record.setVisible(true);
+	        	dispose();
 				
 				
 				
 			}
 		});
 		
-		
-		
-		
-//		
+		btnRanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				Ranking  ranking =  new Ranking();
+	        	
+				ranking.setVisible(true);
+	        	dispose();
+			
 	}
+});
+		
+		
+	
+	}
+	
 }
