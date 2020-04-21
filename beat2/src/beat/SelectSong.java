@@ -1,4 +1,4 @@
-package beat2;
+package beat;
 
 import java.awt.BorderLayout;
 
@@ -12,7 +12,7 @@ public class SelectSong extends JPanel {
 	 */
 	public SelectSong() {
 		
-		setSize(Main2.SCREEN_WIDTH, Main2.SCREEN_HEIGHT);
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(new BorderLayout());
 		
 		

@@ -1,4 +1,4 @@
-package beat2;
+package beat;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -34,7 +34,7 @@ public class Lobby extends JFrame{
 		
 		setTitle("Lobby"); //타이틀 이름
 		
-		setSize(Main2.SCREEN_WIDTH, Main2.SCREEN_HEIGHT); // 게임 창 크기
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setResizable(false); // 창 사이즈 변경 불가
 		setLocationRelativeTo(null);
 		

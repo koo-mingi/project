@@ -1,4 +1,4 @@
-package beat2;
+package beat;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class SignupPanel2 extends JFrame{
+public class SignupPanel extends JFrame{
 	private JTextField txtname;
 	private JTextField txtid;
 	private JTextField txtpw;
@@ -20,7 +20,7 @@ public class SignupPanel2 extends JFrame{
 	
 	private JButton btncreate,btncancle;
 	
-	public  SignupPanel2() {
+	public  SignupPanel() {
 		
 		setTitle("sign");
 		setSize(450, 700);

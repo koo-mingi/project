@@ -1,4 +1,4 @@
-package beat2;
+package beat;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,7 @@ import java.awt.Font;
 
 
 
-public class Beat3 extends JFrame{
+public class Beat extends JFrame{
 	private JTextField textField;
 	private JPasswordField passwordField;
 	
@@ -29,9 +29,9 @@ public class Beat3 extends JFrame{
 
 
 	
-	public Beat3() {
+	public Beat() {
 		setTitle("Beat"); //타이틀 이름
-		setSize(Main2.SCREEN_WIDTH, Main2.SCREEN_HEIGHT); // 게임 창 크기
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setResizable(false); // 창 사이즈 변경 불가
 		setLocationRelativeTo(null); // 컴퓨터 정 중앙에 화면이 뜰수있게
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 게임 종료시 프로그램 전체 종료 
@@ -78,7 +78,7 @@ public class Beat3 extends JFrame{
 		panel.add(btsign);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(Beat3.class.getResource("/images/electric_guitar.jpg")));
+		lblNewLabel_2.setIcon(new ImageIcon(Beat.class.getResource("/images/electric_guitar.jpg")));
 		lblNewLabel_2.setBounds(0, 0, 1274, 692);
 		panel.add(lblNewLabel_2);
 		
@@ -89,7 +89,7 @@ public class Beat3 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SignupPanel2 frame = new SignupPanel2();
+				SignupPanel frame = new SignupPanel();
 			}
 			});
 		
