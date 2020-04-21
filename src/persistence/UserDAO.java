@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLClientInfoException;
+import java.sql.SQLException;
 
 public class UserDAO {
 	
@@ -27,8 +28,8 @@ public class UserDAO {
 		String password	= "12341234";
 		
 		try {
-			con =   DriverManager.getConnection(url, user, password);
-		} catch (SQLClientInfoException e) {
+			con =  DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return con;
