@@ -3,8 +3,12 @@ package persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
+
+import domain.UserVO;
+import sun.misc.Contended;
 
 public class UserDAO {
 	
@@ -60,9 +64,32 @@ public class UserDAO {
 	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
-//	그 다음~
+
+//	로그인
+	// 입력된 DB정보를 오라클에서 ID, PW를 조회해서 일치하는지 확인, 맞거나 아니거나 할 경우 정보 전달
+	public UserVO getUser(int no) {
+		
+		String sql="select * from userTBL where no=?";
+		UserVO vo=null;
+		try(Connection con=getConnection();
+			PreparedStatement pstmt=con.prepareStatement(sql)) {
+			
+			pstmt.setInt(1, no);
+			
+			//select
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				vo=new UserVO();
+				vo.setUserno(rs.getInt("no"));
+				vo.setUserid(rs.getString("id"));
+				vo.setPassword(rs.getString("password"));
+				vo.setEmail(rs.getString("email"));
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+//	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
 }
-
-
-
