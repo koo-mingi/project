@@ -19,16 +19,15 @@ import java.awt.Font;
 
 
 public class Beat extends JFrame{
+	
 	private JTextField textField;
 	private JPasswordField passwordField;
 	
 	private JButton btlogin; //로그인 버튼
 	private JButton btsign;  //회원가입 버튼
-	private JLabel lblNewLabel_2;
+	private JLabel lblBackGroundIMG; // 백그라운드 이미지
 	
-
-
-
+	
 	
 	public Beat() {
 		setTitle("Beat"); //타이틀 이름
@@ -36,6 +35,10 @@ public class Beat extends JFrame{
 		setResizable(false); // 창 사이즈 변경 불가
 		setLocationRelativeTo(null); // 컴퓨터 정 중앙에 화면이 뜰수있게
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 게임 종료시 프로그램 전체 종료 
+		
+		Music introMusic = new Music("introMusic.mp3", true);
+		introMusic.start();
+		
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -78,10 +81,10 @@ public class Beat extends JFrame{
 		btsign.setBounds(250, 369, 97, 23);
 		panel.add(btsign);
 		
-		lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(Beat.class.getResource("/images/ezgif.com-resize (4).gif")));
-		lblNewLabel_2.setBounds(0, 0, 794, 571);
-		panel.add(lblNewLabel_2);
+		lblBackGroundIMG = new JLabel("New label");
+		lblBackGroundIMG.setIcon(new ImageIcon(Beat.class.getResource("/images/ezgif.com-resize (4).gif")));
+		lblBackGroundIMG.setBounds(0, 0, 794, 571);
+		panel.add(lblBackGroundIMG);
 		
 		setVisible(true); //게임이 정상적으로 출력
 	
@@ -110,25 +113,16 @@ public class Beat extends JFrame{
 			        	
 			        	frame.setVisible(true);
 			        	dispose();
+//			             로그인 참 거짓 여부를 판단
+//			            boolean existLogin = LoginService.loginTest(id, password);
 			        	
 			        }
 			}
 		});
 		}
 }
-//		btlogin.addActionListener(new ActionListener() {
-//				String id = textField.getText();
-//		        char[] pass = passwordField.getPassword();
-//		        String password = new String(pass);
-//		 
-//		        if (id.equals("") || password.equals("")) {
-//		            // 메시지를 날린다.
-//		            JOptionPane.showMessageDialog(null, "빈칸이 있네요");
-//		        } else {
-//		 
-//		             로그인 참 거짓 여부를 판단
-//		            boolean existLogin = LoginService.loginTest(id, password);
-//		 
+
+		 
 //		            if (existLogin) {
 //		                // 로그인 성공일 경우
 //		                JOptionPane.showMessageDialog(null, "로그인 성공");
@@ -144,23 +138,7 @@ public class Beat extends JFrame{
 //			}
 //		});
 		
-		//로그인 액션
-//		btlogin.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseEntered(MouseEvent e) {
-//				btlogin.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//			}
-//			@Override
-//			public void mouseExited(MouseEvent e) {
-//				btlogin.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-//			}
-//			@Override
-//			public void mousePressed(MouseEvent e) {
-//				btlogin.setVisible(false);
-//				isMainScreen = true;
-//			}
-//		});
-//		add(btlogin);
+		
 	
 
 

@@ -115,7 +115,7 @@ public class SelectSong extends JFrame {
 		setVisible(true);
 	
 	
-	
+	// 로비창으로 이동
 	btnBack.addActionListener(new ActionListener() {
 		
 		@Override
@@ -127,6 +127,7 @@ public class SelectSong extends JFrame {
 		}
 	});
 	
+	// 게임플레이창으로 이동
 	btnStart.addActionListener(new ActionListener() {
 		
 		@Override

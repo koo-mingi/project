@@ -14,6 +14,7 @@ public class GamePlay extends JFrame{
 	
 	private PauseScreen pausescreen;
 	private Lobby lobby;
+	private ResultScreen resultscreen;
 	
 	
 	public GamePlay() {
@@ -37,7 +38,12 @@ public class GamePlay extends JFrame{
 		btnGamePause.setBounds(610, 410, 123, 23);
 		panel.add(btnGamePause);
 		
+		JButton btnNewButton = new JButton("결과");
+		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
+		btnNewButton.setBounds(610, 335, 123, 23);
+		panel.add(btnNewButton);
 		
+		//게임중 중지할떄 중지화면
 		btnGamePause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -50,6 +56,7 @@ public class GamePlay extends JFrame{
 			}
 		});
 		
+		//게임종료 후 로비이동
 		btnGameStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -61,8 +68,18 @@ public class GamePlay extends JFrame{
 				
 			}
 		});
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				ResultScreen  resultscreen =  new ResultScreen();
+				
+				resultscreen.setVisible(true);
+				dispose();
+				
+			}
+		});
 	
 	}
-	
-	
 }

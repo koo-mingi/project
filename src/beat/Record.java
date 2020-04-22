@@ -216,13 +216,14 @@ public class Record extends JFrame {
 		lblNewLabel_1.setBounds(0, 0, 788, 561);
 		panel.add(lblNewLabel_1);
 		
+		
+		//로비창으로 이동
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Lobby  frame =  new Lobby();
 				
 	        	frame.setVisible(true);
-	        	
-	        	
+	        		        	
 	        	dispose();
 	        	
 			}
