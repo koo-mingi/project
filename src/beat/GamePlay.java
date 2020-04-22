@@ -10,6 +10,9 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -74,7 +77,7 @@ public class GamePlay extends JPanel{
 		add(btnGameResult);
 
 
-		repaint();
+		
 
 		setVisible(true);
 
@@ -114,8 +117,67 @@ public class GamePlay extends JPanel{
 		
 			}
 		});
+		
+		addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_S) {
+					System.out.println(e.getKeyCode());
+					pressS();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_D) {
+					System.out.println(e.getKeyCode());
+					pressD();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_F) {
+					System.out.println(e.getKeyCode());
+					pressF();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_J) {
+					System.out.println(e.getKeyCode());
+					pressJ();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_K) {
+					System.out.println(e.getKeyCode());
+					pressK();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_L) {
+					System.out.println(e.getKeyCode());
+					pressL();
+				}
+				repaint();
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_S) {
+					releaseS();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_D) {
+					releaseD();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_F) {
+					releaseF();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_J) {
+					releaseJ();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_K) {
+					releaseK();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_L) {
+					releaseL();
+				}
+				repaint();
+			}
+			
+		});
+		this.requestFocus();
+		setFocusable(true);
 
 	}
+	
 	
 		
 	
@@ -204,5 +266,6 @@ public class GamePlay extends JPanel{
 	public void releaseL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	}
+
 
 }
