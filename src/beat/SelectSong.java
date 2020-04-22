@@ -49,11 +49,8 @@ public class SelectSong extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 종료 시 스레드 종료
 		
-		
-		
 		ImagePanel ImagePanel = new ImagePanel();
 		add(ImagePanel);
-		
 		
 		JLabel lblNewLabel = new JLabel("난이도 조절");
 		lblNewLabel.setForeground(Color.WHITE);
@@ -89,7 +86,6 @@ public class SelectSong extends JFrame {
 		btnStart = new JButton("게임 시작");
 		btnStart.setBounds(525, 505, 148, 23);
 		ImagePanel.add(btnStart);
-		btnStart.addKeyListener(new KeyListener());
 		
 		JButton btnNewButton_6 = new JButton("좌");
 		btnNewButton_6.setBounds(12, 122, 97, 23);
