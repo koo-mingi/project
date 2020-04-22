@@ -41,7 +41,8 @@ public class UserDAO {
 		int result = 0;
 		
 		String sql = "insert into UserTBL value(seqgaro.nextval,?, ?, ?, ?)";
-		
+					// SQL문을 연결된 OracleDB에 PreparedStatement를 통해서 보낸다
+					// 실행하는 과정에서 오라클과 동일해야된다
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 			
@@ -58,6 +59,9 @@ public class UserDAO {
 		return result;
 	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
+	
+//	그 다음~
+	
 }
 
 

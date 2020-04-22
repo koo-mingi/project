@@ -1,15 +1,19 @@
 package persistence;
 
 public class UserVO {
+	
+	// UserTBL Table
 	private int userno;
 	private String userid;
 	private String password;
 	private String email;
-	
+
+	// 기본(default) 생성자
 	public UserVO() {
 		super();
 	}
 
+	// 매개변수를 인자로 받는 생성자
 	public UserVO(int userno, String userid, String password, String email) {
 		super();
 		this.userno = userno;
@@ -18,6 +22,7 @@ public class UserVO {
 		this.email = email;
 	}
 
+	// Getter & Setter
 	public int getUserno() {
 		return userno;
 	}
@@ -49,6 +54,4 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 }
