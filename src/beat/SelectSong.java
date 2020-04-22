@@ -139,7 +139,6 @@ public class SelectSong extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			      	
 			gameplay.setVisible(true);
-			System.out.println(gameplay);
 			setFocusable(true);
         	dispose();
 		}
