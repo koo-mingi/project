@@ -115,4 +115,11 @@ public class RecodeVO {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
+
+	@Override
+	public String toString() {
+		return "RecodeVO [userno=" + userno + ", songid=" + songid + ", userid=" + userid + ", score=" + score
+				+ ", AcPerfect=" + AcPerfect + ", AcGreat=" + AcGreat + ", AcBad=" + AcBad + ", AcMiss=" + AcMiss
+				+ ", combo=" + combo + ", grade=" + grade + "]";
+	}
 }

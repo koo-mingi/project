@@ -54,4 +54,10 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "UserVO [userno=" + userno + ", userid=" + userid + 
+			   ", password=" + password + ", email=" + email + "]";
+	}
 }
