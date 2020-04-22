@@ -87,6 +87,6 @@ public class Lobby extends JFrame{
 		
 		
 		
-//		
+	
 	}
 }
