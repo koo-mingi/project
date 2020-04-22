@@ -137,20 +137,7 @@ public class SelectSong extends JFrame {
         	dispose();
 		}
 	});
-	
-
-	btnBack.addActionListener(new ActionListener() {
 		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Lobby lobby =  new Lobby();
-        	
-        	lobby.setVisible(true);
-        	dispose();
-		}
-	});
-	
-	
 	
 	}
 	class ImagePanel extends JPanel{
