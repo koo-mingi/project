@@ -1,9 +1,8 @@
 package beat;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import beat.SelectSong.ImagePanel;
+import javax.swing.JPanel;
 
 
 import java.awt.BorderLayout;
@@ -19,13 +18,13 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import javax.swing.JLabel;
 
-public class GamePlay extends JFrame{
+public class GamePlay extends JPanel{
 	
 	private JButton btnGameStop,btnGamePause,btnGameResult;
 	
-	private PauseScreen pausescreen;
+	private PauseScreen pauseScreen;
 	private Lobby lobby;
-	private ResultScreen resultscreen;
+	private ResultScreen resultScreen;
 	
 	
 	private Image screenImage;
@@ -41,31 +40,29 @@ public class GamePlay extends JFrame{
 	
 	private boolean isGameScreen = true;
 	
-	public GamePlay() {
+	public GamePlay(JPanel contentPane) {
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
-		setResizable(false); // 창 사이즈 변경 불가
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 종료 시 스레드 종료
-		getContentPane().setLayout(null);
+		setLayout(null);
 		
-		ImagePanel ImagePanel = new ImagePanel();
-		getContentPane().add(ImagePanel);
+		lobby = new Lobby(contentPane);
+		pauseScreen =  new PauseScreen(contentPane);
+		resultScreen = new ResultScreen(contentPane);		
 		
 		btnGameStop = new JButton("Game 종료");
 		btnGameStop.setFont(new Font("굴림", Font.BOLD, 15));
 		btnGameStop.setBounds(610, 470, 123, 23);
-		ImagePanel.add(btnGameStop);
+		add(btnGameStop);
 		
 		btnGamePause = new JButton("Pause");
 		btnGamePause.setFont(new Font("굴림", Font.BOLD, 15));
 		btnGamePause.setBounds(610, 410, 123, 23);
-		ImagePanel.add(btnGamePause);
+		add(btnGamePause);
 		
 		btnGameResult = new JButton("결과");
 		btnGameResult.setFont(new Font("굴림", Font.BOLD, 15));
 		btnGameResult.setBounds(610, 345, 123, 23);
-		ImagePanel.add(btnGameResult);
+		add(btnGameResult);
 		
 		repaint();
 		
@@ -76,11 +73,10 @@ public class GamePlay extends JFrame{
 		btnGamePause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				PauseScreen  pauseScreen =  new PauseScreen();
-				
+				setVisible(false);
+				contentPane.add(pauseScreen,BorderLayout.CENTER);
 				pauseScreen.setVisible(true);
-				dispose();
+				
 				
 			}
 		});
@@ -89,11 +85,10 @@ public class GamePlay extends JFrame{
 		btnGameStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				Lobby  lobby =  new Lobby();
-				
+				setVisible(false);
+				contentPane.add(lobby,BorderLayout.CENTER);
 				lobby.setVisible(true);
-				dispose();
+				
 				
 			}
 		});
@@ -101,23 +96,16 @@ public class GamePlay extends JFrame{
 		btnGameResult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				ResultScreen  resultscreen =  new ResultScreen();
-				
-				resultscreen.setVisible(true);
-				dispose();
-				
+				setVisible(false);
+				contentPane.add(resultScreen,BorderLayout.CENTER);
+				resultScreen.setVisible(true);
+								
 			}
 		});
 				
 	
 	}
-		class ImagePanel extends JPanel{
 		
-		ImagePanel(){
-			setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-			setLayout(null);
-		}
 		
 	
 	public void paint(Graphics g) {
@@ -165,5 +153,4 @@ public class GamePlay extends JFrame{
 	
 	
 		}
-}
 }
