@@ -35,7 +35,7 @@ public class PauseScreen  extends JFrame{
 		btnGameStop.setBounds(610, 470, 133, 23);
 		panel.add(btnGameStop);
 		
-		
+		// 로비 화면으로 이동
 		btnGameStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -48,6 +48,7 @@ public class PauseScreen  extends JFrame{
 			}
 		});
 		
+		// 게임플레이 창으로 이동
 		btnGameRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

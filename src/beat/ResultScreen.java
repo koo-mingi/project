@@ -131,7 +131,7 @@ public class ResultScreen extends JFrame{
 		btnSelectSong.setBounds(40, 33, 149, 23);
 		panel.add(btnSelectSong);
 		
-		
+		//노래 선택창으로 이동
 		btnSelectSong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

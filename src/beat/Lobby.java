@@ -16,7 +16,6 @@ import com.sun.glass.ui.Timer;
 
 public class Lobby extends JFrame{
 	
-//	private Image background=new ImageIcon(Main2.class.getResource("../images/electric_guitar.jpg")).getImage();
 	
 	private JButton btnStart,btnRecord,btnRanking,btnEnd; 
 	
@@ -24,7 +23,7 @@ public class Lobby extends JFrame{
 	private Record record;
 	private Ranking ranking;
 	
-	private int mouseX, mouseY;
+	// private int mouseX, mouseY;
 	
 	public Lobby() {
 		
@@ -32,7 +31,7 @@ public class Lobby extends JFrame{
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setResizable(false); // 창 사이즈 변경 불가
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(null); //화면 중앙 위치시켜줌
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 종료 시 스레드 종료
 		
 		JPanel panel = new JPanel();
@@ -61,21 +60,15 @@ public class Lobby extends JFrame{
 		panel.add(btnEnd);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Lobby.class.getResource("/images/electric_guitar.jpg")));
-		lblNewLabel.setBounds(-41, -69, 1274, 692);
+		lblNewLabel.setIcon(new ImageIcon(Lobby.class.getResource("/images/ezgif.com-resize (4).gif")));
+		lblNewLabel.setBounds(0, 0, 794, 572);
 		panel.add(lblNewLabel);
 	
 		
-		
+		// 노래 선택창으로 이동
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-//				panel.setVisible(false);
-//				getContentPane().remove(panel);
-//				selectSong = new SelectSong();
-//				getContentPane().add(selectSong, BorderLayout.CENTER);
-				
+								
 				SelectSong  selectSong =  new SelectSong();
 	        	
 				selectSong.setVisible(true);
@@ -86,12 +79,10 @@ public class Lobby extends JFrame{
 			}
 		});
 		
+		// 기록창으로 이동
 		btnRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				panel.setVisible(false);
-//				getContentPane().remove(panel);
-//				record = new Record();
+
 				Record  record =  new Record();
 	        	
 	        	record.setVisible(true);
@@ -102,22 +93,27 @@ public class Lobby extends JFrame{
 			}
 		});
 		
-
+		//랭킹창으로 이동
 		btnRanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+								
 				Ranking  ranking =  new Ranking();
 	        	
 				ranking.setVisible(true);
 	        	dispose();
 			
 
-	}
-});
+			}
+		});
 		
+		// 게임종료
+		btnEnd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+	        	dispose();
+			}
+	
+	});
 		
-	
-	}
-	
+		}
 }

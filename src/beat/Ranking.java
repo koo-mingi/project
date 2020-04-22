@@ -202,7 +202,7 @@ public class Ranking extends JFrame{
 		
 		
 		
-		
+		// 로비창으로 이동
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Lobby  frame =  new Lobby();
