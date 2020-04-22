@@ -24,6 +24,7 @@ public class Beat extends JFrame{
 	
 	private JButton btlogin; //로그인 버튼
 	private JButton btsign;  //회원가입 버튼
+	private JLabel lblNewLabel_2;
 	
 
 
@@ -45,12 +46,12 @@ public class Beat extends JFrame{
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(508, 448, 97, 15);
+		lblNewLabel.setBounds(75, 180, 97, 15);
 		panel.add(lblNewLabel);
 		
 		// 아이디 입력 필드
 		textField = new JTextField();
-		textField.setBounds(617, 445, 116, 21);
+		textField.setBounds(231, 177, 116, 21);
 		panel.add(textField);
 		textField.setColumns(10);
 		
@@ -58,28 +59,28 @@ public class Beat extends JFrame{
 		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(508, 490, 97, 15);
+		lblNewLabel_1.setBounds(75, 253, 97, 18);
 		panel.add(lblNewLabel_1);
 		
 		// 비밀번호 입력 필드
 		passwordField = new JPasswordField();
-		passwordField.setBounds(617, 487, 116, 21);
+		passwordField.setBounds(231, 252, 116, 21);
 		panel.add(passwordField);
 		
 		// 로그인 버튼  -btlogin
 		btlogin = new JButton("로그인");
-		btlogin.setBounds(508, 580, 97, 23);
+		btlogin.setBounds(89, 369, 97, 23);
 		panel.add(btlogin);
 		
 		
 		// 회원가입 버튼 -btsign
 		btsign = new JButton("회원가입");
-		btsign.setBounds(696, 580, 97, 23);
+		btsign.setBounds(250, 369, 97, 23);
 		panel.add(btsign);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(Beat.class.getResource("/images/electric_guitar.jpg")));
-		lblNewLabel_2.setBounds(0, 0, 1274, 692);
+		lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(Beat.class.getResource("/images/ezgif.com-resize (4).gif")));
+		lblNewLabel_2.setBounds(0, 0, 794, 571);
 		panel.add(lblNewLabel_2);
 		
 		setVisible(true); //게임이 정상적으로 출력

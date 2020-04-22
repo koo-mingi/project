@@ -23,7 +23,7 @@ public class SignupPanel extends JFrame{
 	public  SignupPanel() {
 		
 		setTitle("sign");
-		setSize(450, 700);
+		setSize(400, 550);
 		setResizable(false); //창 사이즈 변경 불가
         setLocationRelativeTo(null); // 컴퓨터 정 중앙에 화면이 뜰수있게
 //      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // -있을시 창 모두 닫힘
@@ -40,70 +40,71 @@ public class SignupPanel extends JFrame{
         
         JLabel lblNewLabel_1 = new JLabel("이름");
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_1.setBounds(84, 217, 79, 15);
+        lblNewLabel_1.setBounds(84, 160, 79, 15);
         getContentPane().add(lblNewLabel_1);
         
         // 이름 입력 - txtname
         txtname = new JTextField();
-        txtname.setBounds(197, 214, 116, 21);
+        txtname.setBounds(197, 157, 116, 21);
         getContentPane().add(txtname);
         txtname.setColumns(10);
         
         JLabel lblNewLabel_2 = new JLabel("아이디");
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_2.setBounds(84, 254, 79, 15);
+        lblNewLabel_2.setBounds(84, 212, 79, 15);
         getContentPane().add(lblNewLabel_2);
         
         // 아이디 입력 - txtid
         txtid = new JTextField();
-        txtid.setBounds(197, 251, 116, 21);
+        txtid.setBounds(197, 209, 116, 21);
         getContentPane().add(txtid);
         txtid.setColumns(10);
         
         JLabel lblNewLabel_3 = new JLabel("비밀번호");
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_3.setBounds(84, 300, 79, 15);
+        lblNewLabel_3.setBounds(84, 258, 79, 15);
         getContentPane().add(lblNewLabel_3);
         
         // 비밀번호 입력 - txtpw
         txtpw = new JTextField();
-        txtpw.setBounds(197, 297, 116, 21);
+        txtpw.setBounds(197, 255, 116, 21);
         getContentPane().add(txtpw);
         txtpw.setColumns(10);
         
         JLabel lblNewLabel_4 = new JLabel("비밀번호 확인");
         lblNewLabel_4.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_4.setBounds(66, 331, 97, 15);
+        lblNewLabel_4.setBounds(66, 301, 97, 15);
         getContentPane().add(lblNewLabel_4);
         
         // 비밀번호 재입력 - txtrpw
         txtrpw = new JTextField();
-        txtrpw.setBounds(197, 328, 116, 21);
+        txtrpw.setBounds(197, 298, 116, 21);
         getContentPane().add(txtrpw);
         txtrpw.setColumns(10);
         
         JLabel lblNewLabel_5 = new JLabel("이메일");
         lblNewLabel_5.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_5.setBounds(106, 370, 57, 15);
+        lblNewLabel_5.setBounds(106, 338, 57, 15);
         getContentPane().add(lblNewLabel_5);
         
         // 이메일 입력 - txtmail
         txtmail = new JTextField();
-        txtmail.setBounds(197, 367, 116, 21);
+        txtmail.setBounds(197, 338, 116, 21);
         getContentPane().add(txtmail);
         txtmail.setColumns(10);
         
         // 회원가입 완료 버튼 - btncreate
         btncreate = new JButton("완료");
-        btncreate.setBounds(66, 493, 97, 23);
+        btncreate.setBounds(66, 427, 97, 23);
         getContentPane().add(btncreate);
         
         // 회원가입 취소 버튼 = btncancle
         btncancle = new JButton("취소");
-        btncancle.setBounds(216, 493, 97, 23);
+        btncancle.setBounds(216, 427, 97, 23);
         getContentPane().add(btncancle);
         
         setVisible(true);
+        
         	
         btncreate.addActionListener(new ActionListener() {
 			
