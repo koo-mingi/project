@@ -36,7 +36,7 @@ public class Beat extends JFrame{
 		setLocationRelativeTo(null); // 컴퓨터 정 중앙에 화면이 뜰수있게
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 게임 종료시 프로그램 전체 종료 
 		
-		Music introMusic = new Music("introMusic.mp3", true);
+		Music introMusic = new Music("introMusic1.mp3", true);
 		introMusic.start();
 		
 		
@@ -110,7 +110,7 @@ public class Beat extends JFrame{
 			            JOptionPane.showMessageDialog(null, "빈칸이 있네요");
 			        } else {
 			        	Lobby  frame =  new Lobby();
-			        	
+			        	introMusic.close();
 			        	frame.setVisible(true);
 			        	dispose();
 //			             로그인 참 거짓 여부를 판단
