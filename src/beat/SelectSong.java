@@ -36,6 +36,8 @@ public class SelectSong extends JFrame {
 	
 	private JButton btnStart ;
 	
+	public static GamePlay gameplay =  new GamePlay();
+	
 	
 	/**
 	 * Create the panel.
@@ -46,6 +48,8 @@ public class SelectSong extends JFrame {
 		setResizable(false); // 창 사이즈 변경 불가
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 종료 시 스레드 종료
+		
+		
 		
 		ImagePanel ImagePanel = new ImagePanel();
 		add(ImagePanel);
@@ -85,6 +89,7 @@ public class SelectSong extends JFrame {
 		btnStart = new JButton("게임 시작");
 		btnStart.setBounds(525, 505, 148, 23);
 		ImagePanel.add(btnStart);
+		btnStart.addKeyListener(new KeyListener());
 		
 		JButton btnNewButton_6 = new JButton("좌");
 		btnNewButton_6.setBounds(12, 122, 97, 23);
@@ -132,9 +137,10 @@ public class SelectSong extends JFrame {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			GamePlay gameplay =  new GamePlay();
-        	
+			      	
 			gameplay.setVisible(true);
+			System.out.println(gameplay);
+			setFocusable(true);
         	dispose();
 		}
 	});
