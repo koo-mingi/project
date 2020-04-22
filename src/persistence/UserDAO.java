@@ -37,10 +37,10 @@ public class UserDAO {
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
 //	user 정보 추가 / 유저 아이디가 없으면 가입, 있으면 중복으로 불가입
-	public int insertUser(int UserNo, String UserID, String password, String name, String Email) {
+	public int insertUser(String UserID, String password, String name, String Email) {
 		int result = 0;
 		
-		String sql = "insert into UserTBL value(?, ?, ?, ?)";
+		String sql = "insert into UserTBL value(seqgaro.nextval,?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
