@@ -29,12 +29,13 @@ public class Beat extends JPanel{
 	
 	private Lobby lobby;
 	
-	
-	
 	public Beat(JPanel contentPane) {
+
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setLayout(null); 								// 레이아웃 없음
 		lobby =  new Lobby(contentPane);
+		
+		
 		
 		Music introMusic = new Music("introMusic1.mp3", true);
 		introMusic.start();

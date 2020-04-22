@@ -37,10 +37,12 @@ public class SelectSong extends JPanel {
 	
 	private JButton btnStart ;
 	
+
 	private Lobby lobby;
 	private GamePlay gameplay;
 	
 	private ArrayList<Track> trackList = new ArrayList<Track>();
+
 	
 	/**
 	 * Create the panel.
@@ -50,7 +52,6 @@ public class SelectSong extends JPanel {
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
 				
-		
 		
 		
 		JLabel lblNewLabel = new JLabel("난이도 조절");
@@ -140,6 +141,7 @@ public class SelectSong extends JPanel {
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
         	
+
 		}
 	});
 		
