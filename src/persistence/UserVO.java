@@ -1,7 +1,8 @@
 package persistence;
 
 public class UserVO {
-	// UserTBL
+	
+	// UserTBL Table
 	private int userno;
 	private String userid;
 	private String password;

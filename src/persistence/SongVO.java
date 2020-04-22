@@ -1,7 +1,8 @@
 package persistence;
 
 public class SongVO {
-	// SongTBL
+	
+	// SongTBL Table
 	private int songid;
 	private String songname;
 	private String difficulty;

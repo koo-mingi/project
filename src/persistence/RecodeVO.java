@@ -1,7 +1,8 @@
 package persistence;
 
 public class RecodeVO {
-	// RecodeTBL
+	
+	// RecodeTBL Table
 	private int userno;
 	private int songid;
 	private String userid;
