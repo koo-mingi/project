@@ -24,6 +24,7 @@ public class Beat extends JFrame{
 	
 	private JButton btlogin; //로그인 버튼
 	private JButton btsign;  //회원가입 버튼
+	private JLabel lblNewLabel_2;
 	
 
 
@@ -77,9 +78,9 @@ public class Beat extends JFrame{
 		btsign.setBounds(250, 369, 97, 23);
 		panel.add(btsign);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(Beat.class.getResource("/images/electric_guitar.jpg")));
-		lblNewLabel_2.setBounds(-43, -68, 1274, 692);
+		lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(Beat.class.getResource("/images/ezgif.com-resize (4).gif")));
+		lblNewLabel_2.setBounds(0, 0, 794, 571);
 		panel.add(lblNewLabel_2);
 		
 		setVisible(true); //게임이 정상적으로 출력
