@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.DropMode;
 
 
 
@@ -45,13 +46,14 @@ public class Beat extends JPanel{
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(60, 473, 97, 15);
+		lblNewLabel.setBounds(60, 473, 100, 20);
 		add(lblNewLabel);
 		
 		// 아이디 입력 필드
 		textField = new JTextField();
-		
-		textField.setBounds(169, 470, 116, 21);
+		textField.setForeground(Color.WHITE);
+		textField.setOpaque(false);
+		textField.setBounds(170, 470, 120, 20);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -59,33 +61,38 @@ public class Beat extends JPanel{
 		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(60, 509, 97, 18);
+		lblNewLabel_1.setBounds(60, 509, 100, 20);
 		add(lblNewLabel_1);
 		
 		// 비밀번호 입력 필드
 		passwordField = new JPasswordField();
-		passwordField.setBounds(169, 508, 116, 21);
+		passwordField.setForeground(Color.WHITE);
+		passwordField.setOpaque(false);
+		passwordField.setBounds(170, 510, 120, 20);
 //		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		add(passwordField);
 		
 		// 로그인 버튼  -btlogin
-		btlogin = new JButton(new ImageIcon(Beat.class.getResource("../images/login-button.png")));
-//		btlogin = new JButton("로그인");
-//		btlogin.setForeground(Color.RED);
+//		btlogin = new JButton(new ImageIcon(Beat.class.getResource("../images/login-button.png")));
+		btlogin = new JButton("LOGIN");
+		btlogin.setFont(new Font("Arial Black", Font.BOLD, 20));
+		btlogin.setForeground(Color.WHITE);
+		btlogin.setOpaque(false);
 		btlogin.setBorderPainted(false);
 		btlogin.setContentAreaFilled(false);
 		btlogin.setFocusPainted(false);
-		btlogin.setBounds(349, 459, 116, 38);
+		btlogin.setBounds(294, 460, 120, 40);
 		add(btlogin);
 		
 		
 		// 회원가입 버튼 -btsign
 		btsign = new JButton("회원가입");
-		btsign.setForeground(Color.RED);
+		btsign.setFont(new Font("굴림", Font.PLAIN, 15));
+		btsign.setForeground(Color.WHITE);
 		btsign.setBorderPainted(false);
 		btsign.setContentAreaFilled(false);
 		btsign.setFocusPainted(false);
-		btsign.setBounds(349, 507, 97, 23);
+		btsign.setBounds(300, 510, 100, 20);
 		add(btsign);
 		
 		lblBackGroundIMG = new JLabel("New label");

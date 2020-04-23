@@ -61,51 +61,80 @@ public class SelectSong extends JPanel {
 
 		
 		JButton btnEasy = new JButton("Easy");
+		btnEasy.setForeground(new Color(255, 255, 240));
+		btnEasy.setFont(new Font("Jokerman", Font.BOLD, 40));
+		btnEasy.setContentAreaFilled(false);
+		btnEasy.setFocusPainted(false);
+		btnEasy.setBorderPainted(false);
 		btnEasy.setBounds(150, 400, 140, 60);
 		add(btnEasy);
 		
 		JButton btnHard = new JButton("Hard");
+		btnHard.setForeground(new Color(255, 255, 240));
+		btnHard.setBackground(new Color(255, 255, 240));
+		btnHard.setFont(new Font("Jokerman", Font.BOLD, 40));
+		btnHard.setContentAreaFilled(false);
+		btnHard.setFocusPainted(false);
+		btnHard.setBorderPainted(false);
 		btnHard.setBounds(305, 400, 140, 60);
 		add(btnHard);
 		
-		JButton btnBack = new JButton("로비로 돌아가기");
-		btnBack.setBounds(12, 10, 57, 35);
-		add(btnBack);
 		
-		
-		btnStart = new JButton("게임 시작");
-		btnStart.setBounds(570, 400, 180, 100);
+		btnStart = new JButton("Start");
+		btnStart.setForeground(new Color(255, 215, 0));
+		btnStart.setFont(new Font("Jokerman", Font.BOLD, 50));
+		btnStart.setBounds(519, 400, 231, 100);
+		btnStart.setContentAreaFilled(false);
+		btnStart.setFocusPainted(false);
 		add(btnStart);
 		
 
-		JButton btnNewButton_6 = new JButton("좌");
-		btnNewButton_6.setBounds(50, 180, 70, 40);
+		JButton btnNewButton_6 = new JButton("<");
+		btnNewButton_6.setForeground(new Color(240, 255, 240));
+		btnNewButton_6.setContentAreaFilled(false);
+		btnNewButton_6.setFocusPainted(false);
+		btnNewButton_6.setBorderPainted(false);
+		btnNewButton_6.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnNewButton_6.setBounds(50, 180, 90, 90);
 		add(btnNewButton_6);
 
 		
-
-		JButton btnNewButton_7 = new JButton("우");
-		btnNewButton_7.setBounds(680, 180, 70, 40);
-		add(btnNewButton_7);
-
-		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setFont(new Font("굴림", Font.BOLD, 24));
+		lblNewLabel_2.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setBounds(100, 500, 108, 35);
 		add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("New label");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("굴림", Font.BOLD, 24));
+		lblNewLabel_2_1.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblNewLabel_2_1.setBounds(243, 500, 108, 35);
 		add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_2_2 = new JLabel("New label");
+		lblNewLabel_2_2.setBackground(new Color(255, 255, 240));
 		lblNewLabel_2_2.setForeground(Color.WHITE);
-		lblNewLabel_2_2.setFont(new Font("굴림", Font.BOLD, 24));
+		lblNewLabel_2_2.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblNewLabel_2_2.setBounds(394, 500, 108, 35);
 		add(lblNewLabel_2_2);
+		
+		JButton btnNewButton_6_1 = new JButton(">");
+		btnNewButton_6_1.setForeground(new Color(240, 255, 240));
+		btnNewButton_6_1.setContentAreaFilled(false);
+		btnNewButton_6_1.setFocusPainted(false);
+		btnNewButton_6_1.setBorderPainted(false);
+		btnNewButton_6_1.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnNewButton_6_1.setBounds(660, 180, 90, 90);
+		add(btnNewButton_6_1);
+		
+		JButton btnBack = new JButton("<");
+		btnBack.setForeground(new Color(255, 255, 255));
+		btnBack.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnBack.setFocusPainted(false);
+		btnBack.setContentAreaFilled(false);
+		btnBack.setBorderPainted(false);
+		btnBack.setBounds(0, 0, 81, 84);
+		add(btnBack);
 		
 		repaint();
 		
