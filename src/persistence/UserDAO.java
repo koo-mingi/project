@@ -152,21 +152,41 @@ public class UserDAO {
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 
 //	Recode DB Select
-	public int getRecodeTbl(int userno, int songid) {
-		int result = 0;
+	public RecodeVO getRecodeTbl(int userno, int songid) {
+		RecodeVO vo = null;
 		
-		String sql = "select * from RecodeTBL where songid= ? ";
+		String sql = "select * from RecodeTBL where userno= ? and songid= ?";
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
+			
 			
 			pstmt.setInt(1, userno);
 			pstmt.setInt(2, songid);
 			
-			result = pstmt.executeUpdate();
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				vo=new RecodeVO();
+				vo.setUserno(rs.getInt("userno"));
+				vo.setSongid(rs.getInt("songid"));
+				vo.setUserid(rs.getString("userid"));
+				vo.setScore(rs.getInt("score"));
+				vo.setAcPerfect(rs.getInt("AcPerfect"));
+				vo.setAcGreat(rs.getInt("AcGreat"));
+				vo.setAcGood(rs.getInt("AcGood"));
+				vo.setAcBad(rs.getInt("AcBad"));
+				vo.setAcMiss(rs.getInt("AcMiss"));
+				vo.setAcMiss(rs.getInt("combo"));
+				vo.setGrade(rs.getString("grade"));
+			}	
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+		return vo;
 	}
+	
+//	where절 들어가는 유저정보
+//	전체리스트 가져오는게 있고
+//	유저별로 가져오는게 있고
+	
 }
