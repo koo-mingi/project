@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,7 +35,6 @@ public class Lobby extends JPanel{
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setLayout(null);
 				
-		
 		btnStart = new JButton("시작하기");
 		
 		btnStart.setFont(new Font("굴림", Font.BOLD, 26));

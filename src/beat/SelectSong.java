@@ -39,7 +39,7 @@ public class SelectSong extends JPanel {
 	
 
 	private Lobby lobby;
-	public static GamePlay gameplay;
+	private GamePlay gameplay;
 	
 	private ArrayList<Track> trackList = new ArrayList<Track>();
 	private Music selectedMusic;
@@ -146,7 +146,8 @@ public class SelectSong extends JPanel {
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
         	
-
+        	
+        	
 		}
 	});
 	
@@ -156,6 +157,7 @@ public class SelectSong extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			selectLeft();
+			// 곡에 해당하는 내 기록 가져와서 화면에 출력
 			
 		}
 	});
@@ -166,6 +168,7 @@ public class SelectSong extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				selectRight();
+				// 곡에 해당하는 내 기록 가져와서 화면에 출력
 				
 			}
 		});
