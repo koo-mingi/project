@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.DropMode;
 
 
 
@@ -43,43 +44,60 @@ public class Beat extends JPanel{
 		introMusic.start();
 				
 		
-		JLabel lblNewLabel = new JLabel("  아이디 :");
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(75, 180, 97, 15);
-		add(lblNewLabel);
+		JLabel lblId = new JLabel("ID");
+		lblId.setFont(new Font("굴림", Font.BOLD, 15));
+		lblId.setForeground(Color.WHITE);
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
+		lblId.setBounds(60, 473, 100, 20);
+		add(lblId);
 		
 		// 아이디 입력 필드
 		textField = new JTextField();
-		textField.setBounds(231, 177, 116, 21);
+		textField.setForeground(Color.WHITE);
+		textField.setOpaque(false);
+		textField.setBounds(140, 470, 120, 20);
 		add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("비밀번호 :");
-		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(75, 253, 97, 18);
-		add(lblNewLabel_1);
+		JLabel lblPassword = new JLabel("PW");
+		lblPassword.setFont(new Font("굴림", Font.BOLD, 15));
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPassword.setBounds(60, 509, 100, 20);
+		add(lblPassword);
 		
 		// 비밀번호 입력 필드
 		passwordField = new JPasswordField();
-		passwordField.setBounds(231, 252, 116, 21);
+		passwordField.setForeground(Color.WHITE);
+		passwordField.setOpaque(false);
+		passwordField.setBounds(140, 510, 120, 20);
+//		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		add(passwordField);
 		
 		// 로그인 버튼  -btlogin
-		btlogin = new JButton("로그인");
-		btlogin.setBounds(89, 369, 97, 23);
+//		btlogin = new JButton(new ImageIcon(Beat.class.getResource("../images/login-button.png")));
+		btlogin = new JButton("LOGIN");
+		btlogin.setFont(new Font("Arial Black", Font.BOLD, 20));
+		btlogin.setForeground(Color.WHITE);
+		btlogin.setOpaque(false);
+		btlogin.setBorderPainted(false);
+		btlogin.setContentAreaFilled(false);
+		btlogin.setFocusPainted(false);
+		btlogin.setBounds(260, 460, 120, 40);
 		add(btlogin);
 		
 		
 		// 회원가입 버튼 -btsign
-		btsign = new JButton("회원가입");
-		btsign.setBounds(250, 369, 97, 23);
+		btsign = new JButton("Sign Up");
+		btsign.setFont(new Font("굴림", Font.PLAIN, 15));
+		btsign.setForeground(Color.WHITE);
+		btsign.setBorderPainted(false);
+		btsign.setContentAreaFilled(false);
+		btsign.setFocusPainted(false);
+		btsign.setBounds(270, 510, 100, 20);
 		add(btsign);
 		
-		lblBackGroundIMG = new JLabel("New label");
+		lblBackGroundIMG = new JLabel();
 		lblBackGroundIMG.setIcon(new ImageIcon(Beat.class.getResource("/images/ezgif.com-resize (4).gif")));
 		lblBackGroundIMG.setBounds(0, 0, 794, 571);
 		add(lblBackGroundIMG);

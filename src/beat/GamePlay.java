@@ -4,7 +4,11 @@ import javax.swing.JFrame;
 
 import javax.swing.JPanel;
 
+
+
+
 import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory.Default;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -40,10 +44,11 @@ public class GamePlay extends JPanel{
 
 	private boolean isGameScreen = true;
 	
-	public static Game game = new Game();
+	
 	private beat.KeyListener keyListener = new beat.KeyListener();
 
 
+	public static Game game = new Game();
 	
 	public GamePlay(JPanel contentPane) {
 		
@@ -129,8 +134,19 @@ public class GamePlay extends JPanel{
 		g.drawImage(screenImage, 0, 0, null);
 	}
 	
+
+	
+	
+
+
 	public void screenDraw(Graphics2D g) {
 		g.drawImage(background, 0, 0, null);
+
+		if(isGameScreen) {
+			
+			game.screenDraw(g);
+			
+
 			if(isGameScreen) {
 				game.screenDraw(g);
 			}
@@ -141,6 +157,14 @@ public class GamePlay extends JPanel{
 			setFocusable(true);	
 			paintComponents(g);
 			this.repaint();
+
 		}
+
+			
+		paintComponents(g);
+		this.repaint();
+	}
+		
+
 	
 }

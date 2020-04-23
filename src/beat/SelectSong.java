@@ -23,6 +23,7 @@ import com.sun.glass.ui.Screen;
 
 
 import java.awt.Color;
+import java.awt.Font;
 
 public class SelectSong extends JPanel {
 	
@@ -53,69 +54,87 @@ public class SelectSong extends JPanel {
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
+
 				
 		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
 		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
-		
-		
-		
-		JLabel lblNewLabel = new JLabel("난이도 조절");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(172, 339, 75, 15);
-		add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("속도 조절");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setBounds(172, 454, 75, 15);
-		add(lblNewLabel_1);
+
 		
 		JButton btnEasy = new JButton("Easy");
-		btnEasy.setBounds(56, 390, 97, 23);
+		btnEasy.setForeground(new Color(255, 255, 240));
+		btnEasy.setFont(new Font("Jokerman", Font.BOLD, 40));
+		btnEasy.setContentAreaFilled(false);
+		btnEasy.setFocusPainted(false);
+		btnEasy.setBorderPainted(false);
+		btnEasy.setBounds(150, 400, 140, 60);
 		add(btnEasy);
 		
 		JButton btnHard = new JButton("Hard");
-		btnHard.setBounds(249, 390, 97, 23);
+		btnHard.setForeground(new Color(255, 255, 240));
+		btnHard.setBackground(new Color(255, 255, 240));
+		btnHard.setFont(new Font("Jokerman", Font.BOLD, 40));
+		btnHard.setContentAreaFilled(false);
+		btnHard.setFocusPainted(false);
+		btnHard.setBorderPainted(false);
+		btnHard.setBounds(305, 400, 140, 60);
 		add(btnHard);
 		
-		JButton btnDecrease = new JButton("감소");
-		btnDecrease.setBounds(56, 505, 97, 23);
-		add(btnDecrease);
 		
-		JButton btnIncrease = new JButton("증가");
-		btnIncrease.setBounds(249, 505, 97, 23);
-		add(btnIncrease);
-		
-		JButton btnBack = new JButton("로비로 돌아가기");
-		btnBack.setBounds(525, 428, 148, 23);
-		add(btnBack);
-		
-		
-		btnStart = new JButton("게임 시작");
-		btnStart.setBounds(525, 505, 148, 23);
+		btnStart = new JButton("Start");
+		btnStart.setForeground(new Color(255, 215, 0));
+		btnStart.setFont(new Font("Jokerman", Font.BOLD, 50));
+		btnStart.setBounds(519, 400, 231, 100);
+		btnStart.setContentAreaFilled(false);
+		btnStart.setFocusPainted(false);
 		add(btnStart);
 		
-		JButton btnLeft = new JButton("좌");
-		btnLeft.setBounds(12, 122, 97, 23);
+
+		JButton btnLeft = new JButton("<");
+		btnLeft.setForeground(new Color(240, 255, 240));
+		btnLeft.setContentAreaFilled(false);
+		btnLeft.setFocusPainted(false);
+		btnLeft.setBorderPainted(false);
+		btnLeft.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnLeft.setBounds(50, 180, 90, 90);
 		add(btnLeft);
+
 		
-		JButton btnRight = new JButton("우");
-		btnRight.setBounds(286, 122, 97, 23);
+		JLabel lblMyBestScore = new JLabel("MyBestScore");
+		lblMyBestScore.setFont(new Font("Jokerman", Font.BOLD, 24));
+		lblMyBestScore.setForeground(Color.WHITE);
+		lblMyBestScore.setBounds(100, 500, 108, 35);
+		add(lblMyBestScore);
+		
+		JLabel lblMyBestGrade = new JLabel("MyBestGrade");
+		lblMyBestGrade.setForeground(Color.WHITE);
+		lblMyBestGrade.setFont(new Font("Jokerman", Font.BOLD, 24));
+		lblMyBestGrade.setBounds(243, 500, 108, 35);
+		add(lblMyBestGrade);
+		
+		JLabel lblMyMaxCombo = new JLabel("MyMaxCombo");
+		lblMyMaxCombo.setBackground(new Color(255, 255, 240));
+		lblMyMaxCombo.setForeground(Color.WHITE);
+		lblMyMaxCombo.setFont(new Font("Jokerman", Font.BOLD, 24));
+		lblMyMaxCombo.setBounds(394, 500, 108, 35);
+		add(lblMyMaxCombo);
+		
+		JButton btnRight = new JButton(">");
+		btnRight.setForeground(new Color(240, 255, 240));
+		btnRight.setContentAreaFilled(false);
+		btnRight.setFocusPainted(false);
+		btnRight.setBorderPainted(false);
+		btnRight.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnRight.setBounds(660, 180, 90, 90);
 		add(btnRight);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(577, 126, 57, 15);
-		add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setBounds(577, 203, 57, 15);
-		add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setBounds(577, 279, 57, 15);
-		add(lblNewLabel_4);
+		JButton btnBack = new JButton("<");
+		btnBack.setForeground(new Color(255, 255, 255));
+		btnBack.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnBack.setFocusPainted(false);
+		btnBack.setContentAreaFilled(false);
+		btnBack.setBorderPainted(false);
+		btnBack.setBounds(0, 0, 81, 84);
+		add(btnBack);
 		
 		repaint();
 		
@@ -151,6 +170,7 @@ public class SelectSong extends JPanel {
 		}
 	});
 	
+
 	// 곡 선택 왼쪽 버튼 클릭
 	btnLeft.addActionListener(new ActionListener() {
 		
@@ -173,6 +193,7 @@ public class SelectSong extends JPanel {
 			}
 		});
 	
+
 	}
 		// 이미지 그리기
 				
@@ -193,7 +214,7 @@ public class SelectSong extends JPanel {
 			g.drawImage(background, 0, 0, null);	
 			if(isMainScreen) {
 				
-				g.drawImage(selectedImage, 25,25, null);
+				g.drawImage(selectedImage, 150,70, null);
 				
 			}
 			paintComponents(g);
