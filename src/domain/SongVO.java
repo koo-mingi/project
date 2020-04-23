@@ -1,10 +1,10 @@
-package persistence;
+package domain;
 
 public class SongVO {
 	
 	// SongTBL Table
-	private int songid;
-	private String songname;
+	private int songId;
+	private String songName;
 	private String difficulty;
 	private String speed;
 
@@ -14,29 +14,29 @@ public class SongVO {
 	}
 
 	// 매개변수를 인자로 받는 생성자
-	public SongVO(int songid, String songname, String difficulty, String speed) {
+	public SongVO(int songId, String songName, String difficulty, String speed) {
 		super();
-		this.songid = songid;
-		this.songname = songname;
+		this.songId = songId;
+		this.songName = songName;
 		this.difficulty = difficulty;
 		this.speed = speed;
 	}
 
 	// Getter & Setter
-	public int getSongid() {
-		return songid;
+	public int getSongId() {
+		return songId;
 	}
 
-	public void setSongid(int songid) {
-		this.songid = songid;
+	public void setSongId(int songId) {
+		this.songId = songId;
 	}
 
-	public String getSongname() {
-		return songname;
+	public String getSongName() {
+		return songName;
 	}
 
-	public void setSongname(String songname) {
-		this.songname = songname;
+	public void setSongName(String songName) {
+		this.songName = songName;
 	}
 
 	public String getDifficulty() {
@@ -55,9 +55,10 @@ public class SongVO {
 		this.speed = speed;
 	}
 
+	// toString
 	@Override
 	public String toString() {
-		return "SongVO [songid=" + songid + ", songname=" + songname + 
-			   ", difficulty=" + difficulty + ", speed=" + speed + "]";
+		return "SongVO [songId= " + songId + ", songName= " + songName + 
+			   ", difficulty= " + difficulty + ", speed= " + speed + "]";
 	}
 }

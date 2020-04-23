@@ -1,4 +1,4 @@
-package persistence;
+package domain;
 
 public class RecodeVO {
 	
@@ -7,12 +7,12 @@ public class RecodeVO {
 	private int songid;
 	private String userid;
 	private int score;
-	private int AcPerfect;
-	private int AcGreat;
-	private int AcBad;
-	private int AcMiss;
+	private int acPerfect;
+	private int acGreat;
+	private int acBad;
+	private int acMiss;
 	private int combo;
-	private int grade;
+	private String grade;
 
 	// 기본(default) 생성자
 	public RecodeVO() {
@@ -21,16 +21,16 @@ public class RecodeVO {
 
 	// 매개변수를 인자로 받는 생성자
 	public RecodeVO(int userno, int songid, String userid, int score, int acPerfect, 
-					int acGreat, int acBad, int acMiss, int combo, int grade) {
+					int acGreat, int acBad, int acMiss, int combo, String grade) {
 		super();
 		this.userno = userno;
 		this.songid = songid;
 		this.userid = userid;
 		this.score = score;
-		AcPerfect = acPerfect;
-		AcGreat = acGreat;
-		AcBad = acBad;
-		AcMiss = acMiss;
+		this.acPerfect = acPerfect;
+		this.acGreat = acGreat;
+		this.acBad = acBad;
+		this.acMiss = acMiss;
 		this.combo = combo;
 		this.grade = grade;
 	}
@@ -69,35 +69,35 @@ public class RecodeVO {
 	}
 
 	public int getAcPerfect() {
-		return AcPerfect;
+		return acPerfect;
 	}
 
 	public void setAcPerfect(int acPerfect) {
-		AcPerfect = acPerfect;
+		this.acPerfect = acPerfect;
 	}
 
 	public int getAcGreat() {
-		return AcGreat;
+		return acGreat;
 	}
 
 	public void setAcGreat(int acGreat) {
-		AcGreat = acGreat;
+		this.acGreat = acGreat;
 	}
 
 	public int getAcBad() {
-		return AcBad;
+		return acBad;
 	}
 
 	public void setAcBad(int acBad) {
-		AcBad = acBad;
+		this.acBad = acBad;
 	}
 
 	public int getAcMiss() {
-		return AcMiss;
+		return acMiss;
 	}
 
 	public void setAcMiss(int acMiss) {
-		AcMiss = acMiss;
+		this.acMiss = acMiss;
 	}
 
 	public int getCombo() {
@@ -108,18 +108,19 @@ public class RecodeVO {
 		this.combo = combo;
 	}
 
-	public int getGrade() {
+	public String getGrade() {
 		return grade;
 	}
 
-	public void setGrade(int grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-
+	
+	// toString
 	@Override
 	public String toString() {
-		return "RecodeVO [userno=" + userno + ", songid=" + songid + ", userid=" + userid + ", score=" + score
-				+ ", AcPerfect=" + AcPerfect + ", AcGreat=" + AcGreat + ", AcBad=" + AcBad + ", AcMiss=" + AcMiss
-				+ ", combo=" + combo + ", grade=" + grade + "]";
+		return "RecodeVO [userno= " + userno + ", songid= " + songid + ", userid= " + userid + ", score= " + score
+				+ ", acPerfect= " + acPerfect + ", acGreat= " + acGreat + ", acBad= " + acBad + ", acMiss= " + acMiss
+				+ ", combo= " + combo + ", grade= " + grade + "]";
 	}
 }
