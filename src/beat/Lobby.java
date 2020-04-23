@@ -45,7 +45,7 @@ public class Lobby extends JPanel{
 		btnStart.setContentAreaFilled(false);
 		btnStart.setFocusPainted(false);
 
-		btnStart = new JButton("시작하기");
+		
 		
 
 		btnStart.setFont(new Font("굴림", Font.BOLD, 26));

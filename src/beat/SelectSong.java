@@ -89,14 +89,14 @@ public class SelectSong extends JPanel {
 		add(btnStart);
 		
 
-		JButton btnNewButton_6 = new JButton("<");
-		btnNewButton_6.setForeground(new Color(240, 255, 240));
-		btnNewButton_6.setContentAreaFilled(false);
-		btnNewButton_6.setFocusPainted(false);
-		btnNewButton_6.setBorderPainted(false);
-		btnNewButton_6.setFont(new Font("Jokerman", Font.BOLD, 78));
-		btnNewButton_6.setBounds(50, 180, 90, 90);
-		add(btnNewButton_6);
+		JButton btnLeft = new JButton("<");
+		btnLeft.setForeground(new Color(240, 255, 240));
+		btnLeft.setContentAreaFilled(false);
+		btnLeft.setFocusPainted(false);
+		btnLeft.setBorderPainted(false);
+		btnLeft.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnLeft.setBounds(50, 180, 90, 90);
+		add(btnLeft);
 
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
@@ -118,14 +118,14 @@ public class SelectSong extends JPanel {
 		lblNewLabel_2_2.setBounds(394, 500, 108, 35);
 		add(lblNewLabel_2_2);
 		
-		JButton btnNewButton_6_1 = new JButton(">");
-		btnNewButton_6_1.setForeground(new Color(240, 255, 240));
-		btnNewButton_6_1.setContentAreaFilled(false);
-		btnNewButton_6_1.setFocusPainted(false);
-		btnNewButton_6_1.setBorderPainted(false);
-		btnNewButton_6_1.setFont(new Font("Jokerman", Font.BOLD, 78));
-		btnNewButton_6_1.setBounds(660, 180, 90, 90);
-		add(btnNewButton_6_1);
+		JButton btnRight = new JButton(">");
+		btnRight.setForeground(new Color(240, 255, 240));
+		btnRight.setContentAreaFilled(false);
+		btnRight.setFocusPainted(false);
+		btnRight.setBorderPainted(false);
+		btnRight.setFont(new Font("Jokerman", Font.BOLD, 78));
+		btnRight.setBounds(660, 180, 90, 90);
+		add(btnRight);
 		
 		JButton btnBack = new JButton("<");
 		btnBack.setForeground(new Color(255, 255, 255));
@@ -231,4 +231,23 @@ public class SelectSong extends JPanel {
 			selectedMusic.start();
 						
 		}
+		
+		public void selectLeft() {
+			if(trackNo == 0) {
+				trackNo = trackList.size() - 1;
+			}else {
+				trackNo--;
+			}
+			selectTrack(trackNo);
+		}
+		
+		public void selectRight() {
+			if(trackNo == (trackList.size() - 1)) {
+				trackNo = 0;
+			}else {
+				trackNo++;
+			}
+			selectTrack(trackNo);
+		}
+	
 }
