@@ -42,6 +42,8 @@ public class SelectSong extends JPanel {
 	public static GamePlay gameplay;
 	
 	private ArrayList<Track> trackList = new ArrayList<Track>();
+	private Music selectedMusic;
+	private int trackNo = 0;
 
 	
 	/**
@@ -52,6 +54,9 @@ public class SelectSong extends JPanel {
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
 				
+		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
+		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
+		
 		
 		
 		JLabel lblNewLabel = new JLabel("난이도 조절");
@@ -89,13 +94,13 @@ public class SelectSong extends JPanel {
 		btnStart.setBounds(525, 505, 148, 23);
 		add(btnStart);
 		
-		JButton btnNewButton_6 = new JButton("좌");
-		btnNewButton_6.setBounds(12, 122, 97, 23);
-		add(btnNewButton_6);
+		JButton btnLeft = new JButton("좌");
+		btnLeft.setBounds(12, 122, 97, 23);
+		add(btnLeft);
 		
-		JButton btnNewButton_7 = new JButton("우");
-		btnNewButton_7.setBounds(286, 122, 97, 23);
-		add(btnNewButton_7);
+		JButton btnRight = new JButton("우");
+		btnRight.setBounds(286, 122, 97, 23);
+		add(btnRight);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setForeground(Color.WHITE);
@@ -144,7 +149,26 @@ public class SelectSong extends JPanel {
 
 		}
 	});
+	
+	// 곡 선택 왼쪽 버튼 클릭
+	btnLeft.addActionListener(new ActionListener() {
 		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			selectLeft();
+			
+		}
+	});
+	
+	// 곡 선택 오른쪽 버튼 클릭
+		btnRight.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectRight();
+				
+			}
+		});
 	
 	}
 		// 이미지 그리기
@@ -174,6 +198,32 @@ public class SelectSong extends JPanel {
 			
 			}
 	
-					
+		public void selectTrack(int trackNo) {
+			if(selectedMusic!= null) {
+				selectedMusic.close();
+			}
+			selectedImage = new ImageIcon(Main.class.getResource("../images/"+trackList.get(trackNo).getStartImage())).getImage();
+			selectedMusic = new Music(trackList.get(trackNo).getStartMusic(), true);
+			selectedMusic.start();
+						
+		}
+		
+		public void selectLeft() {
+			if(trackNo == 0) {
+				trackNo = trackList.size() - 1;
+			}else {
+				trackNo--;
+			}
+			selectTrack(trackNo);
+		}
+		
+		public void selectRight() {
+			if(trackNo == (trackList.size() - 1)) {
+				trackNo = 0;
+			}else {
+				trackNo++;
+			}
+			selectTrack(trackNo);
+		}
 	
 }
