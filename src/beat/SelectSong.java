@@ -54,10 +54,11 @@ public class SelectSong extends JPanel {
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
 
-				
+		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악
 		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
 		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", null));
 
+			
 		
 		btnEasy = new JButton("Easy");
 		btnEasy.setForeground(new Color(255, 255, 240));

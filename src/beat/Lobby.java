@@ -39,6 +39,7 @@ public class Lobby extends JPanel{
 	// END이미지
 	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/END_press.png"));
 	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/END.png"));
+	private JLabel lblNewLabel_1;
 	
 	// private int mouseX, mouseY;
 	
@@ -62,11 +63,16 @@ public class Lobby extends JPanel{
 				btnStart.setIcon(startButtonEnteredImage);
 				btnStart.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
+			@Override
 			public void mouseExited(MouseEvent e) {
 		       
 				btnStart.setIcon(startButtonBasicImage);
 				btnStart.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		    }
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
 		
 		});
 		add(btnStart);
@@ -146,6 +152,11 @@ public class Lobby extends JPanel{
 		
 		});
 		add(btnEnd);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Lobby.class.getResource("/images/ezgif.com-resize (8).gif")));
+		lblNewLabel_1.setBounds(394, 460, 400, 92);
+		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Lobby.class.getResource("/images/ezgif.com-resize (4).gif")));

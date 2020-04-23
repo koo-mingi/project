@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class Record extends JPanel {
 	private JTextField textField;
@@ -226,10 +229,4 @@ public class Record extends JPanel {
 		
 		
 	}
-
-		
-	
-
-	
-	
 }
