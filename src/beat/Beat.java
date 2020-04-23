@@ -3,6 +3,9 @@ package beat;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,12 +35,11 @@ public class Beat extends JPanel{
 	
 	public Beat(JPanel contentPane) {
 
-		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
+				setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setLayout(null); 								// 레이아웃 없음
 		lobby =  new Lobby(contentPane);
-		
-		
-		
+				
+			
 		Music introMusic = new Music("introMusic1.mp3", true);
 		introMusic.start();
 				
@@ -127,6 +129,7 @@ public class Beat extends JPanel{
 			        	contentPane.add(lobby,BorderLayout.CENTER);
 			        	introMusic.close();
 			        	lobby.setVisible(true);
+//			        	lobby.setFocusable(true);
 			        	
 //			             로그인 참 거짓 여부를 판단
 //			            boolean existLogin = LoginService.loginTest(id, password);

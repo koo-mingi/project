@@ -40,7 +40,7 @@ public class SelectSong extends JPanel {
 	
 
 	private Lobby lobby;
-	public static GamePlay gameplay;
+	private GamePlay gameplay;
 	
 	private ArrayList<Track> trackList = new ArrayList<Track>();
 	private Music selectedMusic;
@@ -165,10 +165,35 @@ public class SelectSong extends JPanel {
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
         	
-
+        	
+        	
 		}
 	});
 	
+
+	// 곡 선택 왼쪽 버튼 클릭
+	btnLeft.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			selectLeft();
+			// 곡에 해당하는 내 기록 가져와서 화면에 출력
+			
+		}
+	});
+	
+	// 곡 선택 오른쪽 버튼 클릭
+		btnRight.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectRight();
+				// 곡에 해당하는 내 기록 가져와서 화면에 출력
+				
+			}
+		});
+	
+
 	}
 		// 이미지 그리기
 				

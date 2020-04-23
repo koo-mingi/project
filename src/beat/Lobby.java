@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,6 +36,7 @@ public class Lobby extends JPanel{
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setLayout(null);
 				
+
 		
 		btnStart = new JButton("");
 		btnStart.setIcon(new ImageIcon(Lobby.class.getResource("../images/start1.png")));
@@ -41,6 +44,10 @@ public class Lobby extends JPanel{
 		btnStart.setBorderPainted(false);
 		btnStart.setContentAreaFilled(false);
 		btnStart.setFocusPainted(false);
+
+		btnStart = new JButton("시작하기");
+		
+
 		btnStart.setFont(new Font("굴림", Font.BOLD, 26));
 		btnStart.setBounds(291, 49, 225, 208);
 		add(btnStart);

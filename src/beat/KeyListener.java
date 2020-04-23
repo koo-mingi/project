@@ -7,51 +7,52 @@ public class KeyListener extends KeyAdapter {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(SelectSong.gameplay == null) {
+		if(GamePlay.game == null) {
 			return;
 		}
 		if(e.getKeyCode() == KeyEvent.VK_S) {
-			SelectSong.gameplay.pressS();
+			GamePlay.game.pressS();
+			System.out.println(e.getKeyCode());
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_D) {
-			SelectSong.gameplay.pressD();
+			GamePlay.game.pressD();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_F) {
-			SelectSong.gameplay.pressF();
+			GamePlay.game.pressF();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_J) {
-			SelectSong.gameplay.pressJ();
+			GamePlay.game.pressJ();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_K) {
-			SelectSong.gameplay.pressK();
+			GamePlay.game.pressK();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_L) {
-			SelectSong.gameplay.pressL();
+			GamePlay.game.pressL();
 		}
 	}
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(SelectSong.gameplay == null) {
+		if(GamePlay.game == null) {
 			return;
 		}
 		if(e.getKeyCode() == KeyEvent.VK_S) {
-			SelectSong.gameplay.releaseS();
+			GamePlay.game.releaseS();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_D) {
-			SelectSong.gameplay.releaseD();
+			GamePlay.game.releaseD();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_F) {
-			SelectSong.gameplay.releaseF();
+			GamePlay.game.releaseF();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_J) {
-			SelectSong.gameplay.releaseJ();
+			GamePlay.game.releaseJ();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_K) {
-			SelectSong.gameplay.releaseK();
+			GamePlay.game.releaseK();
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_L) {
-			SelectSong.gameplay.releaseL();
+			GamePlay.game.releaseL();
 		}
 		
 	}

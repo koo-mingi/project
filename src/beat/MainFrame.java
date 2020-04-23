@@ -30,6 +30,8 @@ public class MainFrame extends JFrame{
 	private JPanel contentPane; // 패널을 붙일 메인 패널
 	private Beat beat;
 	
+	
+	
 	public MainFrame() {
 		setTitle("Beat"); //타이틀 이름
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
@@ -42,7 +44,9 @@ public class MainFrame extends JFrame{
 		beat = new Beat(contentPane);
 		contentPane.add(beat,BorderLayout.CENTER);
 		setVisible(true);
-		
+				
+
+
 	}
 		
 }	
