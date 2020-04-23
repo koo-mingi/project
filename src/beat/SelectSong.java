@@ -15,14 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-
-
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-
 import com.sun.glass.ui.Screen;
-
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -130,7 +126,12 @@ public class SelectSong extends JPanel {
 				btnStart.setForeground(new Color(255, 215, 0));
 				btnStart.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		    }
-		
+			@Override
+			public void mousePressed(MouseEvent e) {
+				selectedMusic.close();
+			}
+				
+				
 		});
 		add(btnStart);
 		
@@ -220,6 +221,10 @@ public class SelectSong extends JPanel {
 				btnBack.setForeground(new Color(255, 255, 255));
 				btnBack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		    }
+			@Override
+			public void mousePressed(MouseEvent e) {
+				selectedMusic.close();
+			}
 		
 		});
 		add(btnBack);
