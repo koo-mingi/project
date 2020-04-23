@@ -57,7 +57,7 @@ public class SelectSong extends JPanel {
 
 				
 		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
-		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
+		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", null));
 
 		
 		JButton btnEasy = new JButton("Easy");
