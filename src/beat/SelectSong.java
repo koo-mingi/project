@@ -39,7 +39,7 @@ public class SelectSong extends JPanel {
 	
 
 	private Lobby lobby;
-	private GamePlay gameplay;
+	public static GamePlay gameplay;
 	
 	private ArrayList<Track> trackList = new ArrayList<Track>();
 
