@@ -50,6 +50,7 @@ public class Beat extends JPanel{
 		
 		// 아이디 입력 필드
 		textField = new JTextField();
+		
 		textField.setBounds(169, 470, 116, 21);
 		add(textField);
 		textField.setColumns(10);
@@ -64,16 +65,26 @@ public class Beat extends JPanel{
 		// 비밀번호 입력 필드
 		passwordField = new JPasswordField();
 		passwordField.setBounds(169, 508, 116, 21);
+//		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		add(passwordField);
 		
 		// 로그인 버튼  -btlogin
-		btlogin = new JButton("로그인");
-		btlogin.setBounds(349, 469, 97, 23);
+		btlogin = new JButton(new ImageIcon(Beat.class.getResource("../images/login-button.png")));
+//		btlogin = new JButton("로그인");
+//		btlogin.setForeground(Color.RED);
+		btlogin.setBorderPainted(false);
+		btlogin.setContentAreaFilled(false);
+		btlogin.setFocusPainted(false);
+		btlogin.setBounds(349, 459, 116, 38);
 		add(btlogin);
 		
 		
 		// 회원가입 버튼 -btsign
 		btsign = new JButton("회원가입");
+		btsign.setForeground(Color.RED);
+		btsign.setBorderPainted(false);
+		btsign.setContentAreaFilled(false);
+		btsign.setFocusPainted(false);
 		btsign.setBounds(349, 507, 97, 23);
 		add(btsign);
 		
