@@ -9,6 +9,7 @@ public class RecodeVO {
 	private int score;
 	private int acPerfect;
 	private int acGreat;
+	private int acGood;
 	private int acBad;
 	private int acMiss;
 	private int combo;
@@ -21,7 +22,7 @@ public class RecodeVO {
 
 	// 매개변수를 인자로 받는 생성자
 	public RecodeVO(int userno, int songid, String userid, int score, int acPerfect, 
-					int acGreat, int acBad, int acMiss, int combo, String grade) {
+					int acGreat, int acGood, int acBad, int acMiss, int combo, String grade) {
 		super();
 		this.userno = userno;
 		this.songid = songid;
@@ -29,6 +30,7 @@ public class RecodeVO {
 		this.score = score;
 		this.acPerfect = acPerfect;
 		this.acGreat = acGreat;
+		this.acGood = acGood;
 		this.acBad = acBad;
 		this.acMiss = acMiss;
 		this.combo = combo;
@@ -82,6 +84,14 @@ public class RecodeVO {
 
 	public void setAcGreat(int acGreat) {
 		this.acGreat = acGreat;
+	}
+
+	public int getAcGood() {
+		return acGood;
+	}
+
+	public void setAcGood(int acGood) {
+		this.acGood = acGood;
 	}
 
 	public int getAcBad() {

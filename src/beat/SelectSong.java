@@ -99,24 +99,24 @@ public class SelectSong extends JPanel {
 		add(btnLeft);
 
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setFont(new Font("Jokerman", Font.BOLD, 24));
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(100, 500, 108, 35);
-		add(lblNewLabel_2);
+		JLabel lblMyBestScore = new JLabel("MyBestScore");
+		lblMyBestScore.setFont(new Font("Jokerman", Font.BOLD, 24));
+		lblMyBestScore.setForeground(Color.WHITE);
+		lblMyBestScore.setBounds(100, 500, 108, 35);
+		add(lblMyBestScore);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("New label");
-		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("Jokerman", Font.BOLD, 24));
-		lblNewLabel_2_1.setBounds(243, 500, 108, 35);
-		add(lblNewLabel_2_1);
+		JLabel lblMyBestGrade = new JLabel("MyBestGrade");
+		lblMyBestGrade.setForeground(Color.WHITE);
+		lblMyBestGrade.setFont(new Font("Jokerman", Font.BOLD, 24));
+		lblMyBestGrade.setBounds(243, 500, 108, 35);
+		add(lblMyBestGrade);
 		
-		JLabel lblNewLabel_2_2 = new JLabel("New label");
-		lblNewLabel_2_2.setBackground(new Color(255, 255, 240));
-		lblNewLabel_2_2.setForeground(Color.WHITE);
-		lblNewLabel_2_2.setFont(new Font("Jokerman", Font.BOLD, 24));
-		lblNewLabel_2_2.setBounds(394, 500, 108, 35);
-		add(lblNewLabel_2_2);
+		JLabel lblMyMaxCombo = new JLabel("MyMaxCombo");
+		lblMyMaxCombo.setBackground(new Color(255, 255, 240));
+		lblMyMaxCombo.setForeground(Color.WHITE);
+		lblMyMaxCombo.setFont(new Font("Jokerman", Font.BOLD, 24));
+		lblMyMaxCombo.setBounds(394, 500, 108, 35);
+		add(lblMyMaxCombo);
 		
 		JButton btnRight = new JButton(">");
 		btnRight.setForeground(new Color(240, 255, 240));
