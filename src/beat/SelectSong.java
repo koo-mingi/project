@@ -51,65 +51,45 @@ public class SelectSong extends JPanel {
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
-				
-		
-		
-		JLabel lblNewLabel = new JLabel("난이도 조절");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(172, 339, 75, 15);
-		add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("속도 조절");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setBounds(172, 454, 75, 15);
-		add(lblNewLabel_1);
 		
 		JButton btnEasy = new JButton("Easy");
-		btnEasy.setBounds(56, 390, 97, 23);
+		btnEasy.setBounds(119, 406, 100, 30);
 		add(btnEasy);
 		
 		JButton btnHard = new JButton("Hard");
-		btnHard.setBounds(249, 390, 97, 23);
+		btnHard.setBounds(307, 406, 100, 30);
 		add(btnHard);
 		
-		JButton btnDecrease = new JButton("감소");
-		btnDecrease.setBounds(56, 505, 97, 23);
-		add(btnDecrease);
-		
-		JButton btnIncrease = new JButton("증가");
-		btnIncrease.setBounds(249, 505, 97, 23);
-		add(btnIncrease);
-		
 		JButton btnBack = new JButton("로비로 돌아가기");
-		btnBack.setBounds(525, 428, 148, 23);
+		btnBack.setBounds(12, 10, 57, 35);
 		add(btnBack);
 		
 		
 		btnStart = new JButton("게임 시작");
-		btnStart.setBounds(525, 505, 148, 23);
+		btnStart.setBounds(525, 440, 182, 95);
 		add(btnStart);
 		
 		JButton btnNewButton_6 = new JButton("좌");
-		btnNewButton_6.setBounds(12, 122, 97, 23);
+		btnNewButton_6.setBounds(12, 178, 70, 41);
 		add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("우");
-		btnNewButton_7.setBounds(286, 122, 97, 23);
+		btnNewButton_7.setBounds(472, 178, 70, 41);
 		add(btnNewButton_7);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(577, 126, 57, 15);
+		lblNewLabel_2.setBounds(650, 127, 57, 15);
 		add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setBounds(577, 203, 57, 15);
+		lblNewLabel_3.setBounds(650, 204, 57, 15);
 		add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("New label");
 		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setBounds(577, 279, 57, 15);
+		lblNewLabel_4.setBounds(650, 274, 57, 15);
 		add(lblNewLabel_4);
 		
 		repaint();
@@ -166,7 +146,7 @@ public class SelectSong extends JPanel {
 			g.drawImage(background, 0, 0, null);	
 			if(isMainScreen) {
 				
-				g.drawImage(selectedImage, 25,25, null);
+				g.drawImage(selectedImage, 100,70, null);
 				
 			}
 			paintComponents(g);

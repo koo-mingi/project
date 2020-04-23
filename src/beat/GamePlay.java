@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 
 import javax.swing.JPanel;
 
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -16,6 +18,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import javax.swing.JLabel;
@@ -51,6 +54,7 @@ public class GamePlay extends JPanel{
 
 	private boolean isGameScreen = true;
 
+	public static Game game = new Game();
 	
 	public GamePlay(JPanel contentPane) {
 		
@@ -125,48 +129,25 @@ public class GamePlay extends JPanel{
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(gameInfoImage, 0, 0, null);
 		screenImage = createImage(Main.SCREEN_WIDTH,Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
-		screenDraw(screenGraphic);
+		screenDraw((Graphics2D)screenGraphic);
 		g.drawImage(screenImage, 0, 0, null);
 	}
 	
-	public void screenDraw(Graphics g) {
+	
+	
+	public void screenDraw(Graphics2D g) {
 		g.drawImage(background, 0, 0, null);
-			if(isGameScreen) {
-				g.drawImage(noteRouteImage, 80, 30, null);
-				g.drawImage(noteRouteImage, 143, 30, null);
-				g.drawImage(noteRouteImage, 205, 30, null);
-				g.drawImage(noteRouteImage, 267, 30, null);
-				g.drawImage(noteRouteImage, 329, 30, null);
-				g.drawImage(noteRouteImage, 391, 30, null);
-				
-		
-				g.drawImage(noteRouteLineImage, 77, 30, null);
-				g.drawImage(noteRouteLineImage, 140, 30, null);
-				g.drawImage(noteRouteLineImage, 202, 30, null);
-				g.drawImage(noteRouteLineImage, 264, 30, null);
-				g.drawImage(noteRouteLineImage, 326, 30, null);
-				g.drawImage(noteRouteLineImage, 388, 30, null);
-				g.drawImage(noteRouteLineImage, 451, 30, null);
-
-				g.drawImage(gameInfoImage, 0, 480, null);
-				g.drawImage(judgementLineImage, 0, 410, null);
-				g.drawImage(noteBasicImage, 80, 120, null);
-				g.drawImage(noteBasicImage, 143, 100, null);
-				g.drawImage(noteBasicImage, 205, 500, null);
-				g.drawImage(noteBasicImage, 267, 340, null);
-				g.drawImage(noteBasicImage, 329, 340, null);
-				g.drawImage(noteBasicImage, 391, 325, null);
-
-				g.setColor(Color.white);
-//				g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-			}
-			paintComponents(g);
-			this.repaint();
-
+		if(isGameScreen) {
+			
+			game.screenDraw(g);
+			
 		}
+			
+		paintComponents(g);
+		this.repaint();
+	}
 		
 	
 	

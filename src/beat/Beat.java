@@ -41,40 +41,40 @@ public class Beat extends JPanel{
 		introMusic.start();
 				
 		
-		JLabel lblNewLabel = new JLabel("  아이디 :");
+		JLabel lblNewLabel = new JLabel("  아이디 ");
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(75, 180, 97, 15);
+		lblNewLabel.setBounds(60, 473, 97, 15);
 		add(lblNewLabel);
 		
 		// 아이디 입력 필드
 		textField = new JTextField();
-		textField.setBounds(231, 177, 116, 21);
+		textField.setBounds(169, 470, 116, 21);
 		add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("비밀번호 :");
+		JLabel lblNewLabel_1 = new JLabel("비밀번호 ");
 		lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(75, 253, 97, 18);
+		lblNewLabel_1.setBounds(60, 509, 97, 18);
 		add(lblNewLabel_1);
 		
 		// 비밀번호 입력 필드
 		passwordField = new JPasswordField();
-		passwordField.setBounds(231, 252, 116, 21);
+		passwordField.setBounds(169, 508, 116, 21);
 		add(passwordField);
 		
 		// 로그인 버튼  -btlogin
 		btlogin = new JButton("로그인");
-		btlogin.setBounds(89, 369, 97, 23);
+		btlogin.setBounds(349, 469, 97, 23);
 		add(btlogin);
 		
 		
 		// 회원가입 버튼 -btsign
 		btsign = new JButton("회원가입");
-		btsign.setBounds(250, 369, 97, 23);
+		btsign.setBounds(349, 507, 97, 23);
 		add(btsign);
 		
 		lblBackGroundIMG = new JLabel("New label");
