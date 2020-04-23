@@ -74,10 +74,7 @@ public class GamePlay extends JPanel{
 
 		setVisible(true);
 		
-		requestFocus();
-		//requestFocusInWindow();
-		setFocusable(true);		
-		
+			
 		
 		this.addKeyListener(keyListener);
 
@@ -137,6 +134,9 @@ public class GamePlay extends JPanel{
 			if(isGameScreen) {
 				game.screenDraw(g);
 			}
+			
+			requestFocus();
+			setFocusable(true);	
 			paintComponents(g);
 			this.repaint();
 		}

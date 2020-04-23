@@ -25,6 +25,8 @@ public class Game extends Thread {
 
 	
 	public void screenDraw(Graphics2D g) {
+		
+		// 키 입력에 대한 이미지 처리
 		g.drawImage(noteRouteSImage, 80, 30, null);
 		g.drawImage(noteRouteDImage, 143, 30, null);
 		g.drawImage(noteRouteFImage, 205, 30, null);
