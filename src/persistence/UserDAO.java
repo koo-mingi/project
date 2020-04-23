@@ -41,7 +41,7 @@ public class UserDAO {
 	public int insertUserTBL(String UserID, String password, String name, String Email) {
 		int result = 0;
 		
-		String sql = "insert into UserTBL value(seqgaro.nextval,?, ?, ?, ?)";
+		String sql = "insert into UserTBL value(seqgaro.nextval, ?, ?, ?, ?)";
 					// SQL문을 연결된 OracleDB에 PreparedStatement를 통해서 보낸다
 					// 실행하는 과정에서 오라클과 동일해야된다
 		try (Connection con = getConnection();
@@ -113,7 +113,37 @@ public class UserDAO {
 	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 
-//	Recode DB
+//	Recode DB Insert
+	public int insertRecodeTBL(int userno, int songid, String userid, int score, 
+							   int acPerfect, int acGreat, int acBad, int acMiss, int combo, String grade) {
+		int result = 0;
+		
+		String sql = "insert into RecodeTBL value(seqgaro.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try (Connection con = getConnection();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setInt(1, userno);
+			pstmt.setInt(2, songid);
+			pstmt.setString(3, userid);
+			pstmt.setInt(4, score);
+			pstmt.setInt(4, acPerfect);
+			pstmt.setInt(6, acGreat);
+			pstmt.setInt(7, acBad);
+			pstmt.setInt(8, acMiss);
+			pstmt.setInt(9, combo);
+			pstmt.setString(10, grade);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+//	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
+
+//	Recode DB Select
 	public int getRecodeTBL(int userno, int songid, String userid, int score, 
 							int acPerfect, int acGreat, int acBad, int acMiss, int combo, String grade) {
 		int result = 0;
