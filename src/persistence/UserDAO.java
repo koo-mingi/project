@@ -36,9 +36,9 @@ public class UserDAO {
 	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
-//	회원가입 할 때 받아오는 정보
+//	User DB Insert (회원가입 할 때 받아오는 정보)
 //	user 정보 추가 / 유저 아이디가 없으면 가입, 있으면 중복으로 불가입
-	public int insertUser(String UserID, String password, String name, String Email) {
+	public int insertUserTBL(String UserID, String password, String name, String Email) {
 		int result = 0;
 		
 		String sql = "insert into UserTBL value(seqgaro.nextval,?, ?, ?, ?)";
@@ -62,9 +62,9 @@ public class UserDAO {
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
 
-//	개인정보 받기
+//	User DB select
 //	입력된 DB정보를 오라클에서 ID, PW를 조회해서 일치하는지 확인, 맞거나 아니거나 할 경우 정보 전달
-	public UserVO getUser(String id) {
+	public UserVO getUserTBL(String id) {
 		
 		String sql="select * from userTBL where no=?";
 		UserVO vo=null;
@@ -89,8 +89,8 @@ public class UserDAO {
 	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
-//	Song DB insert
-	public int getSong(int songID, String songname, int difficulty, int speed) {
+//	Song DB select
+	public int getSongTBL(int songID, String songname, int difficulty, int speed) {
 		int result = 0;
 		
 		String sql = "select * from SongTBL where songid";
@@ -111,11 +111,33 @@ public class UserDAO {
 		}
 		return result;
 	}
-	
-//	로그인(성공)
+//	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
+
+//	Recode DB
+	public int getRecodeTBL(int userno, int songid, String userid, int score, 
+							int acPerfect, int acGreat, int acBad, int acMiss, int combo, String grade) {
+		int result = 0;
 		
-//	로그인(실패)
-		
-//	DB연동(insert) 실행
-		
+		String sql = "select * from RecodeTBL where songid";
+		try (Connection con = getConnection();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setInt(1, userno);
+			pstmt.setInt(2, songid);
+			pstmt.setString(3, userid);
+			pstmt.setInt(4, score);
+			pstmt.setInt(4, acPerfect);
+			pstmt.setInt(6, acGreat);
+			pstmt.setInt(7, acBad);
+			pstmt.setInt(8, acMiss);
+			pstmt.setInt(9, combo);
+			pstmt.setString(10, grade);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}	
 }
