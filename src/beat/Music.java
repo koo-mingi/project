@@ -13,7 +13,7 @@ public class Music extends Thread{
 	private File file;
 	private FileInputStream fis;
 	private BufferedInputStream bis;
-	// 어디서 넘어오는거야 name을 받아오는 위치가 없으니까  파일명이 지정이 안됨
+	
 	public Music(String name, boolean isLoop) {
 		try {
 			this.isLoop = isLoop;
