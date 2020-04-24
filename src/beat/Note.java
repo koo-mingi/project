@@ -88,24 +88,30 @@ public class Note extends Thread{
 		}
 	}
 	
-	public void judge() {
+	public int judge() {
+		int score = 0;
 		if( y >= judgeBar) {
 			System.out.println("Perfect");
+			score = 50;
 			close();
 		}
 		else if( y >= judgeBar - 10) {
 			System.out.println("Great");
+			score =40;
 			close();
 		}
 		else if( y >= judgeBar-30) {
 			System.out.println("Nomal");
+			score = 30;
 			close();
 		}
 		else if( y >= judgeBar - 50) {
 			System.out.println("Bad");
+			score = 11;
 			close();
 			
 		}
+		return score;
 	}
 	
 	@Override
