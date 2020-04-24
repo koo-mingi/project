@@ -110,8 +110,7 @@ public class Game extends Thread {
 		g.drawString("L", 420, 435);
 		g.setColor(Color.LIGHT_GRAY);
 
-		g.setFont(new Font("Jokerman", Font.BOLD, 26));
-		g.drawString("00000", 360, 550);
+		
 
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
 		g.drawString(intCasting(score), 360, 550);
