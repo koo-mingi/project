@@ -43,9 +43,9 @@ public class UserDAO {
 //	User DB Insert (회원가입 할 때 받아오는 정보)
 //	user 정보 추가 / 유저 아이디가 없으면 가입, 있으면 중복으로 불가입
 	public int insertUserTbl(UserVO vo) {
-		int result = 0;
+		int result	= 0;
 		
-		String sql = "insert into UserTBL value(seqgaro.nextval, ?, ?, ?, ?)";
+		String sql	= "insert into UserTBL value(seqgaro.nextval, ?, ?, ?, ?)";
 					// SQL문을 연결된 OracleDB에 PreparedStatement를 통해서 보낸다
 					// 실행하는 과정에서 오라클과 동일해야된다
 		try (Connection con = getConnection();
@@ -69,8 +69,8 @@ public class UserDAO {
 //	입력된 DB정보를 오라클에서 ID, PW를 조회해서 일치하는지 확인, 맞거나 아니거나 할 경우 정보 전달
 	public UserVO getUserTbl(String userId) {
 		
-		String sql="select * from userTBL where userno = ?";
-		UserVO vo=null;
+		String sql	= "select * from userTBL where userid = ?";
+		UserVO vo	= null;
 		try(Connection con=getConnection();
 			PreparedStatement pstmt=con.prepareStatement(sql)) {
 			
@@ -93,13 +93,14 @@ public class UserDAO {
 	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
+
 //	Song DB select
 	public SongVO getSongTbl(int songId) {
 		
-		String sql = "select * from SongTBL where songid = ?";
+		String sql	= "select * from SongTBL where songid = ?";
 					// SQL문을 연결된 OracleDB에 PreparedStatement를 통해서 보낸다
 					// 실행하는 과정에서 오라클과 동일해야된다
-		SongVO vo = null;
+		SongVO vo	= null;
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 			
@@ -124,9 +125,9 @@ public class UserDAO {
 //	Recode DB Insert
 	//vo
 	public int insertRecodeTbl(RecodeVO vo) {
-		int result = 0;
+		int result	= 0;
 		
-		String sql = "insert into RecodeTBL value(seqgaro.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql	= "insert into RecodeTBL value(seqgaro.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -153,9 +154,9 @@ public class UserDAO {
 
 //	Recode DB Select
 	public RecodeVO getRecodeTbl(int userno, int songid) {
-		RecodeVO vo = null;
+		RecodeVO vo	= null;
 		
-		String sql = "select * from RecodeTBL where userno= ? and songid= ?";
+		String sql	= "select * from RecodeTBL where userno= ? and songid= ?";
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 			
