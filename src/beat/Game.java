@@ -280,6 +280,7 @@ public class Game extends Thread {
 		}
 		else {
 			//흠...필요할진 모르겠는데 혹시 beats가 null일 때 처리
+			System.out.println("beats값이 null임");
 		}
 	}
 
