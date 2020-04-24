@@ -41,6 +41,8 @@ public class Game extends Thread {
 	private final int GOOD = 30;
 	private final int BAD = 11;
 	
+	
+	
 			
 
 	List<Note> noteList = new ArrayList<Note>();
@@ -135,52 +137,28 @@ public class Game extends Thread {
 	}
 	
 	public void pressS() {
-
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
-
 		judge("S");
-	
-
 	}
 	public void pressD() {
-
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
-
 		judge("D");
-		
-
 	}
 	public void pressF() {
-
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
-
 		judge("F");
-		
-
 	}
 	public void pressJ() {
-
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
-
 		judge("J");
-	
-
 	}
 	public void pressK() {
-
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
-
 		judge("K");
-		
-
 	}
 	public void pressL() {
-
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
-
 		judge("L");
-	
-
 	}
 	
 	public void releaseS() {
@@ -258,43 +236,45 @@ public class Game extends Thread {
 	public void dropNotes() {
 		BeatPlay[] beats = null;	
 		//difficult 변수 선언하고 이걸 &&로 해서 easy hard 구분
-		if(musicTitle.equals("introMusic1.mp3")) {
-			int startTime = 4460 - Main.REACH_TIME * 1000;
-			int gap = 125;  // 밀리초.
-			//이건 흠...그냥 gap 인데 나는 그냥 비트 찍어서 해야할 듯
-			//startTime + gap * 2 부분에 비트 하나하나 시간 넣기
-			beats = new BeatPlay[] {
-					new BeatPlay(startTime + gap *2, "S"),
-					new BeatPlay(startTime + gap *4, "D"),
-					new BeatPlay(startTime + gap *6, "F"),
-					new BeatPlay(startTime + gap *8, "J"),
-					new BeatPlay(startTime + gap *10, "K"),
-					new BeatPlay(startTime + gap *11, "L"),
-					new BeatPlay(startTime + gap *14, "S"),
-					new BeatPlay(startTime + gap *15, "S"),
-					new BeatPlay(startTime + gap *17, "F"),
-					new BeatPlay(startTime + gap *19, "F"),
-//					new BeatPlay(startTime + gap *20, "F"),
-//					new BeatPlay(startTime + gap *22, "F"),
-//					new BeatPlay(startTime + gap *25, "J"),
-//					new BeatPlay(startTime + gap *40, "D"),
-//					new BeatPlay(startTime + gap *44, "S"),
-//					new BeatPlay(startTime + gap *45, "L"),
-//					new BeatPlay(startTime + gap *58, "J"),
-//					new BeatPlay(startTime + gap *59, "D"),
-//					new BeatPlay(startTime + gap *60, "F"),
-//					new BeatPlay(startTime + gap *61, "F"),
-//					new BeatPlay(startTime + gap *62, "J"),
-//					new BeatPlay(startTime + gap *63, "S"),
-//					new BeatPlay(startTime + gap *64, "K"),
-//					new BeatPlay(startTime + gap *66, "L"),
-//					new BeatPlay(startTime + gap *67, "F"),
-			};
+		if (titleName.equals("Happy Life - Fredji") && difficulty.equals("Easy")) {
+			int startTime = 1350 - Main.REACH_TIME * 1000;
+			int gap = 1200;
+			beats = new BeatPlay[] { 
+					new BeatPlay(startTime + gap * 0, "S"), new BeatPlay(startTime + gap * 1, "J"),
+					new BeatPlay(startTime + gap * 2, "D"), new BeatPlay(startTime + gap * 3, "S"),
+					new BeatPlay(startTime + gap * 4, "F"), new BeatPlay(startTime + gap * 5, "L"),
+					new BeatPlay(startTime + gap * 6, "J"), new BeatPlay(startTime + gap * 7, "K"),
+					new BeatPlay(startTime + gap * 8, "D"), new BeatPlay(startTime + gap * 9, "D"),
+					new BeatPlay(startTime + gap * 10, "S"), new BeatPlay(startTime + gap * 11, "F"),
+					new BeatPlay(startTime + gap * 12, "L"), new BeatPlay(startTime + gap * 13, "J"),
+					new BeatPlay(startTime + gap * 14, "K"), new BeatPlay(startTime + gap * 15, "K"),
+					new BeatPlay(startTime + gap * 16, "D"), new BeatPlay(startTime + gap * 17, "S"),
+					new BeatPlay(startTime + gap * 18, "F"), new BeatPlay(startTime + gap * 19, "L"),
+					new BeatPlay(startTime + gap * 20, "J"), new BeatPlay(startTime + gap * 21, "K"),
+					new BeatPlay(startTime + gap * 22, "J"), new BeatPlay(startTime + gap * 23, "D"),
+					new BeatPlay(startTime + gap * 24, "S"), new BeatPlay(startTime + gap * 25, "F"),
+					new BeatPlay(startTime + gap * 26, "L"), new BeatPlay(startTime + gap * 27, "J"),
+					new BeatPlay(startTime + gap * 28, "K"), new BeatPlay(startTime + gap * 29, "L"),
+					new BeatPlay(startTime + gap * 30, "D"), new BeatPlay(startTime + gap * 31, "S"),
+					new BeatPlay(startTime + gap * 32, "F"), new BeatPlay(startTime + gap * 33, "L"),
+					new BeatPlay(startTime + gap * 34, "J"), new BeatPlay(startTime + gap * 35, "K"),
+					new BeatPlay(startTime + gap * 36, "F"), new BeatPlay(startTime + gap * 37, "D"),
+					new BeatPlay(startTime + gap * 38, "S"), new BeatPlay(startTime + gap * 39, "F"),
+					new BeatPlay(startTime + gap * 40, "L"), new BeatPlay(startTime + gap * 41, "J"),
+					new BeatPlay(startTime + gap * 42, "K"), new BeatPlay(startTime + gap * 43, "S"),
+					new BeatPlay(startTime + gap * 44, "D"), new BeatPlay(startTime + gap * 45, "S"),
+					new BeatPlay(startTime + gap * 46, "F"), new BeatPlay(startTime + gap * 47, "L"),
+					new BeatPlay(startTime + gap * 48, "J"), new BeatPlay(startTime + gap * 49, "K"),
+					new BeatPlay(startTime + gap * 50, "Space"), new BeatPlay(startTime + gap * 51, "D"),
+					new BeatPlay(startTime + gap * 52, "S"), new BeatPlay(startTime + gap * 53, "F"),
+					new BeatPlay(startTime + gap * 54, "L"), new BeatPlay(startTime + gap * 56, "L")};
+			//all = beats.length * 50;
 		}
 //		else if(musicName.equals())
 		
 		int i = 0;
 		gameMusic.start();
+		System.out.println(beats.length);
 		while(i < beats.length && !isInterrupted()) {	
 			boolean dropped = false;
 			

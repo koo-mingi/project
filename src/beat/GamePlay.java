@@ -52,7 +52,7 @@ public class GamePlay extends JPanel{
 	
 
 	
-	public GamePlay(JPanel contentPane,String titleName, String difficulty,String musicTitle) {
+	public GamePlay(JPanel contentPane,String titleName, String difficulty, String musicTitle) {
 		
 		this.contentPane = contentPane;
 
