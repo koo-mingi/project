@@ -13,6 +13,7 @@ import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory.Default;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -72,15 +75,53 @@ public class GamePlay extends JPanel{
 		game.start();
 
 	
-		btnGameStop = new JButton("Game 종료");
-		btnGameStop.setFont(new Font("굴림", Font.BOLD, 15));
-		btnGameStop.setBounds(610, 470, 123, 23);
+		btnGameStop = new JButton("EXIT");
+		btnGameStop.setForeground(Color.CYAN);
+		btnGameStop.setBorderPainted(false);
+		btnGameStop.setContentAreaFilled(false);
+		btnGameStop.setFocusPainted(false);
+		btnGameStop.setFont(new Font("Jokerman", Font.BOLD, 20));
+		btnGameStop.setBounds(584, 470, 171, 23);
+		btnGameStop.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnGameStop.setForeground(Color.YELLOW);
+				btnGameStop.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+		       
+				btnGameStop.setForeground(Color.CYAN);
+				btnGameStop.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnGameStop);
 		
 
-		btnGameResult = new JButton("결과");
-		btnGameResult.setFont(new Font("굴림", Font.BOLD, 15));
-		btnGameResult.setBounds(610, 345, 123, 23);
+		btnGameResult = new JButton("RESULT");
+		btnGameResult.setForeground(Color.CYAN);
+		btnGameResult.setBorderPainted(false);
+		btnGameResult.setContentAreaFilled(false);
+		btnGameResult.setFocusPainted(false);
+		btnGameResult.setFont(new Font("Jokerman", Font.BOLD, 20));
+		btnGameResult.setBounds(610, 396, 123, 23);
+		btnGameResult.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnGameResult.setForeground(Color.YELLOW);
+				btnGameResult.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+		       
+				btnGameResult.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+				btnGameResult.setForeground(Color.CYAN);
+		    }
+		
+		});
 		add(btnGameResult);
 
 
