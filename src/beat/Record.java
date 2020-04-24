@@ -114,7 +114,7 @@ public class Record extends JPanel {
 		lblNewLabel_3_2.setBounds(100, 275, 214, 40);
 		add(lblNewLabel_3_2);
 		
-		JLabel lblNewLabel_3_2_1 = new JLabel("Chilling Title");
+		JLabel lblNewLabel_3_2_1 = new JLabel("Chilling");
 		lblNewLabel_3_2_1.setForeground(Color.YELLOW);
 		lblNewLabel_3_2_1.setFont(new Font("Jokerman", Font.BOLD, 30));
 		lblNewLabel_3_2_1.setBounds(100, 345, 240, 40);

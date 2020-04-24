@@ -60,8 +60,9 @@ public class SelectSong extends JPanel {
 		
 	
 		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악
-		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", "introMusic1.mp3","Spring"));
-		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", "introMusic1.mp3","titlename"));
+		trackList.add(new Track(null, "Happy Life start image.jpg", null, "Fredji_Happy Life_Selected.mp3", "Fredji_Happy Life_Play.mp3","Happy Life - Fredji"));
+		trackList.add(new Track(null, "Chilling start image.jpg", null, "Oshova_Chilling.mp3", "Oshova_Chilling.mp3","Chilling - Oshova"));
+		trackList.add(new Track(null, "Harmony start image.jpg", null, "Ikson_Harmony_Selected.mp3", "Ikson_Harmony_Play.mp3","Harmony - Ikson"));
 		
 		selectTrack(0);
 
