@@ -55,9 +55,10 @@ public class SelectSong extends JPanel {
 		setLayout(null);
 
 		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악
-		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
-		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", null));
-
+		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", "introMusic1.mp3"));
+		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", "introMusic1.mp3"));
+		System.out.println(trackList.get(0).getGameMusic() + "seleted");
+		selectTrack(trackNo); // 들어가자마자 노래 틀도록 수정
 			
 		
 		btnEasy = new JButton("Easy");
@@ -129,7 +130,7 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selectedMusic.close();
+//				selectedMusic.close();
 			}
 				
 				
@@ -255,10 +256,10 @@ public class SelectSong extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			
 			setVisible(false);
-			gameplay =  new GamePlay(contentPane);
+			gameplay =  new GamePlay(contentPane, trackList.get(trackNo).getGameMusic() , trackList.get(trackNo).getGameImage());
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
-        	
+        	selectedMusic.close();
         	
         	
 		}
