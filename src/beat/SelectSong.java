@@ -130,7 +130,7 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selectedMusic.close();
+				
 			}
 				
 				
@@ -225,7 +225,7 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selectedMusic.close();
+				
 			}
 		
 		});

@@ -33,13 +33,12 @@ public class Lobby extends JPanel{
 	private JPanel contentPane;
 	
 	// START이미지
-	private ImageIcon startButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/START_press.png"));
-	private ImageIcon startButtonBasicImage = new ImageIcon(Main.class.getResource("../images/start1.png"));
+	private ImageIcon startButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/START_PRESS.png"));
+	private ImageIcon startButtonBasicImage = new ImageIcon(Main.class.getResource("../images/START_BASIC.png"));
 
 	// END이미지
-	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/END_press.png"));
-	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/END.png"));
-	private JLabel lblNewLabel_1;
+	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/END_PRESS.png"));
+	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/END_BASIC.png"));
 	
 	// private int mouseX, mouseY;
 	
@@ -51,7 +50,7 @@ public class Lobby extends JPanel{
 
 		
 		btnStart = new JButton("");
-		btnStart.setIcon(new ImageIcon(Lobby.class.getResource("../images/start1.png")));
+		btnStart.setIcon(new ImageIcon(Lobby.class.getResource("../images/START_BASIC.png")));
 		btnStart.setBackground(new Color(240, 248, 255));
 		btnStart.setBorderPainted(false);
 		btnStart.setContentAreaFilled(false);
@@ -134,7 +133,7 @@ public class Lobby extends JPanel{
 		btnEnd.setBorderPainted(false);
 		btnEnd.setContentAreaFilled(false);
 		btnEnd.setFocusPainted(false);
-		btnEnd.setIcon(new ImageIcon(Lobby.class.getResource("/images/END.PNG")));
+		btnEnd.setIcon(new ImageIcon(Lobby.class.getResource("/images/END_BASIC.PNG")));
 		btnEnd.setFont(new Font("굴림", Font.BOLD, 26));
 		btnEnd.setBounds(687, 20, 92, 92);
 		btnEnd.addMouseListener(new MouseAdapter() {
@@ -152,11 +151,6 @@ public class Lobby extends JPanel{
 		
 		});
 		add(btnEnd);
-		
-		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Lobby.class.getResource("/images/ezgif.com-resize (8).gif")));
-		lblNewLabel_1.setBounds(394, 460, 400, 92);
-		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Lobby.class.getResource("/images/ezgif.com-resize (4).gif")));

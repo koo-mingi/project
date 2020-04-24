@@ -17,6 +17,8 @@ public class Game extends Thread {
 	private Image noteRouteLineImage = new ImageIcon(Main.class.getResource("../images/noteRouteLine.png")).getImage();
 	private Image judgementLineImage = new ImageIcon(Main.class.getResource("../images/judgementLine.png")).getImage();
 	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
+	private Image noteBasic1Image = new ImageIcon(Main.class.getResource("../images/noteBasic1.png")).getImage();
+	private Image noteBasic2Image = new ImageIcon(Main.class.getResource("../images/noteBasic2.png")).getImage();
 	private Image noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
@@ -50,10 +52,10 @@ public class Game extends Thread {
 		g.drawImage(gameInfoImage, 77, 475, null);
 		g.drawImage(judgementLineImage, 77, 415, null);
 		g.drawImage(noteBasicImage, 80, 120, null);
-		g.drawImage(noteBasicImage, 143, 100, null);
-		g.drawImage(noteBasicImage, 205, 500, null);
-		g.drawImage(noteBasicImage, 267, 340, null);
-		g.drawImage(noteBasicImage, 329, 340, null);
+		g.drawImage(noteBasic1Image, 143, 100, null);
+		g.drawImage(noteBasic2Image, 205, 500, null);
+		g.drawImage(noteBasic2Image, 267, 340, null);
+		g.drawImage(noteBasic1Image, 329, 340, null);
 		g.drawImage(noteBasicImage, 391, 325, null);
 
 		g.setColor(Color.white);
@@ -80,22 +82,22 @@ public class Game extends Thread {
 	}
 	
 	public void pressS() {
-		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
+		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 	}
 	public void pressD() {
-		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
+		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 	}
 	public void pressF() {
-		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
+		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 	}
 	public void pressJ() {
-		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
+		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 	}
 	public void pressK() {
-		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
+		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 	}
 	public void pressL() {
-		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
+		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 	}
 	
 	public void releaseS() {
