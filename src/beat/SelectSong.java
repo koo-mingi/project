@@ -228,7 +228,7 @@ public class SelectSong extends JPanel {
 			lobby =  new Lobby(contentPane);
 			contentPane.add(lobby,BorderLayout.CENTER);
         	lobby.setVisible(true);
-        	
+        	selectedMusic.close();
 		}
 	});
 	

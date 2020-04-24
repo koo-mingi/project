@@ -38,6 +38,9 @@ public class Record extends JPanel {
 	public Record(JPanel contentPane) {
 
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+		
+		Music introMusic = new Music("Fools_Rancking_Record_BGM.mp3", true);
+		introMusic.start();
 
 		btnLobby = new JButton("<      LOBBY");
 		btnLobby.setHorizontalAlignment(SwingConstants.LEFT);
@@ -223,6 +226,7 @@ public class Record extends JPanel {
 				lobby = new Lobby(contentPane);
 				contentPane.add(lobby, BorderLayout.CENTER);
 				lobby.setVisible(true);
+				introMusic.close();
 
 			}
 		});
