@@ -247,12 +247,12 @@ public class Game extends Thread {
 		if (titleName.equals("Happy Life - Fredji")) {
 			beats = musicBeat.happy_Life(difficulty);
 			// all = beats.length * 50; // ?? 이게 뭘까요?
-		} else if (titleName.equals("Chilling - Oshova")) {
+		} 
+		else if (titleName.equals("Chilling - Oshova")) {
 			beats = musicBeat.chilling(difficulty);
 		}
-
 		else if (titleName.equals("Harmony - Ikson")) {
-
+			beats = musicBeat.harmony(difficulty);
 		}
 
 		if (beats != null) {
