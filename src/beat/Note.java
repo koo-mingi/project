@@ -15,7 +15,9 @@ public class Note extends Thread{
 	//	580- (1000 / Main.SLEEP_TIME*Main.NOTE_SPEED) * Main.REACH_TIME; 
 	// y 값 지정
 	private boolean proceeded = true; //현재 노트의 진행 여부
-	private int judgeBar = 410;
+	
+	private int noteHeight; //노트 이미지의 길이
+
 	
 	
 	public Note(String noteType) {
@@ -56,29 +58,37 @@ public class Note extends Thread{
 	public void screenDraw(Graphics2D g) {
 		if(noteType.equals("S")) {
 			g.drawImage(noteBasicImage, x, y, null);
+			noteHeight = noteBasicImage.getHeight(null);
 		}
 		else if(noteType.equals("D")) {
 			g.drawImage(noteBasic1Image, x, y, null);
+			noteHeight = noteBasic1Image.getHeight(null);
 		}
 		else if(noteType.equals("F")) {
 			g.drawImage(noteBasic2Image, x, y, null);
+			noteHeight = noteBasic2Image.getHeight(null);
 		}
 		else if(noteType.equals("J")) {
 			g.drawImage(noteBasic2Image, x, y, null);
+			noteHeight = noteBasic2Image.getHeight(null);
 		}
 		else if(noteType.equals("K")) {
 			g.drawImage(noteBasic1Image, x, y, null);
+			noteHeight = noteBasic1Image.getHeight(null);
 		}
 		else if(noteType.equals("L")) {
 			g.drawImage(noteBasicImage, x, y, null);
+			noteHeight = noteBasicImage.getHeight(null);
 		}
 		
 	}
 
 	public void drop() {
 		y += Main.NOTE_SPEED;
-		if(y > judgeBar+50) //판정바의 y축 넣기
+		if(y > Game.GAME_INFO_Y - (noteHeight /2)) 
 		{
+			// 게임화면의 끝에 도달하면 miss
+			// note자체의 크기도 확인해야 할 듯
 			Game.combo=0;
 			System.out.println("miss");
 			close();
@@ -88,25 +98,25 @@ public class Note extends Thread{
 	public int judge() {
 		int score = 0;
 	
-		if( y > judgeBar && y < judgeBar+5) {
+		if( y > Game.JUDGE_BAR_Y && y < Game.JUDGE_BAR_Y+5) {
 			System.out.println("Perfect");
 			score = 50;
 			Game.combo += 1;
 			close();
 		}
-		else if( y >= judgeBar - 10) {
+		else if( y >= Game.JUDGE_BAR_Y - 10) {
 			System.out.println("Great");
 			score =40;
 			Game.combo += 1;
 			close();
 		}
-		else if( y >= judgeBar-30) {
+		else if( y >= Game.JUDGE_BAR_Y-30) {
 			System.out.println("Nomal");
 			score = 30;
 			Game.combo += 1;
 			close();
 		}
-		else if( y >= judgeBar - 50) {
+		else if( y >= Game.JUDGE_BAR_Y - 50) {
 			System.out.println("Bad");
 			score = 11;
 			Game.combo += 1;

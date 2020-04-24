@@ -38,11 +38,17 @@ public class Game extends Thread {
 	private MusicBeat musicBeat = new MusicBeat();
 	private Music gameMusic;
 
+	// Note 판정을 위해 끌어 쓰려고 여기 선언 --> static final로
+	public static final int JUDGE_BAR_Y = 415;
+	public static final int GAME_INFO_Y = 475;
+	
 	private final int PERFECT = 50;
 	private final int GREAT = 40;
 	private final int GOOD = 30;
 	private final int BAD = 11;
 
+	
+	
 	List<Note> noteList = new ArrayList<Note>();
 //	private Music music;
 //	private String musicName;
@@ -81,8 +87,8 @@ public class Game extends Thread {
 		g.drawImage(noteRouteLineImage, 388, 30, null);
 		g.drawImage(noteRouteLineImage, 451, 30, null);
 
-		g.drawImage(gameInfoImage, 77, 475, null);
-		g.drawImage(judgementLineImage, 77, 415, null);
+		g.drawImage(gameInfoImage, 77, GAME_INFO_Y, null);
+		g.drawImage(judgementLineImage, 77, JUDGE_BAR_Y, null);
 
 //		g.drawImage(noteBasicImage, 80, 120, null);
 //		g.drawImage(noteBasicImage, 143, 100, null);
