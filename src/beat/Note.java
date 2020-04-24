@@ -66,25 +66,6 @@ public class Note extends Thread{
 		}
 	}
 	
-	@Override
-	public void run() {
-		try {
-			while(true) {
-				drop();
-				if(proceeded) {
-					Thread.sleep(Main.SLEEP_TIME);
-				}
-				else {
-					interrupt();
-					break;
-					//스레드 정지하도록 걸어줌
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public void judge() {
 		if( y >= judgeBar) {
 			System.out.println("Perfect");
@@ -104,6 +85,24 @@ public class Note extends Thread{
 			
 		}
 	}
-
 	
+	@Override
+	public void run() {
+		try {
+			while(true) {
+				drop();
+				if(proceeded) {
+					Thread.sleep(Main.SLEEP_TIME);
+				}
+				else {
+					interrupt();
+					break;
+					//스레드 정지하도록 걸어줌
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
 }

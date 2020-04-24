@@ -101,21 +101,27 @@ public class Game extends Thread {
 	}
 	
 	public void pressS() {
+		judge("S");
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 	}
 	public void pressD() {
+		judge("D");
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 	}
 	public void pressF() {
+		judge("F");
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 	}
 	public void pressJ() {
+		judge("J");
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 	}
 	public void pressK() {
+		judge("K");
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 	}
 	public void pressL() {
+		judge("L");
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 	}
 	
@@ -168,12 +174,12 @@ public class Game extends Thread {
 					new BeatPlay(startTime + gap *4, "D"),
 					new BeatPlay(startTime + gap *6, "F"),
 					new BeatPlay(startTime + gap *8, "J"),
-//					new BeatPlay(startTime + gap *10, "K"),
-//					new BeatPlay(startTime + gap *11, "L"),
-//					new BeatPlay(startTime + gap *14, "S"),
-//					new BeatPlay(startTime + gap *15, "S"),
-//					new BeatPlay(startTime + gap *17, "F"),
-//					new BeatPlay(startTime + gap *19, "F"),
+					new BeatPlay(startTime + gap *10, "K"),
+					new BeatPlay(startTime + gap *11, "L"),
+					new BeatPlay(startTime + gap *14, "S"),
+					new BeatPlay(startTime + gap *15, "S"),
+					new BeatPlay(startTime + gap *17, "F"),
+					new BeatPlay(startTime + gap *19, "F"),
 //					new BeatPlay(startTime + gap *20, "F"),
 //					new BeatPlay(startTime + gap *22, "F"),
 //					new BeatPlay(startTime + gap *25, "J"),
