@@ -66,6 +66,7 @@ public class SelectSong extends JPanel {
 		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", "introMusic1.mp3","titlename"));
 		
 		selectTrack(0);
+
 			
 		
 		btnEasy = new JButton("Easy");
@@ -108,7 +109,7 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selectedMusic.close();
+//				selectedMusic.close();
 			}
 				
 				
@@ -238,11 +239,15 @@ public class SelectSong extends JPanel {
 				selectedMusic.close();
 			}
 			setVisible(false);
+
 			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle);
+
+			//gameplay =  new GamePlay(contentPane, trackList.get(trackNo).getGameMusic() , trackList.get(trackNo).getGameImage());
+
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
-        	  	
-        	
+        	selectedMusic.close();
+       	
 		}
 	});
 	
