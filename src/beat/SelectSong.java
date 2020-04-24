@@ -45,6 +45,10 @@ public class SelectSong extends JPanel {
 	private ArrayList<Track> trackList = new ArrayList<Track>();
 	private Music selectedMusic;
 	private int trackNo = 0;
+	
+	private String titleName = "Spring";  // 선택된 곡의 이름
+	private String difficulty = "Easy"; // 선택된 곡의 난이도
+	private String musicTitle; // 선택된 곡 파일이름
 
 	
 	/**
@@ -55,9 +59,13 @@ public class SelectSong extends JPanel {
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
 
+		
+	
 		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악
-		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
-		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", null));
+		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", "introMusic1.mp3","Spring"));
+		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", "introMusic1.mp3","titlename"));
+		
+		selectTrack(0);
 
 			
 		
@@ -68,21 +76,6 @@ public class SelectSong extends JPanel {
 		btnEasy.setFocusPainted(false);
 		btnEasy.setBorderPainted(false);
 		btnEasy.setBounds(150, 400, 140, 60);
-		
-		btnEasy.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-								
-				btnEasy.setForeground(Color.YELLOW);
-				btnEasy.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-			public void mouseExited(MouseEvent e) {
-		       
-				btnEasy.setForeground(new Color(255, 255, 240));
-				btnEasy.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-		    }
-		
-		});
 		add(btnEasy);
 		
 		btnHard = new JButton("Hard");
@@ -93,20 +86,6 @@ public class SelectSong extends JPanel {
 		btnHard.setFocusPainted(false);
 		btnHard.setBorderPainted(false);
 		btnHard.setBounds(305, 400, 140, 60);
-		btnHard.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-								
-				btnHard.setForeground(Color.YELLOW);
-				btnHard.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-			public void mouseExited(MouseEvent e) {
-		       
-				btnHard.setForeground(new Color(255, 255, 240));
-				btnHard.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-		    }
-		
-		});
 		add(btnHard);
 		
 		
@@ -116,6 +95,7 @@ public class SelectSong extends JPanel {
 		btnStart.setBounds(519, 400, 231, 100);
 		btnStart.setContentAreaFilled(false);
 		btnStart.setFocusPainted(false);
+		btnStart.setBorderPainted(false);
 		btnStart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -130,7 +110,11 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
+
 				
+
+//				selectedMusic.close();
+
 			}
 				
 				
@@ -260,11 +244,15 @@ public class SelectSong extends JPanel {
 				selectedMusic.close();
 			}
 			setVisible(false);
-			gameplay =  new GamePlay(contentPane);
+
+			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle);
+
+			//gameplay =  new GamePlay(contentPane, trackList.get(trackNo).getGameMusic() , trackList.get(trackNo).getGameImage());
+
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
-        	  	
-        	
+        	selectedMusic.close();
+       	
 		}
 	});
 	
@@ -289,6 +277,46 @@ public class SelectSong extends JPanel {
 				// 곡에 해당하는 내 기록 가져와서 화면에 출력
 				
 			}
+		});
+	
+	// 난이도 이지 선택
+		btnEasy.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnEasy.setForeground(Color.YELLOW);
+				btnEasy.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnEasy.setForeground(new Color(255, 255, 240));
+				btnEasy.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				difficulty = "Easy";
+			}
+		
+		});
+		
+	// 난이도 하드 선택
+		btnHard.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnHard.setForeground(Color.YELLOW);
+				btnHard.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnHard.setForeground(new Color(255, 255, 240));
+				btnHard.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				difficulty = "Hard";
+			}
+		
 		});
 	
 
@@ -326,6 +354,8 @@ public class SelectSong extends JPanel {
 			}
 			selectedImage = new ImageIcon(Main.class.getResource("../images/"+trackList.get(trackNo).getStartImage())).getImage();
 			selectedMusic = new Music(trackList.get(trackNo).getStartMusic(), true);
+			titleName = trackList.get(trackNo).getTitleName();
+			musicTitle = trackList.get(trackNo).getGameMusic();
 			selectedMusic.start();
 						
 		}

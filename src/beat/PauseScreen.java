@@ -48,12 +48,12 @@ public class PauseScreen  extends JPanel{
 		// 게임플레이 창으로 이동
 		btnGameRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				setVisible(false);
-				gameplay =  new GamePlay(contentPane);
+//				gameplay =  new GamePlay(contentPane);
 	        	contentPane.add(gameplay,BorderLayout.CENTER);
 				gameplay.setVisible(true);
-				
+			
 				
 			}
 		});

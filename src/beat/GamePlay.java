@@ -41,22 +41,36 @@ public class GamePlay extends JPanel{
 	private Graphics screenGraphic;
 
 	private Image background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
-
 	private boolean isGameScreen = true;
-	
 	
 	private beat.KeyListener keyListener = new beat.KeyListener();
 
 
-	public static Game game = new Game();
+
+	private Music gameMusic;
+
+	public static Game game;
 	
-	public GamePlay(JPanel contentPane) {
+
+	
+	public GamePlay(JPanel contentPane,String titleName, String difficulty,String musicTitle) {
+
+	//public GamePlay(JPanel contentPane, String musicName, String imageName) {
+
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 
 		setLayout(null);
-		
-				
+
+		game= new Game(titleName,difficulty,musicTitle);
+			
+
+	
+//		gameMusic = new Music(musicName, true);
+//		System.out.println(musicName + "gamePlay");
+//		game = new Game(gameMusic, musicName);
+		game.start();
+
 	
 		btnGameStop = new JButton("Game 종료");
 		btnGameStop.setFont(new Font("굴림", Font.BOLD, 15));
@@ -104,6 +118,7 @@ public class GamePlay extends JPanel{
 				lobby = new Lobby(contentPane);
 				contentPane.add(lobby,BorderLayout.CENTER);
 				lobby.setVisible(true);
+				game.close();
 
 			}
 		});
@@ -132,9 +147,6 @@ public class GamePlay extends JPanel{
 		screenDraw((Graphics2D)screenGraphic);
 		g.drawImage(screenImage, 0, 0, null);
 	}
-	
-
-	
 	
 
 
