@@ -37,6 +37,7 @@ public class GamePlay extends JPanel{
 	private Lobby lobby;
 	private ResultScreen resultScreen;
 	
+	private JPanel contentPane;
 	private Image screenImage;
 	private Graphics screenGraphic;
 
@@ -50,12 +51,13 @@ public class GamePlay extends JPanel{
 	private Music gameMusic;
 
 	public static Game game;
+	private GameFinishThread gameFinish;
 	
 
 	
 	public GamePlay(JPanel contentPane,String titleName, String difficulty,String musicTitle) {
-
-	//public GamePlay(JPanel contentPane, String musicName, String imageName) {
+		
+		this.contentPane = contentPane;
 
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
@@ -105,6 +107,7 @@ public class GamePlay extends JPanel{
 			}
 		});
 
+		// 결과화면으로 이동
 		btnGameResult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	
@@ -112,9 +115,12 @@ public class GamePlay extends JPanel{
 				resultScreen = new ResultScreen(contentPane);
 				contentPane.add(resultScreen,BorderLayout.CENTER);
 				resultScreen.setVisible(true);
+				game.close();
 		
 			}
 		});
+		
+		
 		
 		
 	}
@@ -138,6 +144,25 @@ public class GamePlay extends JPanel{
 		if(isGameScreen) {
 			
 			game.screenDraw(g);
+			
+			if(game.musicFinish()) {
+				if(gameFinish == null) { 
+					System.out.println("스레드 생성");
+					gameFinish = new GameFinishThread();
+					gameFinish.start();
+				}
+					
+					if(gameFinish.state())
+					{
+						System.out.println("스레드 종료");
+						setVisible(false);
+						resultScreen = new ResultScreen(contentPane);
+						contentPane.add(resultScreen,BorderLayout.CENTER);
+						resultScreen.setVisible(true);
+					}
+			}
+			
+			
 						
 			// 포커스를 그림 그리는 곳에 주어야 제대로 들어옴.
 			// 생성자에서 포커스를 주고 그림을 그리면 포커스가 없는 그림이 다시 생겨서 인식이 안됨.
@@ -145,12 +170,12 @@ public class GamePlay extends JPanel{
 			setFocusable(true);	
 			paintComponents(g);
 			this.repaint();
-
+		
 		}
-
-			
 		paintComponents(g);
 		this.repaint();
+			
+		
 	}
 		
 

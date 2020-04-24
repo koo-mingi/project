@@ -33,6 +33,7 @@ public class Game extends Thread {
 	private String difficulty;
 	private String musicTitle; // 이름 실행 이름
 	private Music gameMusic;
+	
 		
 
 	List<Note> noteList = new ArrayList<Note>();
@@ -192,9 +193,18 @@ public class Game extends Thread {
 	
 	}
 	public void close() {
-		gameMusic.close();
+		
+		if(gameMusic!=null) gameMusic.close();
 		interrupt();
 				
+	}
+	
+	public boolean musicFinish() {
+		boolean result = false;
+		if(gameMusic.getState() == gameMusic.getState().TERMINATED) {
+				result = true;
+		}
+		return result;
 	}
 
 	public void judge(String input) {
@@ -212,7 +222,7 @@ public class Game extends Thread {
 		//difficult 변수 선언하고 이걸 &&로 해서 easy hard 구분
 		if(musicTitle.equals("introMusic1.mp3")) {
 			int startTime = 4460 - Main.REACH_TIME * 1000;
-			int gap = 125; 
+			int gap = 125;  // 밀리초.
 			//이건 흠...그냥 gap 인데 나는 그냥 비트 찍어서 해야할 듯
 			//startTime + gap * 2 부분에 비트 하나하나 시간 넣기
 			beats = new BeatPlay[] {
