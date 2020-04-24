@@ -101,6 +101,7 @@ public class Note extends Thread{
 		else if( y >= judgeBar - 50) {
 			System.out.println("Bad");
 			close();
+			
 		}
 	}
 

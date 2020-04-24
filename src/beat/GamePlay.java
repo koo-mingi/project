@@ -91,7 +91,6 @@ public class GamePlay extends JPanel{
 		btnGamePause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
 				setVisible(false);
 				pauseScreen =  new PauseScreen(contentPane);
 				contentPane.add(pauseScreen,BorderLayout.CENTER);
@@ -149,12 +148,7 @@ public class GamePlay extends JPanel{
 		if(isGameScreen) {
 			
 			game.screenDraw(g);
-			
-
-			if(isGameScreen) {
-				game.screenDraw(g);
-			}
-			
+						
 			// 포커스를 그림 그리는 곳에 주어야 제대로 들어옴.
 			// 생성자에서 포커스를 주고 그림을 그리면 포커스가 없는 그림이 다시 생겨서 인식이 안됨.
 			requestFocus();
