@@ -32,6 +32,8 @@ public class Game extends Thread {
 	private String titleName;
 	private String difficulty;
 	private String musicTitle; // 이름 실행 이름
+	private int score=0;
+	private int scoreLength;
 	private Music gameMusic;
 	
 		
@@ -103,7 +105,7 @@ public class Game extends Thread {
 		g.drawString("L", 420, 435);
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
-		g.drawString("00000", 360, 550);
+		g.drawString(intCasting(score), 360, 550);
 		
 		for(int i = 0; i< noteList.size(); i++) {
 			Note note = noteList.get(i);
@@ -211,12 +213,32 @@ public class Game extends Thread {
 		for(int i =0; i<noteList.size(); i++) {
 			Note note = noteList.get(i);
 			if(input.equals(note.getNoteType())) {
-				note.judge();
+				score += note.judge();
+				scoreLength = (int)(Math.log10(score)+1);
 				break;
 			}
 		}
 	}
-	
+	// score 점수 앞에 0 붙이기 : 002124,000123
+	public String intCasting(int score) {
+		String result="000000";
+		if(scoreLength == 1) {
+			result = "00000" + String.valueOf(score);
+		}if(scoreLength == 2) {
+			result = "0000" + String.valueOf(score);
+		}if(scoreLength == 3) {
+			result = "000" + String.valueOf(score);
+		}if(scoreLength == 4) {
+			result = "00" + String.valueOf(score);
+		}if(scoreLength == 5) {
+			result = "0" + String.valueOf(score);
+		}if(scoreLength == 6) {
+			result = "" + String.valueOf(score);
+		}
+		
+		
+		return result;
+	}
 	public void dropNotes() {
 		BeatPlay[] beats = null;	
 		//difficult 변수 선언하고 이걸 &&로 해서 easy hard 구분
