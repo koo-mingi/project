@@ -41,21 +41,20 @@ public class GamePlay extends JPanel{
 	private Graphics screenGraphic;
 
 	private Image background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
-
 	private boolean isGameScreen = true;
-	
 	
 	private beat.KeyListener keyListener = new beat.KeyListener();
 
-
-	public static Game game = new Game();
+	public static Game game;
 	
-	public GamePlay(JPanel contentPane) {
+
+	
+	public GamePlay(JPanel contentPane,String titleName, String difficulty,String musicTitle) {
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 
 		setLayout(null);
-		
+		 game= new Game(titleName,difficulty,musicTitle);
 				
 	
 		btnGameStop = new JButton("Game 종료");
@@ -104,6 +103,7 @@ public class GamePlay extends JPanel{
 				lobby = new Lobby(contentPane);
 				contentPane.add(lobby,BorderLayout.CENTER);
 				lobby.setVisible(true);
+				game.close();
 
 			}
 		});

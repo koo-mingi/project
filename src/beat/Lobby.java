@@ -171,8 +171,7 @@ public class Lobby extends JPanel{
 				selectSong = new SelectSong(contentPane);
 				contentPane.add(selectSong,BorderLayout.CENTER);
 				selectSong.setVisible(true);
-				        				
-				
+								
 			}
 		});
 		

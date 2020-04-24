@@ -24,10 +24,21 @@ public class Game extends Thread {
 	private Image noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 
+	private String titleName;
+	private String difficulty;
+	private String musicTitle;
+	private Music gameMusic;
+		
 	
-	
-	
-	
+	public Game(String titleName, String difficulty, String musicTitle) {
+		super();
+		this.titleName = titleName;
+		this.difficulty = difficulty;
+		this.musicTitle = musicTitle;
+		gameMusic = new Music(this.musicTitle, false);
+		gameMusic.start();
+	}
+
 	public void screenDraw(Graphics2D g) {
 		
 		// 키 입력에 대한 이미지 처리
@@ -60,8 +71,8 @@ public class Game extends Thread {
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g.setColor(Color.white);
 		g.setFont(new Font("Arial",Font.BOLD,26));
-		g.drawString("titleName", 20, 550);
-		g.drawString("Easy", 700, 550);
+		g.drawString(titleName, 20, 550);
+		g.drawString(difficulty, 700, 550);
 		g.setFont(new Font("Arial",Font.PLAIN,22));
 		g.setColor(Color.DARK_GRAY);
 		g.drawString("S", 105, 435);
@@ -120,8 +131,11 @@ public class Game extends Thread {
 	@Override
 	public void run() {
 		
-		
-		
+				
+	}
+	public void close() {
+		gameMusic.close();
+		interrupt();
 	}
 
 }

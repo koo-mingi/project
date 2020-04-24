@@ -49,11 +49,11 @@ public class PauseScreen  extends JPanel{
 		btnGameRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
-				gameplay =  new GamePlay(contentPane);
-	        	contentPane.add(gameplay,BorderLayout.CENTER);
-				gameplay.setVisible(true);
-				
+//				setVisible(false);
+//				gameplay =  new GamePlay(contentPane);
+//	        	contentPane.add(gameplay,BorderLayout.CENTER);
+//				gameplay.setVisible(true);
+//				
 				
 			}
 		});
