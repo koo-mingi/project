@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -140,7 +141,7 @@ public class SelectSong extends JPanel {
 		
 		setVisible(true);
 	
-	
+		
 	// 로비창으로 이동
 	btnBack.addActionListener(new ActionListener() {
 		
@@ -154,18 +155,21 @@ public class SelectSong extends JPanel {
 		}
 	});
 	
+	
 	// 게임플레이창으로 이동
 	btnStart.addActionListener(new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
+			if(selectedMusic!= null) {
+				selectedMusic.close();
+			}
 			setVisible(false);
 			gameplay =  new GamePlay(contentPane);
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
-        	
-        	
+        	  	
         	
 		}
 	});
