@@ -83,6 +83,7 @@ public class Note extends Thread{
 		y += Main.NOTE_SPEED;
 		if(y > judgeBar+50) //판정바의 y축 넣기
 		{
+			Game.combo=0;
 			System.out.println("miss");
 			close();
 		}
@@ -90,6 +91,8 @@ public class Note extends Thread{
 	
 	public int judge() {
 		int score = 0;
+		
+		
 		if( y >= judgeBar) {
 			System.out.println("Perfect");
 			score = 50;
@@ -111,6 +114,7 @@ public class Note extends Thread{
 			close();
 			
 		}
+		
 		return score;
 	}
 	

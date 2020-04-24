@@ -34,9 +34,14 @@ public class Game extends Thread {
 	private String musicTitle; // 이름 실행 이름
 	private int score=0;
 	private int scoreLength;
+	public static int combo=0;
 	private Music gameMusic;
+	private final int PERFECT = 50;
+	private final int GREAT = 40;
+	private final int GOOD = 30;
+	private final int BAD = 11;
 	
-		
+			
 
 	List<Note> noteList = new ArrayList<Note>();
 //	private Music music;
@@ -106,6 +111,9 @@ public class Game extends Thread {
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
 		g.drawString(intCasting(score), 360, 550);
+		g.setColor(Color.LIGHT_GRAY);
+		g.setFont(new Font("Elephant", Font.BOLD, 26));
+		g.drawString(intCasting(combo), 360, 400);
 		
 		for(int i = 0; i< noteList.size(); i++) {
 			Note note = noteList.get(i);
@@ -212,9 +220,12 @@ public class Game extends Thread {
 	public void judge(String input) {
 		for(int i =0; i<noteList.size(); i++) {
 			Note note = noteList.get(i);
+			
 			if(input.equals(note.getNoteType())) {
+				
 				score += note.judge();
 				scoreLength = (int)(Math.log10(score)+1);
+				combo+=1;
 				break;
 			}
 		}
