@@ -12,17 +12,14 @@ public class Note extends Thread{
 	private Image noteBasic2Image = new ImageIcon(Main.class.getResource("../images/noteBasic2.png")).getImage();
 	private String noteType;
 	private int x,y = 0;
-//	580- (1000 / Main.SLEEP_TIME*Main.NOTE_SPEED) * Main.REACH_TIME; 
+	//	580- (1000 / Main.SLEEP_TIME*Main.NOTE_SPEED) * Main.REACH_TIME; 
 	// y 값 지정
 	private boolean proceeded = true; //현재 노트의 진행 여부
 	private int judgeBar = 410;
 	
 	
-
-	
 	public Note(String noteType) {
 		if(noteType.equals("S")) {
-			
 			x=80;
 		}
 		else if(noteType.equals("D")) {
@@ -58,7 +55,6 @@ public class Note extends Thread{
 	
 	public void screenDraw(Graphics2D g) {
 		if(noteType.equals("S")) {
-			
 			g.drawImage(noteBasicImage, x, y, null);
 		}
 		else if(noteType.equals("D")) {
@@ -91,30 +87,31 @@ public class Note extends Thread{
 	
 	public int judge() {
 		int score = 0;
-		
-		
-		if( y >= judgeBar) {
+	
+		if( y > judgeBar && y < judgeBar+5) {
 			System.out.println("Perfect");
 			score = 50;
+			Game.combo += 1;
 			close();
 		}
 		else if( y >= judgeBar - 10) {
 			System.out.println("Great");
 			score =40;
+			Game.combo += 1;
 			close();
 		}
 		else if( y >= judgeBar-30) {
 			System.out.println("Nomal");
 			score = 30;
+			Game.combo += 1;
 			close();
 		}
 		else if( y >= judgeBar - 50) {
 			System.out.println("Bad");
 			score = 11;
+			Game.combo += 1;
 			close();
-			
 		}
-		
 		return score;
 	}
 	

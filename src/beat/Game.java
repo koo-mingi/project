@@ -210,7 +210,7 @@ public class Game extends Thread {
 
 				score += note.judge();
 				scoreLength = (int) (Math.log10(score) + 1);
-				combo += 1;
+//				combo += 1;
 				break;
 			}
 		}
