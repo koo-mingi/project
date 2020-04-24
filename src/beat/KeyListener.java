@@ -12,7 +12,6 @@ public class KeyListener extends KeyAdapter {
 		}
 		if(e.getKeyCode() == KeyEvent.VK_S) {
 			GamePlay.game.pressS();
-			System.out.println(e.getKeyCode());
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_D) {
 			GamePlay.game.pressD();

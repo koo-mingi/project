@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.sun.glass.ui.Timer;
+
 import java.awt.Color;
+import java.awt.Cursor;
 
 
 public class Lobby extends JPanel{
@@ -28,6 +32,13 @@ public class Lobby extends JPanel{
 	
 	private JPanel contentPane;
 	
+	// START이미지
+	private ImageIcon startButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/START_PRESS.png"));
+	private ImageIcon startButtonBasicImage = new ImageIcon(Main.class.getResource("../images/START_BASIC.png"));
+
+	// END이미지
+	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/END_PRESS.png"));
+	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/END_BASIC.png"));
 	
 	// private int mouseX, mouseY;
 	
@@ -39,11 +50,31 @@ public class Lobby extends JPanel{
 
 		
 		btnStart = new JButton("");
-		btnStart.setIcon(new ImageIcon(Lobby.class.getResource("../images/start1.png")));
+		btnStart.setIcon(new ImageIcon(Lobby.class.getResource("../images/START_BASIC.png")));
 		btnStart.setBackground(new Color(240, 248, 255));
 		btnStart.setBorderPainted(false);
 		btnStart.setContentAreaFilled(false);
 		btnStart.setFocusPainted(false);
+		btnStart.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnStart.setIcon(startButtonEnteredImage);
+				btnStart.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+		       
+				btnStart.setIcon(startButtonBasicImage);
+				btnStart.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+		
+		});
+		add(btnStart);
 
 		
 		
@@ -52,33 +83,73 @@ public class Lobby extends JPanel{
 		btnStart.setBounds(291, 49, 225, 208);
 		add(btnStart);
 		
-		btnRecord = new JButton("RECORD");
-		btnRecord.setBackground(new Color(64, 224, 208));
+		btnRecord = new JButton("MYRECORD");
 		btnRecord.setForeground(new Color(64, 224, 208));
-//		btnRecord.setBorderPainted(false);
+		btnRecord.setBorderPainted(false);
 		btnRecord.setContentAreaFilled(false);
 		btnRecord.setFocusPainted(false);
-		btnRecord.setFont(new Font("굴림", Font.BOLD, 26));
-		btnRecord.setBounds(58, 490, 158, 50);
+		btnRecord.setFont(new Font("Jokerman", Font.BOLD, 26));
+		btnRecord.setBounds(31, 490, 203, 50);
+		btnRecord.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnRecord.setForeground(Color.YELLOW);
+				btnRecord.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnRecord.setForeground(new Color(64, 224, 208));
+				btnRecord.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnRecord);
 		
 		btnRanking = new JButton("RANKING");
-		btnRanking.setBackground(new Color(64, 224, 208));
 		btnRanking.setForeground(new Color(64, 224, 208));
-//		btnRanking.setBorderPainted(false);
+		btnRanking.setBorderPainted(false);
 		btnRanking.setContentAreaFilled(false);
 		btnRanking.setFocusPainted(false);
-		btnRanking.setFont(new Font("굴림", Font.BOLD, 26));
-		btnRanking.setBounds(224, 490, 158, 50);
+		btnRanking.setFont(new Font("Jokerman", Font.BOLD, 26));
+		btnRanking.setBounds(246, 490, 180, 50);
+		btnRanking.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnRanking.setForeground(Color.YELLOW);
+				btnRanking.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnRanking.setForeground(new Color(64, 224, 208));
+				btnRanking.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnRanking);
 		
 		btnEnd = new JButton();
 		btnEnd.setBorderPainted(false);
 		btnEnd.setContentAreaFilled(false);
 		btnEnd.setFocusPainted(false);
-		btnEnd.setIcon(new ImageIcon(Lobby.class.getResource("/images/END.PNG")));
+		btnEnd.setIcon(new ImageIcon(Lobby.class.getResource("/images/END_BASIC.PNG")));
 		btnEnd.setFont(new Font("굴림", Font.BOLD, 26));
-		btnEnd.setBounds(694, 20, 85, 85);
+		btnEnd.setBounds(687, 20, 92, 92);
+		btnEnd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnEnd.setIcon(exitButtonEnteredImage);
+				btnEnd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnEnd.setIcon(exitButtonBasicImage);
+				btnEnd.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnEnd);
 		
 		JLabel lblNewLabel = new JLabel("New label");
@@ -94,8 +165,7 @@ public class Lobby extends JPanel{
 				selectSong = new SelectSong(contentPane);
 				contentPane.add(selectSong,BorderLayout.CENTER);
 				selectSong.setVisible(true);
-				        				
-				
+								
 			}
 		});
 		

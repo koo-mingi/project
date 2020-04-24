@@ -2,9 +2,12 @@ package beat;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,223 +16,216 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.SwingConstants;
+import javax.swing.JTabbedPane;
+import javax.swing.JInternalFrame;
+import javax.swing.JDesktopPane;
 
 public class Record extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_20;
-	
-	
+
+	private JButton btnLobby;
+
 	private Lobby lobby;
-	private JLabel lblNewLabel_1;
-	
 
 	/**
 	 * Create the panel.
 	 */
 	public Record(JPanel contentPane) {
-		
-		
+
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+
+		btnLobby = new JButton("<      LOBBY");
+		btnLobby.setHorizontalAlignment(SwingConstants.LEFT);
+		btnLobby.setBounds(0, 0, 800, 54);
+		btnLobby.setForeground(Color.WHITE);
+
+		btnLobby.setBorderPainted(false);
+		btnLobby.setContentAreaFilled(false);
+		btnLobby.setFocusPainted(false);
+		btnLobby.setFont(new Font("Jokerman", Font.BOLD, 30));
+		btnLobby.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				btnLobby.setForeground(Color.YELLOW);
+				btnLobby.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+
+			public void mouseExited(MouseEvent e) {
+
+				btnLobby.setForeground(Color.WHITE);
+				btnLobby.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+
+		});
 		setLayout(null);
+		add(btnLobby);
 		
-		
-		JButton btnNewButton = new JButton("로비로 돌아가기");
-		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton.setBounds(38, 30, 195, 23);
-		add(btnNewButton);
-		
-		JLabel lblNewLabel = new JLabel("곡명");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel.setBounds(57, 218, 45, 18);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Record.class.getResource("/images/rowLINE.png")));
+		lblNewLabel.setBounds(100, 250, 631, 15);
 		add(lblNewLabel);
 		
-		JLabel lblNomal = new JLabel("난이도 nomal");
-		lblNomal.setForeground(Color.WHITE);
-		lblNomal.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNomal.setBounds(136, 218, 97, 18);
-		add(lblNomal);
-		
-		JLabel lblNormal = new JLabel("normal 점수");
-		lblNormal.setForeground(Color.WHITE);
-		lblNormal.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNormal.setBounds(260, 218, 87, 18);
-		add(lblNormal);
-		
-		JLabel lblNormalGrade = new JLabel("normal Grade");
-		lblNormalGrade.setForeground(Color.WHITE);
-		lblNormalGrade.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNormalGrade.setBounds(359, 218, 105, 18);
-		add(lblNormalGrade);
-		
-		JLabel lblHard = new JLabel("난이도 hard");
-		lblHard.setForeground(Color.WHITE);
-		lblHard.setFont(new Font("굴림", Font.BOLD, 15));
-		lblHard.setBounds(486, 218, 87, 18);
-		add(lblHard);
-		
-		JLabel lblHard_1 = new JLabel("hard 점수");
-		lblHard_1.setForeground(Color.WHITE);
-		lblHard_1.setFont(new Font("굴림", Font.BOLD, 15));
-		lblHard_1.setBounds(598, 218, 84, 18);
-		add(lblHard_1);
-		
-		JLabel lblHardGrade = new JLabel("hard Grade");
-		lblHardGrade.setForeground(Color.WHITE);
-		lblHardGrade.setFont(new Font("굴림", Font.BOLD, 15));
-		lblHardGrade.setBounds(694, 218, 94, 18);
-		add(lblHardGrade);
-		
-		textField = new JTextField();
-		textField.setBounds(38, 283, 73, 21);
-		add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(149, 283, 73, 21);
-		add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(260, 283, 73, 21);
-		add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(377, 283, 73, 21);
-		add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(488, 283, 73, 21);
-		add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(598, 283, 73, 21);
-		add(textField_5);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(704, 283, 73, 21);
-		add(textField_6);
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(38, 352, 73, 21);
-		add(textField_7);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(149, 352, 73, 21);
-		add(textField_8);
-		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(260, 352, 73, 21);
-		add(textField_9);
-		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(377, 352, 73, 21);
-		add(textField_10);
-		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(488, 352, 73, 21);
-		add(textField_11);
-		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(598, 352, 73, 21);
-		add(textField_12);
-		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		textField_13.setBounds(704, 352, 73, 21);
-		add(textField_13);
-		
-		textField_14 = new JTextField();
-		textField_14.setColumns(10);
-		textField_14.setBounds(38, 421, 73, 21);
-		add(textField_14);
-		
-		textField_15 = new JTextField();
-		textField_15.setColumns(10);
-		textField_15.setBounds(149, 421, 73, 21);
-		add(textField_15);
-		
-		textField_16 = new JTextField();
-		textField_16.setColumns(10);
-		textField_16.setBounds(260, 421, 73, 21);
-		add(textField_16);
-		
-		textField_17 = new JTextField();
-		textField_17.setColumns(10);
-		textField_17.setBounds(377, 421, 73, 21);
-		add(textField_17);
-		
-		textField_18 = new JTextField();
-		textField_18.setColumns(10);
-		textField_18.setBounds(488, 421, 73, 21);
-		add(textField_18);
-		
-		textField_19 = new JTextField();
-		textField_19.setColumns(10);
-		textField_19.setBounds(598, 421, 73, 21);
-		add(textField_19);
-		
-		textField_20 = new JTextField();
-		textField_20.setColumns(10);
-		textField_20.setBounds(704, 421, 73, 21);
-		add(textField_20);
-		
-		lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setIcon(new ImageIcon(Record.class.getResource("/images/mainBackground.png")));
-		lblNewLabel_1.setBounds(0, 0, 788, 561);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Record.class.getResource("/images/rowLINE.png")));
+		lblNewLabel_1.setBounds(100, 320, 631, 15);
 		add(lblNewLabel_1);
 		
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setIcon(new ImageIcon(Record.class.getResource("/images/rowLINE.png")));
+		lblNewLabel_1_1.setBounds(100, 390, 631, 15);
+		add(lblNewLabel_1_1);
 		
-		//로비창으로 이동
-		btnNewButton.addActionListener(new ActionListener() {
+		JLabel lblNewLabel_1_1_1 = new JLabel("");
+		lblNewLabel_1_1_1.setIcon(new ImageIcon(Record.class.getResource("/images/rowLINE.png")));
+		lblNewLabel_1_1_1.setBounds(100, 460, 631, 15);
+		add(lblNewLabel_1_1_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(Record.class.getResource("/images/columnLINE.png")));
+		lblNewLabel_2.setBounds(351, 200, 5, 270);
+		add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setIcon(new ImageIcon(Record.class.getResource("/images/columnLINE.png")));
+		lblNewLabel_2_1.setBounds(531, 200, 5, 270);
+		add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("EASY");
+		lblNewLabel_3.setForeground(new Color(255, 153, 153));
+		lblNewLabel_3.setFont(new Font("Jokerman", Font.BOLD, 42));
+		lblNewLabel_3.setBounds(379, 200, 140, 40);
+		add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("HARD");
+		lblNewLabel_3_1.setForeground(new Color(255, 153, 153));
+		lblNewLabel_3_1.setFont(new Font("Jokerman", Font.BOLD, 42));
+		lblNewLabel_3_1.setBounds(561, 200, 140, 40);
+		add(lblNewLabel_3_1);
+		
+		JLabel lblNewLabel_3_2 = new JLabel("Happy Life");
+		lblNewLabel_3_2.setForeground(Color.YELLOW);
+		lblNewLabel_3_2.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblNewLabel_3_2.setBounds(100, 275, 214, 40);
+		add(lblNewLabel_3_2);
+		
+		JLabel lblNewLabel_3_2_1 = new JLabel("Chilling Title");
+		lblNewLabel_3_2_1.setForeground(Color.YELLOW);
+		lblNewLabel_3_2_1.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblNewLabel_3_2_1.setBounds(100, 345, 240, 40);
+		add(lblNewLabel_3_2_1);
+		
+		JLabel lblNewLabel_3_2_2 = new JLabel("Harmony");
+		lblNewLabel_3_2_2.setForeground(Color.YELLOW);
+		lblNewLabel_3_2_2.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblNewLabel_3_2_2.setBounds(100, 415, 239, 40);
+		add(lblNewLabel_3_2_2);
+		
+		JLabel lblHappyEasyGrade = new JLabel("A");
+		lblHappyEasyGrade.setForeground(new Color(153, 255, 204));
+		lblHappyEasyGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHappyEasyGrade.setBounds(363, 275, 36, 40);
+		add(lblHappyEasyGrade);
+		
+		JLabel lblHappyEasyScore = new JLabel("800000");
+		lblHappyEasyScore.setForeground(new Color(255, 255, 153));
+		lblHappyEasyScore.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHappyEasyScore.setBounds(408, 275, 119, 40);
+		add(lblHappyEasyScore);
+		
+		JLabel lblChillingEasyGrade = new JLabel("A");
+		lblChillingEasyGrade.setForeground(new Color(153, 255, 204));
+		lblChillingEasyGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblChillingEasyGrade.setBounds(363, 345, 36, 40);
+		add(lblChillingEasyGrade);
+		
+		JLabel lblHarmonyEasyGrade = new JLabel("A");
+		lblHarmonyEasyGrade.setForeground(new Color(153, 255, 204));
+		lblHarmonyEasyGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHarmonyEasyGrade.setBounds(363, 415, 36, 40);
+		add(lblHarmonyEasyGrade);
+		
+		JLabel lblChillingEasyScore = new JLabel("800000");
+		lblChillingEasyScore.setForeground(new Color(255, 255, 153));
+		lblChillingEasyScore.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblChillingEasyScore.setBounds(408, 345, 119, 40);
+		add(lblChillingEasyScore);
+		
+		JLabel lblHarmonyEasyScore = new JLabel("800000");
+		lblHarmonyEasyScore.setForeground(new Color(255, 255, 153));
+		lblHarmonyEasyScore.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHarmonyEasyScore.setBounds(408, 415, 119, 40);
+		add(lblHarmonyEasyScore);
+		
+		JLabel lblHappyHardGrade = new JLabel("A");
+		lblHappyHardGrade.setForeground(new Color(153, 255, 204));
+		lblHappyHardGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHappyHardGrade.setBounds(548, 275, 36, 40);
+		add(lblHappyHardGrade);
+		
+		JLabel lblChillingHardGrade = new JLabel("A");
+		lblChillingHardGrade.setForeground(new Color(153, 255, 204));
+		lblChillingHardGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblChillingHardGrade.setBounds(548, 345, 36, 40);
+		add(lblChillingHardGrade);
+		
+		JLabel lblHarmonyHardGrade = new JLabel("A");
+		lblHarmonyHardGrade.setForeground(new Color(153, 255, 204));
+		lblHarmonyHardGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHarmonyHardGrade.setBounds(548, 415, 36, 40);
+		add(lblHarmonyHardGrade);
+		
+		JLabel lblHappyHardScore = new JLabel("800000");
+		lblHappyHardScore.setForeground(new Color(255, 255, 153));
+		lblHappyHardScore.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHappyHardScore.setBounds(585, 275, 119, 40);
+		add(lblHappyHardScore);
+		
+		JLabel lblChillingHardScore = new JLabel("800000");
+		lblChillingHardScore.setForeground(new Color(255, 255, 153));
+		lblChillingHardScore.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblChillingHardScore.setBounds(585, 345, 119, 40);
+		add(lblChillingHardScore);
+		
+		JLabel lblHarmonyHardScore = new JLabel("800000");
+		lblHarmonyHardScore.setForeground(new Color(255, 255, 153));
+		lblHarmonyHardScore.setFont(new Font("Jokerman", Font.BOLD, 27));
+		lblHarmonyHardScore.setBounds(585, 415, 119, 40);
+		add(lblHarmonyHardScore);
+		
+		JLabel lblNewLabel_3_3 = new JLabel("MyBest");
+		lblNewLabel_3_3.setForeground(new Color(204, 255, 255));
+		lblNewLabel_3_3.setFont(new Font("Jokerman", Font.BOLD, 50));
+		lblNewLabel_3_3.setBounds(66, 111, 208, 73);
+		add(lblNewLabel_3_3);
+		
+		JLabel lblNewLabel_3_3_1 = new JLabel("Record");
+		lblNewLabel_3_3_1.setForeground(new Color(204, 255, 255));
+		lblNewLabel_3_3_1.setFont(new Font("Jokerman", Font.BOLD, 50));
+		lblNewLabel_3_3_1.setBounds(125, 181, 214, 73);
+		add(lblNewLabel_3_3_1);
+		
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setIcon(new ImageIcon(Record.class.getResource("/images/mainBackground.png")));
+		lblNewLabel_4.setBounds(0, 0, 800, 600);
+		add(lblNewLabel_4);
+
+		// 로비창으로 이동
+		btnLobby.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-								
-	        	setVisible(false);
-	        	lobby =  new Lobby(contentPane);
-	        	contentPane.add(lobby,BorderLayout.CENTER);
-	        	lobby.setVisible(true);
-	        		        	
+
+				setVisible(false);
+				lobby = new Lobby(contentPane);
+				contentPane.add(lobby, BorderLayout.CENTER);
+				lobby.setVisible(true);
+
 			}
 		});
-		
-		
-		
+
 	}
-
-		
-	
-
-	
-	
 }

@@ -13,6 +13,7 @@ import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory.Default;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -31,48 +34,96 @@ import javax.swing.JLabel;
 
 public class GamePlay extends JPanel{
 	
-	private JButton btnGameStop,btnGamePause,btnGameResult;
+	private JButton btnGameStop,btnGameResult;
 	
 	private PauseScreen pauseScreen;
 	private Lobby lobby;
 	private ResultScreen resultScreen;
 	
+	private JPanel contentPane;
 	private Image screenImage;
 	private Graphics screenGraphic;
 
 	private Image background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
-
 	private boolean isGameScreen = true;
-	
 	
 	private beat.KeyListener keyListener = new beat.KeyListener();
 
 
-	public static Game game = new Game();
+
+	private Music gameMusic;
+
+	public static Game game;
+	private GameFinishThread gameFinish;
 	
-	public GamePlay(JPanel contentPane) {
+
+	
+	public GamePlay(JPanel contentPane,String titleName, String difficulty,String musicTitle) {
+		
+		this.contentPane = contentPane;
+
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 
 		setLayout(null);
-		
-				
+
+		game= new Game(titleName,difficulty,musicTitle);
+			
+
 	
-		btnGameStop = new JButton("Game 종료");
-		btnGameStop.setFont(new Font("굴림", Font.BOLD, 15));
-		btnGameStop.setBounds(610, 470, 123, 23);
+//		gameMusic = new Music(musicName, true);
+//		System.out.println(musicName + "gamePlay");
+//		game = new Game(gameMusic, musicName);
+		game.start();
+
+	
+		btnGameStop = new JButton("EXIT");
+		btnGameStop.setForeground(Color.CYAN);
+		btnGameStop.setBorderPainted(false);
+		btnGameStop.setContentAreaFilled(false);
+		btnGameStop.setFocusPainted(false);
+		btnGameStop.setFont(new Font("Jokerman", Font.BOLD, 20));
+		btnGameStop.setBounds(584, 470, 171, 23);
+		btnGameStop.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnGameStop.setForeground(Color.YELLOW);
+				btnGameStop.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+		       
+				btnGameStop.setForeground(Color.CYAN);
+				btnGameStop.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnGameStop);
 		
 
-		btnGamePause = new JButton("Pause");
-		btnGamePause.setFont(new Font("굴림", Font.BOLD, 15));
-		btnGamePause.setBounds(610, 410, 123, 23);
-    	add(btnGamePause);
+		btnGameResult = new JButton("RESULT");
+		btnGameResult.setForeground(Color.CYAN);
+		btnGameResult.setBorderPainted(false);
+		btnGameResult.setContentAreaFilled(false);
+		btnGameResult.setFocusPainted(false);
+		btnGameResult.setFont(new Font("Jokerman", Font.BOLD, 20));
+		btnGameResult.setBounds(610, 396, 123, 23);
+		btnGameResult.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnGameResult.setForeground(Color.YELLOW);
+				btnGameResult.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+		       
+				btnGameResult.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+				btnGameResult.setForeground(Color.CYAN);
+		    }
 		
-
-		btnGameResult = new JButton("결과");
-		btnGameResult.setFont(new Font("굴림", Font.BOLD, 15));
-		btnGameResult.setBounds(610, 345, 123, 23);
+		});
 		add(btnGameResult);
 
 
@@ -83,19 +134,6 @@ public class GamePlay extends JPanel{
 		
 		this.addKeyListener(keyListener);
 
-		// 게임중 중지할떄 중지화면
-		btnGamePause.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				
-				setVisible(false);
-				pauseScreen =  new PauseScreen(contentPane);
-				contentPane.add(pauseScreen,BorderLayout.CENTER);
-				pauseScreen.setVisible(true);
-	
-			}
-		});
-
 		// 게임종료 후 로비이동
 		btnGameStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -105,10 +143,12 @@ public class GamePlay extends JPanel{
 				lobby = new Lobby(contentPane);
 				contentPane.add(lobby,BorderLayout.CENTER);
 				lobby.setVisible(true);
+				game.close();
 
 			}
 		});
 
+		// 결과화면으로 이동
 		btnGameResult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	
@@ -116,9 +156,12 @@ public class GamePlay extends JPanel{
 				resultScreen = new ResultScreen(contentPane);
 				contentPane.add(resultScreen,BorderLayout.CENTER);
 				resultScreen.setVisible(true);
+				game.close();
 		
 			}
 		});
+		
+		
 		
 		
 	}
@@ -135,9 +178,6 @@ public class GamePlay extends JPanel{
 	}
 	
 
-	
-	
-
 
 	public void screenDraw(Graphics2D g) {
 		g.drawImage(background, 0, 0, null);
@@ -146,23 +186,37 @@ public class GamePlay extends JPanel{
 			
 			game.screenDraw(g);
 			
-
-			if(isGameScreen) {
-				game.screenDraw(g);
+			if(game.musicFinish()) {
+				if(gameFinish == null) { 
+					System.out.println("스레드 생성");
+					gameFinish = new GameFinishThread();
+					gameFinish.start();
+				}
+					
+					if(gameFinish.state())
+					{
+						System.out.println("스레드 종료");
+						setVisible(false);
+						resultScreen = new ResultScreen(contentPane);
+						contentPane.add(resultScreen,BorderLayout.CENTER);
+						resultScreen.setVisible(true);
+					}
 			}
 			
+			
+						
 			// 포커스를 그림 그리는 곳에 주어야 제대로 들어옴.
 			// 생성자에서 포커스를 주고 그림을 그리면 포커스가 없는 그림이 다시 생겨서 인식이 안됨.
 			requestFocus();
 			setFocusable(true);	
 			paintComponents(g);
 			this.repaint();
-
+		
 		}
-
-			
 		paintComponents(g);
 		this.repaint();
+			
+		
 	}
 		
 
