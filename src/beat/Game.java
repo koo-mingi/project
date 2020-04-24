@@ -235,6 +235,7 @@ public class Game extends Thread {
 	}
 	public void dropNotes() {
 		BeatPlay[] beats = null;	
+		System.out.println(difficulty);
 		//difficult 변수 선언하고 이걸 &&로 해서 easy hard 구분
 		if (titleName.equals("Happy Life - Fredji") && difficulty.equals("Easy")) {
 			int startTime = 1350 - Main.REACH_TIME * 1000;
@@ -268,9 +269,56 @@ public class Game extends Thread {
 					new BeatPlay(startTime + gap * 50, "Space"), new BeatPlay(startTime + gap * 51, "D"),
 					new BeatPlay(startTime + gap * 52, "S"), new BeatPlay(startTime + gap * 53, "F"),
 					new BeatPlay(startTime + gap * 54, "L"), new BeatPlay(startTime + gap * 56, "L")};
-			//all = beats.length * 50;
+			//all = beats.length * 50; // ?? 이게 뭘까요?
 		}
-//		else if(musicName.equals())
+		else if (titleName.equals("Happy Life - Fredji") && difficulty.equals("Hard")) {
+			int startTime = 1350 - Main.REACH_TIME * 1000;
+			int gap = 1200;
+			beats = new BeatPlay[] { 
+					new BeatPlay(startTime + gap * 0, "L"), new BeatPlay(startTime + gap * 1, "S"),
+					new BeatPlay(startTime + gap * 2, "D"), new BeatPlay(startTime + gap * 2, "K"),
+					new BeatPlay(startTime + gap * 3, "S"), new BeatPlay(startTime + gap * 3, "F"),
+					new BeatPlay(startTime + gap * 4, "J"), new BeatPlay(startTime + gap * 4, "F"),
+					new BeatPlay(startTime + gap * 5, "L"), new BeatPlay(startTime + gap * 6, "J"),
+					new BeatPlay(startTime + gap * 7, "K"), new BeatPlay(startTime + gap * 8, "S"),
+					new BeatPlay(startTime + gap * 9, "D"), new BeatPlay(startTime + gap * 10, "S"),
+					new BeatPlay(startTime + gap * 11, "F"), 
+					new BeatPlay(startTime + gap * 12, "L"),new BeatPlay(startTime + gap * 12, "S"), 
+					new BeatPlay(startTime + gap * 13, "J"),new BeatPlay(startTime + gap * 14, "K"), 
+					new BeatPlay(startTime + gap * 15, "J"),new BeatPlay(startTime + gap * 16, "D"), 
+					new BeatPlay(startTime + gap * 17, "S"),
+					new BeatPlay(startTime + gap * 18, "F"), new BeatPlay(startTime + gap * 18, "S"),new BeatPlay(startTime + gap * 18, "J"), 
+					new BeatPlay(startTime + gap * 19, "L"), new BeatPlay(startTime + gap * 20, "J"), 
+					new BeatPlay(startTime + gap * 21, "K"), new BeatPlay(startTime + gap * 22, "S"), 
+					new BeatPlay(startTime + gap * 23, "D"), new BeatPlay(startTime + gap * 24, "S"), 
+					new BeatPlay(startTime + gap * 25, "F"), new BeatPlay(startTime + gap * 26, "L"), 
+					new BeatPlay(startTime + gap * 27, "S"), new BeatPlay(startTime + gap * 27, "D"), new BeatPlay(startTime + gap * 27, "F"), 
+					new BeatPlay(startTime + gap * 27, "J"), new BeatPlay(startTime + gap * 27, "K"), new BeatPlay(startTime + gap * 27, "L"),
+					new BeatPlay(startTime + gap * 28, "K"), new BeatPlay(startTime + gap * 29, "F"),
+					new BeatPlay(startTime + gap * 30, "D"), new BeatPlay(startTime + gap * 31, "S"),
+					new BeatPlay(startTime + gap * 32, "F"), 
+					new BeatPlay(startTime + gap * 33, "L"), new BeatPlay(startTime + gap * 33, "S"), 
+					new BeatPlay(startTime + gap * 34, "J"), new BeatPlay(startTime + gap * 34, "D"), 
+					new BeatPlay(startTime + gap * 34, "S"), new BeatPlay(startTime + gap * 34, "F"), 
+					new BeatPlay(startTime + gap * 35, "K"), new BeatPlay(startTime + gap * 35, "F"), new BeatPlay(startTime + gap * 35, "L"),
+					new BeatPlay(startTime + gap * 36, "D"), new BeatPlay(startTime + gap * 37, "D"),
+					new BeatPlay(startTime + gap * 38, "S"), 
+					new BeatPlay(startTime + gap * 39, "F"), new BeatPlay(startTime + gap * 39, "J"), 
+					new BeatPlay(startTime + gap * 40, "L"),
+					new BeatPlay(startTime + gap * 41, "J"), new BeatPlay(startTime + gap * 42, "K"),
+					new BeatPlay(startTime + gap * 43, "S"), new BeatPlay(startTime + gap * 44, "D"),
+					new BeatPlay(startTime + gap * 45, "S"), new BeatPlay(startTime + gap * 46, "F"),
+					new BeatPlay(startTime + gap * 47, "L"), new BeatPlay(startTime + gap * 47, "J"),
+					new BeatPlay(startTime + gap * 47, "F"), new BeatPlay(startTime + gap * 48, "J"),
+					new BeatPlay(startTime + gap * 49, "K"), new BeatPlay(startTime + gap * 50, "S"),
+					new BeatPlay(startTime + gap * 51, "D"), new BeatPlay(startTime + gap * 52, "S"),
+					new BeatPlay(startTime + gap * 53, "F"), 
+					new BeatPlay(startTime + gap * 54, "S"), new BeatPlay(startTime + gap * 54, "D"), 
+					new BeatPlay(startTime + gap * 54, "F"), new BeatPlay(startTime + gap * 54, "L"), 
+					new BeatPlay(startTime + gap * 54, "J"), new BeatPlay(startTime + gap * 54, "K"), 
+					new BeatPlay(startTime + gap * 56, "J"), };
+//			all = BeatPlays.length * 50;
+		}
 		
 		int i = 0;
 		gameMusic.start();
