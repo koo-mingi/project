@@ -97,10 +97,10 @@ public class Game extends Thread {
 		g.setColor(Color.white);
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g.setColor(Color.white);
-		g.setFont(new Font("Arial",Font.BOLD,26));
+		g.setFont(new Font("Jokerman",Font.BOLD,26));
 		g.drawString(titleName, 20, 550);
 		g.drawString(difficulty, 700, 550);
-		g.setFont(new Font("Arial",Font.PLAIN,22));
+		g.setFont(new Font("Jokerman",Font.PLAIN,22));
 		g.setColor(Color.DARK_GRAY);
 		g.drawString("S", 105, 435);
 		g.drawString("D", 168, 435);
@@ -109,11 +109,19 @@ public class Game extends Thread {
 		g.drawString("K", 357, 435);
 		g.drawString("L", 420, 435);
 		g.setColor(Color.LIGHT_GRAY);
+
+		g.setFont(new Font("Jokerman", Font.BOLD, 26));
+		g.drawString("00000", 360, 550);
+
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
 		g.drawString(intCasting(score), 360, 550);
+<<<<<<< HEAD
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
 		g.drawString(intCasting(combo), 360, 400);
+=======
+
+>>>>>>> branch 'master' of https://github.com/koo-mingi/project.git
 		
 		for(int i = 0; i< noteList.size(); i++) {
 			Note note = noteList.get(i);

@@ -83,13 +83,13 @@ public class Lobby extends JPanel{
 		btnStart.setBounds(291, 49, 225, 208);
 		add(btnStart);
 		
-		btnRecord = new JButton("RECORD");
+		btnRecord = new JButton("MYRECORD");
 		btnRecord.setForeground(new Color(64, 224, 208));
-//		btnRecord.setBorderPainted(false);
+		btnRecord.setBorderPainted(false);
 		btnRecord.setContentAreaFilled(false);
 		btnRecord.setFocusPainted(false);
-		btnRecord.setFont(new Font("굴림", Font.BOLD, 26));
-		btnRecord.setBounds(58, 490, 158, 50);
+		btnRecord.setFont(new Font("Jokerman", Font.BOLD, 26));
+		btnRecord.setBounds(31, 490, 203, 50);
 		btnRecord.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -108,11 +108,11 @@ public class Lobby extends JPanel{
 		
 		btnRanking = new JButton("RANKING");
 		btnRanking.setForeground(new Color(64, 224, 208));
-//		btnRanking.setBorderPainted(false);
+		btnRanking.setBorderPainted(false);
 		btnRanking.setContentAreaFilled(false);
 		btnRanking.setFocusPainted(false);
-		btnRanking.setFont(new Font("굴림", Font.BOLD, 26));
-		btnRanking.setBounds(224, 490, 158, 50);
+		btnRanking.setFont(new Font("Jokerman", Font.BOLD, 26));
+		btnRanking.setBounds(246, 490, 180, 50);
 		btnRanking.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {

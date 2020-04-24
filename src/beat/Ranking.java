@@ -1,6 +1,8 @@
 package beat;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +14,9 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 
 public class Ranking extends JPanel{
@@ -41,6 +46,8 @@ public class Ranking extends JPanel{
 	private JLabel label_3;
 	private JLabel lblNewLabel_1;
 	
+	private JButton btnLOBBY;
+	
 	Lobby  lobby;
 	
 	public Ranking(JPanel contentPane) {
@@ -51,10 +58,36 @@ public class Ranking extends JPanel{
 		
 		
 		
-		JButton btnNewButton = new JButton("로비로 돌아가기");
-		btnNewButton.setFont(new Font("굴림", Font.BOLD, 15));
-		btnNewButton.setBounds(39, 31, 157, 23);
-		add(btnNewButton);
+		btnLOBBY = new JButton("<      LOBBY");
+		
+		btnLOBBY.setBounds(12, 10, 230, 70);
+		
+		
+		btnLOBBY.setForeground(Color.WHITE);
+
+		btnLOBBY.setBorderPainted(false);
+		btnLOBBY.setContentAreaFilled(false);
+		btnLOBBY.setFocusPainted(false);
+		btnLOBBY.setFont(new Font("Jokerman", Font.BOLD, 30));
+		btnLOBBY.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				btnLOBBY.setForeground(Color.YELLOW);
+				btnLOBBY.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+
+			public void mouseExited(MouseEvent e) {
+
+				btnLOBBY.setForeground(Color.WHITE);
+				btnLOBBY.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+
+		});
+		add(btnLOBBY);
+		
+		
+		
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(69, 121, 30, 21);
@@ -194,15 +227,15 @@ public class Ranking extends JPanel{
 		label_3.setBounds(663, 218, 57, 15);
 		add(label_3);
 		
-		lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1 = new JLabel();
 		lblNewLabel_1.setIcon(new ImageIcon(Ranking.class.getResource("/images/ezgif.com-resize (6).gif")));
-		lblNewLabel_1.setBounds(0, 0, 784, 561);
+		lblNewLabel_1.setBounds(0, 0, 800, 600);
 		add(lblNewLabel_1);
 		
 		
 		
 		// 로비창으로 이동
-		btnNewButton.addActionListener(new ActionListener() {
+		btnLOBBY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 								
 	        	setVisible(false);
