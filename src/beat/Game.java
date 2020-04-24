@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
 
 public class Game extends Thread {
 	
-	private Image gameInfoImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
-	//private Image noteRouteImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+	private Image gameInfoImage = new ImageIcon(Main.class.getResource("../images/gameInfo.png")).getImage();
+	private Image noteRouteImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLineImage = new ImageIcon(Main.class.getResource("../images/noteRouteLine.png")).getImage();
 	private Image judgementLineImage = new ImageIcon(Main.class.getResource("../images/judgementLine.png")).getImage();
 	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
@@ -24,6 +24,9 @@ public class Game extends Thread {
 	private Image noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 
+	
+	
+	
 	
 	public void screenDraw(Graphics2D g) {
 		
@@ -44,8 +47,8 @@ public class Game extends Thread {
 		g.drawImage(noteRouteLineImage, 388, 30, null);
 		g.drawImage(noteRouteLineImage, 451, 30, null);
 
-		//g.drawImage(gameInfoImage, 0, 480, null);
-		g.drawImage(judgementLineImage, 0, 410, null);
+		g.drawImage(gameInfoImage, 77, 475, null);
+		g.drawImage(judgementLineImage, 77, 415, null);
 		g.drawImage(noteBasicImage, 80, 120, null);
 		g.drawImage(noteBasicImage, 143, 100, null);
 		g.drawImage(noteBasicImage, 205, 500, null);
@@ -57,19 +60,21 @@ public class Game extends Thread {
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g.setColor(Color.white);
 		g.setFont(new Font("Arial",Font.BOLD,26));
-		g.drawString("Spring", 20, 550);
+		g.drawString("titleName", 20, 550);
 		g.drawString("Easy", 700, 550);
 		g.setFont(new Font("Arial",Font.PLAIN,22));
 		g.setColor(Color.DARK_GRAY);
-		g.drawString("S", 105, 430);
-		g.drawString("D", 168, 430);
-		g.drawString("F", 231, 430);
-		g.drawString("J", 294, 430);
-		g.drawString("K", 357, 430);
-		g.drawString("L", 420, 430);
+		g.drawString("S", 105, 435);
+		g.drawString("D", 168, 435);
+		g.drawString("F", 231, 435);
+		g.drawString("J", 294, 435);
+		g.drawString("K", 357, 435);
+		g.drawString("L", 420, 435);
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
 		g.drawString("00000", 360, 550);
+		
+		
 		
 		
 	}

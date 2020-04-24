@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -14,16 +16,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-
-
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-
 import com.sun.glass.ui.Screen;
 
-
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 
 public class SelectSong extends JPanel {
@@ -37,7 +36,7 @@ public class SelectSong extends JPanel {
 	private boolean isMainScreen = true;
 	
 	
-	private JButton btnStart ;
+	private JButton btnStart, btnEasy, btnHard, btnLeft, btnRight, btnBack;
 	
 
 	private Lobby lobby;
@@ -56,21 +55,37 @@ public class SelectSong extends JPanel {
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
 
-				
+		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악
 		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
-		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", null));
+		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", null));
 
+			
 		
-		JButton btnEasy = new JButton("Easy");
+		btnEasy = new JButton("Easy");
 		btnEasy.setForeground(new Color(255, 255, 240));
 		btnEasy.setFont(new Font("Jokerman", Font.BOLD, 40));
 		btnEasy.setContentAreaFilled(false);
 		btnEasy.setFocusPainted(false);
 		btnEasy.setBorderPainted(false);
 		btnEasy.setBounds(150, 400, 140, 60);
+		
+		btnEasy.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnEasy.setForeground(Color.YELLOW);
+				btnEasy.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnEasy.setForeground(new Color(255, 255, 240));
+				btnEasy.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnEasy);
 		
-		JButton btnHard = new JButton("Hard");
+		btnHard = new JButton("Hard");
 		btnHard.setForeground(new Color(255, 255, 240));
 		btnHard.setBackground(new Color(255, 255, 240));
 		btnHard.setFont(new Font("Jokerman", Font.BOLD, 40));
@@ -78,6 +93,20 @@ public class SelectSong extends JPanel {
 		btnHard.setFocusPainted(false);
 		btnHard.setBorderPainted(false);
 		btnHard.setBounds(305, 400, 140, 60);
+		btnHard.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnHard.setForeground(Color.YELLOW);
+				btnHard.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnHard.setForeground(new Color(255, 255, 240));
+				btnHard.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnHard);
 		
 		
@@ -87,16 +116,49 @@ public class SelectSong extends JPanel {
 		btnStart.setBounds(519, 400, 231, 100);
 		btnStart.setContentAreaFilled(false);
 		btnStart.setFocusPainted(false);
+		btnStart.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnStart.setForeground(Color.GREEN);
+				btnStart.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnStart.setForeground(new Color(255, 215, 0));
+				btnStart.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+			@Override
+			public void mousePressed(MouseEvent e) {
+				selectedMusic.close();
+			}
+				
+				
+		});
 		add(btnStart);
 		
 
-		JButton btnLeft = new JButton("<");
+		btnLeft = new JButton("<");
 		btnLeft.setForeground(new Color(240, 255, 240));
 		btnLeft.setContentAreaFilled(false);
 		btnLeft.setFocusPainted(false);
 		btnLeft.setBorderPainted(false);
 		btnLeft.setFont(new Font("Jokerman", Font.BOLD, 78));
 		btnLeft.setBounds(50, 180, 90, 90);
+		btnLeft.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnLeft.setForeground(Color.YELLOW);
+				btnLeft.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnLeft.setForeground(new Color(240, 255, 240));
+				btnLeft.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnLeft);
 
 		
@@ -119,22 +181,54 @@ public class SelectSong extends JPanel {
 		lblMyMaxCombo.setBounds(394, 500, 108, 35);
 		add(lblMyMaxCombo);
 		
-		JButton btnRight = new JButton(">");
+		btnRight = new JButton(">");
 		btnRight.setForeground(new Color(240, 255, 240));
 		btnRight.setContentAreaFilled(false);
 		btnRight.setFocusPainted(false);
 		btnRight.setBorderPainted(false);
 		btnRight.setFont(new Font("Jokerman", Font.BOLD, 78));
 		btnRight.setBounds(660, 180, 90, 90);
+		btnRight.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnRight.setForeground(Color.YELLOW);
+				btnRight.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnRight.setForeground(new Color(240, 255, 240));
+				btnRight.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+		
+		});
 		add(btnRight);
 		
-		JButton btnBack = new JButton("<");
+		btnBack = new JButton("<");
 		btnBack.setForeground(new Color(255, 255, 255));
 		btnBack.setFont(new Font("Jokerman", Font.BOLD, 78));
 		btnBack.setFocusPainted(false);
 		btnBack.setContentAreaFilled(false);
 		btnBack.setBorderPainted(false);
 		btnBack.setBounds(0, 0, 81, 84);
+		btnBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+								
+				btnBack.setForeground(Color.YELLOW);
+				btnBack.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		       
+				btnBack.setForeground(new Color(255, 255, 255));
+				btnBack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		    }
+			@Override
+			public void mousePressed(MouseEvent e) {
+				selectedMusic.close();
+			}
+		
+		});
 		add(btnBack);
 		
 		repaint();

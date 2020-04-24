@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 public class ResultScreen extends JPanel{
 	private JTextField textField;
@@ -128,6 +129,11 @@ public class ResultScreen extends JPanel{
 		btnSelectSong.setFont(new Font("굴림", Font.BOLD, 15));
 		btnSelectSong.setBounds(40, 33, 149, 23);
 		add(btnSelectSong);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(ResultScreen.class.getResource("/images/ezgif.com-resize (7).gif")));
+		lblNewLabel_2.setBounds(0, 0, 800, 600);
+		add(lblNewLabel_2);
 		
 		//노래 선택창으로 이동
 		btnSelectSong.addActionListener(new ActionListener() {
