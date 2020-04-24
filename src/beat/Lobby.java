@@ -15,8 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.sun.glass.ui.Timer;
-
 import java.awt.Color;
 import java.awt.Cursor;
 

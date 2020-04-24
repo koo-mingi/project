@@ -19,8 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import com.sun.glass.ui.Screen;
-
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
