@@ -17,8 +17,7 @@ public class Note extends Thread{
 	private boolean proceeded = true; //현재 노트의 진행 여부
 	
 	private int noteHeight; //노트 이미지의 길이
-
-	
+		
 	
 	public Note(String noteType) {
 		if(noteType.equals("S")) {
@@ -87,36 +86,44 @@ public class Note extends Thread{
 		y += Main.NOTE_SPEED;
 		if(y > Game.GAME_INFO_Y - (noteHeight /2)) 
 		{
-			// 게임화면의 끝에 도달하면 miss
-			// note자체의 크기도 확인해야 할 듯
+			// 게임화면 끝의 절반? 정도가 되면 노트 miss뜨면서 삭제
 			Game.combo=0;
 			System.out.println("miss");
 			close();
 		}
 	}
 	
+	/* 노트 판정 기준(judge)
+	 * 판정바의 Y축 시작점을 기준으로 노트의 y 값이 판정바 안에 얼만큼 들어갔는지를 기준으로 판정.
+	 * 그 전에 찍혀도 어느정도 인정.
+	 * 그래도 미리 찍히는건 좀 넉넉하게 줘야 할 듯 싶어서 넉넉하게 줌.
+	 * 
+	 * 일단 판정식은 계속 플레이 하면서 맞춰야 할 듯
+	 * 
+	 */
+	
 	public int judge() {
 		int score = 0;
 	
-		if( y > Game.JUDGE_BAR_Y && y < Game.JUDGE_BAR_Y+5) {
+		if(y < Game.JUDGE_BAR_Y + 3 && y > Game.JUDGE_BAR_Y - 12) {
 			System.out.println("Perfect");
 			score = 50;
 			Game.combo += 1;
 			close();
 		}
-		else if( y >= Game.JUDGE_BAR_Y - 10) {
+		else if(y < Game.JUDGE_BAR_Y + 10 &&  y > Game.JUDGE_BAR_Y - 20) {
 			System.out.println("Great");
 			score =40;
 			Game.combo += 1;
 			close();
 		}
-		else if( y >= Game.JUDGE_BAR_Y-30) {
+		else if(y < Game.JUDGE_BAR_Y + 20 && y >= Game.JUDGE_BAR_Y - 28) {
 			System.out.println("Nomal");
 			score = 30;
 			Game.combo += 1;
 			close();
 		}
-		else if( y >= Game.JUDGE_BAR_Y - 50) {
+		else if(y < Game.JUDGE_BAR_Y + 25 && y >= Game.JUDGE_BAR_Y - 40) {
 			System.out.println("Bad");
 			score = 11;
 			Game.combo += 1;
