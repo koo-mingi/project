@@ -31,7 +31,7 @@ import javax.swing.JLabel;
 
 public class GamePlay extends JPanel{
 	
-	private JButton btnGameStop,btnGamePause,btnGameResult;
+	private JButton btnGameStop,btnGameResult;
 	
 	private PauseScreen pauseScreen;
 	private Lobby lobby;
@@ -78,12 +78,6 @@ public class GamePlay extends JPanel{
 		add(btnGameStop);
 		
 
-		btnGamePause = new JButton("Pause");
-		btnGamePause.setFont(new Font("굴림", Font.BOLD, 15));
-		btnGamePause.setBounds(610, 410, 123, 23);
-    	add(btnGamePause);
-		
-
 		btnGameResult = new JButton("결과");
 		btnGameResult.setFont(new Font("굴림", Font.BOLD, 15));
 		btnGameResult.setBounds(610, 345, 123, 23);
@@ -96,18 +90,6 @@ public class GamePlay extends JPanel{
 			
 		
 		this.addKeyListener(keyListener);
-
-		// 게임중 중지할떄 중지화면
-		btnGamePause.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				setVisible(false);
-				pauseScreen =  new PauseScreen(contentPane);
-				contentPane.add(pauseScreen,BorderLayout.CENTER);
-				pauseScreen.setVisible(true);
-	
-			}
-		});
 
 		// 게임종료 후 로비이동
 		btnGameStop.addActionListener(new ActionListener() {
