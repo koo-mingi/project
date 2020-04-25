@@ -17,13 +17,18 @@ import javax.swing.ImageIcon;
 
 import domain.RecodeVO;
 
+
 public class Game extends Thread {
 
 	private Image gameInfoImage = new ImageIcon(Main.class.getResource("../images/gameInfo.png")).getImage();
 //	private Image noteRouteImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLineImage = new ImageIcon(Main.class.getResource("../images/noteRouteLine.png")).getImage();
 	private Image judgementLineImage = new ImageIcon(Main.class.getResource("../images/judgementLine.png")).getImage();
-
+	
+	private Image JudgeImage;
+	private Image flare;
+	
+	
 //	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
 
 	private Image noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
@@ -32,6 +37,7 @@ public class Game extends Thread {
 	private Image noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+	
 
 	private String titleName;  // 현재 실행중인 곡 이름
 	private String difficulty; // 현재 곡 난이도
@@ -42,7 +48,7 @@ public class Game extends Thread {
 	private int maxCombo = 0;
 	private int perfect = 0;
 	private int great = 0;
-	private int nomal = 0;
+	private int normal = 0;
 	private int bad = 0;
 	private int miss = 0;
 	private String grade = "D";
@@ -65,8 +71,16 @@ public class Game extends Thread {
 
 	private final int PERFECT = 50;
 	private final int GREAT = 40;
-	private final int NOMAL = 30;
+	private final int NORMAL = 30;
 	private final int BAD = 11;
+
+
+	
+	
+	
+	
+	
+	
 
 	private List<Note> noteList = new ArrayList<Note>();
 //	private Music music;
@@ -126,6 +140,8 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.PLAIN, 22));
 		g.setColor(Color.DARK_GRAY);
 		g.drawString("S", 105, 435);
+		g.drawImage(flare, 180, 220,null);
+		
 		g.drawString("D", 168, 435);
 		g.drawString("F", 231, 435);
 		g.drawString("J", 294, 435);
@@ -149,6 +165,23 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.BOLD, 24));
 		g.drawString("maxcombo", 584, 100);
 		g.setColor(Color.yellow);
+
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(maxCombo,1), 620, 130);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(perfect,1), 620, 180);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(great,1), 620, 200);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(normal,1), 620, 220);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(bad,1), 620, 240);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(miss,1), 620, 260);
+		
+		g.drawImage(JudgeImage, 180, 220,null);
+		
+
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(maxCombo, 1), 620, 130);
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
@@ -156,17 +189,20 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(great, 1), 620, 200);
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
-		g.drawString(intCasting(nomal, 1), 620, 220);
+		g.drawString(intCasting(normal, 1), 620, 220);
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(bad, 1), 620, 240);
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(miss, 1), 620, 260);
 
+
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
 
 			if (note.noteMiss(note.position())) {
-				judgeString = "miss";
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Miss.png")).getImage();
+				//judgeString = "miss";
+
 				miss++;
 			}
 
@@ -178,47 +214,48 @@ public class Game extends Thread {
 			}
 		}
 		maxCombo();
+		
 	}
 
 	public void pressS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("S");
-		gameBeatSoundS = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundS = new Music("drumSmall3.mp3", true);
 		gameBeatSoundS.start();
 	}
 
 	public void pressD() {
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("D");
-		gameBeatSoundD = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundD = new Music("drumSmall1.mp3", true);
 		gameBeatSoundD.start();
 	}
 
 	public void pressF() {
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("F");
-		gameBeatSoundF = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundF = new Music("drumSmall2.mp3", true);
 		gameBeatSoundF.start();
 	}
 
 	public void pressJ() {
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("J");
-		gameBeatSoundJ = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundJ = new Music("drumBig3.mp3", true);
 		gameBeatSoundJ.start();
 	}
 
 	public void pressK() {
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("K");
-		gameBeatSoundK = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundK = new Music("drumBig2.mp3", true);
 		gameBeatSoundK.start();
 	}
 
 	public void pressL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("L");
-		gameBeatSoundL = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundL = new Music("drumBig1.mp3", true);
 		gameBeatSoundL.start();
 	}
 
@@ -273,7 +310,7 @@ public class Game extends Thread {
 	}
 	// 현재 순간의 기록을 객체에 저장
 	public void setSongRecodeVO() {
-		songRecode = new SongRecodeVO(titleName, difficulty, score, perfect, great, nomal, bad, miss, maxCombo, grade);
+		songRecode = new SongRecodeVO(titleName, difficulty, score, perfect, great, normal, bad, miss, maxCombo, grade);
 		System.out.println(songRecode);
 	}
 	
@@ -283,7 +320,7 @@ public class Game extends Thread {
 		return songRecode;
 	}
 	public String setGrade() {
-		int totalnote = perfect + great + nomal + bad + miss;
+		int totalnote = perfect + great + normal + bad + miss;
 		int maxScore = totalnote * PERFECT;
 		if(score != 0) {
 			if(score >= (maxScore*0.9)) {
@@ -312,7 +349,7 @@ public class Game extends Thread {
 			Main.MYRECODE.get(index).setGrade(grade);
 			Main.MYRECODE.get(index).setCombo(maxCombo);
 			Main.MYRECODE.get(index).setAcBad(bad);
-			Main.MYRECODE.get(index).setAcGood(nomal);
+			Main.MYRECODE.get(index).setAcGood(normal);
 			Main.MYRECODE.get(index).setAcGreat(great);
 			Main.MYRECODE.get(index).setAcPerfect(perfect);
 			Main.MYRECODE.get(index).setAcMiss(miss);
@@ -355,6 +392,8 @@ public class Game extends Thread {
 			Note note = noteList.get(i);
 
 			if (input.equals(note.getNoteType())) {
+				judgeEvent(note.judgeImage()); // 판단 이미지
+				
 
 				int judge_Score = note.judge();
 				judgeString(judge_Score);
@@ -409,22 +448,64 @@ public class Game extends Thread {
 		return result;
 	}
 
+	
+	
+	public void judgeEvent(String judgeImage) {
+		 if(judgeImage.equals("miss")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Miss.png")).getImage();
+				
+			}
+			else if(judgeImage.equals("Bad")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Bad.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
+			}
+			else if(judgeImage.equals("Nomal")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Normal.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
+			}
+			else if(judgeImage.equals("Great")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Great.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
+			}
+			else if(judgeImage.equals("Perfect")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Perfect.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
+			}
+			
+			
+			
+			
+		}
+	
+	
+	
 	public void judgeString(int judge_Score) {
+
+		
+
 		if (judge_Score == PERFECT) {
-			judgeString = "Perfect";
+			judgeString = "";
 			perfect++;
+
 		} else if (judge_Score == GREAT) {
-			judgeString = "Great";
+			judgeString = "";
 			great++;
-		} else if (judge_Score == NOMAL) {
-			judgeString = "Nomal";
-			nomal++;
+
+		} else if (judge_Score == NORMAL) {
+			judgeString = "Normal";
+			normal++;
+
 		} else if (judge_Score == BAD) {
-			judgeString = "Bad";
+			judgeString = "";
 			bad++;
 		} else {
 			judgeString = "";
 		}
+		
 
 	}
 
