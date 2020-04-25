@@ -32,7 +32,13 @@ public class Game extends Thread {
 	private String difficulty;
 	private String musicTitle; // 이름 실행 이름
 	private int score = 0;
-	public static int combo = 0;
+	public static int COMBO = 0;
+	private int maxCombo = 0;
+	private int perfect = 0;
+	private int great = 0;
+	private int nomal = 0;
+	private int bad = 0;
+	private int miss = 0;
 	public static boolean game_State = true; // 게임 상태
 	private String judgeString = ""; // 게임 판정 글자
 
@@ -120,17 +126,36 @@ public class Game extends Thread {
 
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
-		g.drawString(intCasting(combo,1), 230, 200);
+		g.drawString(intCasting(COMBO,1), 230, 200);
 		
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Elephant", Font.BOLD, 24));
 		g.drawString(judgeString, 230, 380);
-
+		
+		// 임시로 maxcombo 및 판정 수 띄우기
+		g.setColor(Color.CYAN);
+		g.setFont(new Font("Elephant", Font.BOLD, 24));
+		g.drawString("maxcombo", 584, 100);
+		g.setColor(Color.yellow);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(maxCombo,1), 620, 130);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(perfect,1), 620, 180);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(great,1), 620, 200);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(nomal,1), 620, 220);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(bad,1), 620, 240);
+		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.drawString(intCasting(miss,1), 620, 260);
+		
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
 					
 			if(note.noteMiss(note.position())) {
 				judgeString = "miss";
+				miss++;
 			}
 			
 			if (!note.isProceeded()) {
@@ -140,7 +165,7 @@ public class Game extends Thread {
 				note.screenDraw(g);
 			}
 		}
-
+		maxCombo();
 	}
 
 	public void pressS() {
@@ -200,7 +225,7 @@ public class Game extends Thread {
 	@Override
 	public void run() {
 		dropNotes();
-
+		
 	}
 
 	public void close() {
@@ -219,7 +244,13 @@ public class Game extends Thread {
 		}
 		return result;
 	}
-
+	
+	public void maxCombo() {
+		if(maxCombo < COMBO) {
+			maxCombo = COMBO;
+		}
+	}
+	
 	public void judge(String input) {
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
@@ -284,12 +315,16 @@ public class Game extends Thread {
 	public void judgeString(int judge_Score) {
 		if(judge_Score == PERFECT) {
 			judgeString ="Perfect";
+			perfect++;
 		}else if(judge_Score == GREAT) {
 			judgeString ="Great";
+			great++;
 		}else if(judge_Score == NOMAL) {
 			judgeString ="Nomal";
+			nomal++;
 		}else if(judge_Score == BAD) {
 			judgeString ="Bad";
+			bad++;
 		}else {
 			judgeString ="";
 		}
