@@ -48,7 +48,7 @@ public class SelectSong extends JPanel {
 	private String difficulty = "Easy"; // 선택된 곡의 난이도
 	private String musicTitle; // 선택된 곡 파일이름
 
-	
+	private int easy_hard_select = 0; //어떤 버튼이 선택 됐는지 확인하는 것 - 0이면 선택 X, 1이면 easy, 2면 hard
 	/**
 	 * Create the panel.
 	 */
@@ -109,14 +109,10 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
-
-				
-
 //				selectedMusic.close();
 
 			}
-				
-				
+			
 		});
 		add(btnStart);
 		
@@ -133,7 +129,7 @@ public class SelectSong extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 								
 				btnLeft.setForeground(Color.YELLOW);
-				btnLeft.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				btnLeft.setCursor(new Cursor(Cursor.HAND_CURSOR)); // 버튼위에 마우스 올려놓으면 손 모양으로 커서 모양 변함
 			}
 			public void mouseExited(MouseEvent e) {
 		       
@@ -280,6 +276,7 @@ public class SelectSong extends JPanel {
 	
 	// 난이도 이지 선택
 		btnEasy.addMouseListener(new MouseAdapter() {
+			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 								
@@ -287,12 +284,14 @@ public class SelectSong extends JPanel {
 				btnEasy.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			public void mouseExited(MouseEvent e) {
-		       
-//				btnEasy.setForeground(new Color(255, 255, 240));
+		       if(easy_hard_select == 0 || easy_hard_select == 2) {
+				btnEasy.setForeground(new Color(255, 255, 240));
 				btnEasy.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		       }
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				easy_hard_select = 1; //easy 선택시
 				difficulty = "Easy";
 				btnEasy.setForeground(Color.YELLOW);
 				btnHard.setForeground(new Color(255, 255, 240));
@@ -309,12 +308,14 @@ public class SelectSong extends JPanel {
 				btnHard.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			public void mouseExited(MouseEvent e) {
-		       
-//				btnHard.setForeground(new Color(255, 255, 240));
+		       if(easy_hard_select == 0 || easy_hard_select == 1) {
+				btnHard.setForeground(new Color(255, 255, 240));
 				btnHard.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		       }
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				easy_hard_select = 2;
 				difficulty = "Hard";
 				btnHard.setForeground(Color.YELLOW);
 				btnEasy.setForeground(new Color(255, 255, 240));
