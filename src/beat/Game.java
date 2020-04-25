@@ -213,6 +213,7 @@ public class Game extends Thread {
 		gameBeatSoundL.start();
 	}
 
+
 	public void releaseS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 		gameBeatSoundS.close();
