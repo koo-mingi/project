@@ -189,6 +189,7 @@ public class GamePlay extends JPanel{
 					
 					if(gameFinish.state())
 					{
+						game.close();
 						System.out.println("스레드 종료");
 						setVisible(false);
 						resultScreen = new ResultScreen(contentPane);
