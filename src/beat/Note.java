@@ -10,6 +10,7 @@ public class Note extends Thread {
 	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
 	private Image noteBasic1Image = new ImageIcon(Main.class.getResource("../images/noteBasic1.png")).getImage();
 	private Image noteBasic2Image = new ImageIcon(Main.class.getResource("../images/noteBasic2.png")).getImage();
+	
 	private String noteType;
 	private int x, y = 0;
 	// 580- (1000 / Main.SLEEP_TIME*Main.NOTE_SPEED) * Main.REACH_TIME;
@@ -90,13 +91,37 @@ public class Note extends Thread {
 	 * 
 	 */
 
+	
+	public String judgeImage() {
+		if (y < Game.JUDGE_BAR_Y + 3 && y > Game.JUDGE_BAR_Y - 12) {
+			close();
+			return "Perfect";
+		}
+	 else if (y < Game.JUDGE_BAR_Y + 10 && y > Game.JUDGE_BAR_Y - 20) {
+		 close();
+		 return "Great";
+	 } else if (y < Game.JUDGE_BAR_Y + 20 && y >= Game.JUDGE_BAR_Y - 28) {
+		 close();
+		 return "Nomal";
+	 } else if (y < Game.JUDGE_BAR_Y + 25 && y >= Game.JUDGE_BAR_Y - 40) {
+		 close();
+		 return "Bad";
+	 }
+		return "None";
+	}
+	public int getY() {
+		return y;
+	}
+	
+	
+
 	public int judge() {
 		int score = 0;
 
 		if (y < Game.JUDGE_BAR_Y + 3 && y > Game.JUDGE_BAR_Y - 12) {
 			System.out.println("Perfect");
 			score = 50;
-			Game.COMBO += 1;
+			Game.COMBO += 1;			
 			close();
 		} else if (y < Game.JUDGE_BAR_Y + 10 && y > Game.JUDGE_BAR_Y - 20) {
 			System.out.println("Great");

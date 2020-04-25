@@ -12,12 +12,18 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+
+
+
+
+
 public class Game extends Thread {
 
 	private Image gameInfoImage = new ImageIcon(Main.class.getResource("../images/gameInfo.png")).getImage();
 //	private Image noteRouteImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLineImage = new ImageIcon(Main.class.getResource("../images/noteRouteLine.png")).getImage();
 	private Image judgementLineImage = new ImageIcon(Main.class.getResource("../images/judgementLine.png")).getImage();
+	private Image JudgeImage;
 
 //	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
 
@@ -27,6 +33,7 @@ public class Game extends Thread {
 	private Image noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+	
 
 	private String titleName;
 	private String difficulty;
@@ -55,6 +62,10 @@ public class Game extends Thread {
 	private final int NOMAL = 30;
 	private final int BAD = 11;
 
+	
+	
+	
+	
 	
 	
 	private List<Note> noteList = new ArrayList<Note>();
@@ -150,11 +161,15 @@ public class Game extends Thread {
 		g.setFont(new Font("Elephant", Font.BOLD, 18));
 		g.drawString(intCasting(miss,1), 620, 260);
 		
+		g.drawImage(JudgeImage, 180, 220,null);
+		
+		
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
 					
 			if(note.noteMiss(note.position())) {
-				judgeString = "miss";
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Miss.png")).getImage();
+				//judgeString = "miss";
 				miss++;
 			}
 			
@@ -256,6 +271,7 @@ public class Game extends Thread {
 			Note note = noteList.get(i);
 
 			if (input.equals(note.getNoteType())) {
+				judgeEvent(note.judgeImage()); // 판단 이미지
 
 				int judge_Score = note.judge();
 				judgeString(judge_Score);
@@ -312,18 +328,44 @@ public class Game extends Thread {
 		return result;
 	}
 
+	
+	
+	public void judgeEvent(String judgeImage) {
+		 if(judgeImage.equals("miss")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Miss.png")).getImage();
+			}
+			else if(judgeImage.equals("Bad")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Bad.png")).getImage();
+			}
+			else if(judgeImage.equals("Nomal")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Normal.png")).getImage();
+			}
+			else if(judgeImage.equals("Great")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Great.png")).getImage();
+			}
+			else if(judgeImage.equals("Perfect")) {
+				JudgeImage = new ImageIcon(Main.class.getResource("../images/Perfect.png")).getImage();
+			}
+			
+			
+			
+			
+		}
+	
+	
+	
 	public void judgeString(int judge_Score) {
 		if(judge_Score == PERFECT) {
-			judgeString ="Perfect";
+			judgeString ="";
 			perfect++;
 		}else if(judge_Score == GREAT) {
-			judgeString ="Great";
+			judgeString ="";
 			great++;
 		}else if(judge_Score == NOMAL) {
-			judgeString ="Nomal";
+			judgeString ="";
 			nomal++;
 		}else if(judge_Score == BAD) {
-			judgeString ="Bad";
+			judgeString ="";
 			bad++;
 		}else {
 			judgeString ="";
