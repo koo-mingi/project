@@ -138,7 +138,7 @@ public class GamePlay extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 	
 				setVisible(false);
-				resultScreen = new ResultScreen(contentPane);
+				resultScreen = new ResultScreen(contentPane,game.getSongRecodeVO());
 				contentPane.add(resultScreen,BorderLayout.CENTER);
 				resultScreen.setVisible(true);
 				game.close();
