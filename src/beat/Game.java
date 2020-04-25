@@ -21,8 +21,11 @@ public class Game extends Thread {
 //	private Image noteRouteImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLineImage = new ImageIcon(Main.class.getResource("../images/noteRouteLine.png")).getImage();
 	private Image judgementLineImage = new ImageIcon(Main.class.getResource("../images/judgementLine.png")).getImage();
+	
 	private Image JudgeImage;
-
+	private Image flare;
+	
+	
 //	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
 
 	private Image noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
@@ -134,6 +137,8 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.PLAIN, 22));
 		g.setColor(Color.DARK_GRAY);
 		g.drawString("S", 105, 435);
+		g.drawImage(flare, 180, 220,null);
+		
 		g.drawString("D", 168, 435);
 		g.drawString("F", 231, 435);
 		g.drawString("J", 294, 435);
@@ -212,42 +217,42 @@ public class Game extends Thread {
 	public void pressS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("S");
-		gameBeatSoundS = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundS = new Music("drumSmall3.mp3", true);
 		gameBeatSoundS.start();
 	}
 
 	public void pressD() {
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("D");
-		gameBeatSoundD = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundD = new Music("drumSmall1.mp3", true);
 		gameBeatSoundD.start();
 	}
 
 	public void pressF() {
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("F");
-		gameBeatSoundF = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundF = new Music("drumSmall2.mp3", true);
 		gameBeatSoundF.start();
 	}
 
 	public void pressJ() {
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("J");
-		gameBeatSoundJ = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundJ = new Music("drumBig3.mp3", true);
 		gameBeatSoundJ.start();
 	}
 
 	public void pressK() {
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("K");
-		gameBeatSoundK = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundK = new Music("drumBig2.mp3", true);
 		gameBeatSoundK.start();
 	}
 
 	public void pressL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("L");
-		gameBeatSoundL = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundL = new Music("drumBig1.mp3", true);
 		gameBeatSoundL.start();
 	}
 
@@ -370,6 +375,7 @@ public class Game extends Thread {
 
 			if (input.equals(note.getNoteType())) {
 				judgeEvent(note.judgeImage()); // 판단 이미지
+				
 
 				int judge_Score = note.judge();
 				judgeString(judge_Score);
@@ -429,18 +435,27 @@ public class Game extends Thread {
 	public void judgeEvent(String judgeImage) {
 		 if(judgeImage.equals("miss")) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Miss.png")).getImage();
+				
 			}
 			else if(judgeImage.equals("Bad")) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Bad.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
 			}
 			else if(judgeImage.equals("Nomal")) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Normal.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
 			}
 			else if(judgeImage.equals("Great")) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Great.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
 			}
 			else if(judgeImage.equals("Perfect")) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Perfect.png")).getImage();
+				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
 			}
 			
 			
