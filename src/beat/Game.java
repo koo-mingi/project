@@ -207,8 +207,7 @@ public class Game extends Thread {
 
 	public void close() {
 		game_State = false;
-		noteList = null;
-		System.out.println("게임 종료");
+//		System.out.println("게임 종료");
 		if (gameMusic != null)
 			gameMusic.close();
 		interrupt();

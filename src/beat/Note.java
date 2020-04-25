@@ -139,13 +139,12 @@ public class Note extends Thread {
 				if (proceeded) {
 					Thread.sleep(Main.SLEEP_TIME);
 				} else {
-					System.out.println("노트 종료");
 					interrupt();
 					break;
 					// 스레드 정지하도록 걸어줌
 				}
 			}
-			System.out.println("끝");
+//			System.out.println("끝");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
