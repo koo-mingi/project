@@ -243,7 +243,8 @@ public class SelectSong extends JPanel {
 				selectedMusic.close();
 			}
 			setVisible(false);
-
+			Game.game_State = true;
+			Game.combo = 0;
 			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle);
 
 			//gameplay =  new GamePlay(contentPane, trackList.get(trackNo).getGameMusic() , trackList.get(trackNo).getGameImage());

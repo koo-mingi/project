@@ -33,7 +33,8 @@ public class Game extends Thread {
 	private String musicTitle; // 이름 실행 이름
 	private int score = 0;
 	public static int combo = 0;
-	private String judgeString = ""; // 판정 글자
+	public static boolean game_State = true; // 게임 상태
+	private String judgeString = ""; // 게임 판정 글자
 
 	private MusicBeat musicBeat = new MusicBeat();
 	private Music gameMusic;
@@ -42,6 +43,7 @@ public class Game extends Thread {
 	public static final int JUDGE_BAR_Y = 415;
 	public static final int GAME_INFO_Y = 475;
 	
+	
 	private final int PERFECT = 50;
 	private final int GREAT = 40;
 	private final int NOMAL = 30;
@@ -49,7 +51,7 @@ public class Game extends Thread {
 
 	
 	
-	List<Note> noteList = new ArrayList<Note>();
+	private List<Note> noteList = new ArrayList<Note>();
 //	private Music music;
 //	private String musicName;
 //	
@@ -202,7 +204,8 @@ public class Game extends Thread {
 	}
 
 	public void close() {
-
+		game_State = false;
+//		System.out.println("게임 종료");
 		if (gameMusic != null)
 			gameMusic.close();
 		interrupt();
@@ -223,8 +226,9 @@ public class Game extends Thread {
 
 			if (input.equals(note.getNoteType())) {
 
-				judgeString(note.judge());
-				score += note.judge();
+				int judge_Score = note.judge();
+				judgeString(judge_Score);
+				score += judge_Score;
 				break;
 			}
 		}
@@ -277,14 +281,14 @@ public class Game extends Thread {
 		return result;
 	}
 
-	public void judgeString(int judge) {
-		if(judge == PERFECT) {
+	public void judgeString(int judge_Score) {
+		if(judge_Score == PERFECT) {
 			judgeString ="Perfect";
-		}else if(judge == GREAT) {
+		}else if(judge_Score == GREAT) {
 			judgeString ="Great";
-		}else if(judge == NOMAL) {
+		}else if(judge_Score == NOMAL) {
 			judgeString ="Nomal";
-		}else if(judge == BAD) {
+		}else if(judge_Score == BAD) {
 			judgeString ="Bad";
 		}else {
 			judgeString ="";
@@ -323,8 +327,13 @@ public class Game extends Thread {
 				if (!dropped) {
 					try {
 						Thread.sleep(5);
-					} catch (Exception e) {
-						e.printStackTrace();
+					} 
+					catch (InterruptedException ex) {
+						Thread.currentThread().interrupt();
+						//Thread.sleep(5);로 인해서 InterruptedException이 발생하면 그냥 interrupt해버림
+					}
+					catch(Exception e) {
+						e.printStackTrace(); //다른 에러나면 여기서 캐치
 					}
 				}
 				// 텀 두면서 떨구기 -> 계속 스레드 실행상태가 아니라 좀 쉬다가 하게끔

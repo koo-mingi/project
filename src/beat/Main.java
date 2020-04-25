@@ -11,10 +11,7 @@ public class Main {
 	public static final int REACH_TIME = 2;
 	public static RecodeVO myrecode = new RecodeVO(); // 개인 기록 저장
 	public static void main(String[] args) {
-		
-		 new MainFrame();
-		
-		
+		 new MainFrame();	
 	}
 
 }
