@@ -288,12 +288,14 @@ public class SelectSong extends JPanel {
 			}
 			public void mouseExited(MouseEvent e) {
 		       
-				btnEasy.setForeground(new Color(255, 255, 240));
+//				btnEasy.setForeground(new Color(255, 255, 240));
 				btnEasy.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				difficulty = "Easy";
+				btnEasy.setForeground(Color.YELLOW);
+				btnHard.setForeground(new Color(255, 255, 240));
 			}
 		
 		});
@@ -308,12 +310,14 @@ public class SelectSong extends JPanel {
 			}
 			public void mouseExited(MouseEvent e) {
 		       
-				btnHard.setForeground(new Color(255, 255, 240));
+//				btnHard.setForeground(new Color(255, 255, 240));
 				btnHard.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				difficulty = "Hard";
+				btnHard.setForeground(Color.YELLOW);
+				btnEasy.setForeground(new Color(255, 255, 240));
 			}
 		
 		});
