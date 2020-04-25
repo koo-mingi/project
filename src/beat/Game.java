@@ -33,7 +33,7 @@ public class Game extends Thread {
 	private String musicTitle; // 이름 실행 이름
 	private int score = 0;
 	public static int combo = 0;
-	private String judgeString = "";
+	private String judgeString = ""; // 판정 글자
 
 	private MusicBeat musicBeat = new MusicBeat();
 	private Music gameMusic;
