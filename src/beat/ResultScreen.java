@@ -107,7 +107,7 @@ public class ResultScreen extends JPanel{
 		lblGreat.setBounds(350, 250, 160, 40);
 		add(lblGreat);
 		
-		JLabel lblGood = new JLabel("Good");
+		JLabel lblGood = new JLabel("Normal");
 		lblGood.setForeground(new Color(51, 255, 153));
 		lblGood.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGood.setFont(new Font("Jokerman", Font.BOLD, 30));
