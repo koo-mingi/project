@@ -191,14 +191,9 @@ public class Game extends Thread {
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
 
-					
-			if(note.noteMiss(note.position())) {
+			if (note.noteMiss(note.position())) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Miss.png")).getImage();
 				//judgeString = "miss";
-
-
-			if (note.noteMiss(note.position())) {
-				judgeString = "miss";
 
 				miss++;
 			}
@@ -211,7 +206,7 @@ public class Game extends Thread {
 			}
 		}
 		maxCombo();
-		}
+		
 	}
 
 	public void pressS() {
@@ -457,41 +452,29 @@ public class Game extends Thread {
 	
 	public void judgeString(int judge_Score) {
 
-		if(judge_Score == PERFECT) {
-			judgeString ="";
+		
 
 		if (judge_Score == PERFECT) {
-			judgeString = "Perfect";
-
+			judgeString = "";
 			perfect++;
 
-		}else if(judge_Score == GREAT) {
-			judgeString ="";
-
 		} else if (judge_Score == GREAT) {
-			judgeString = "Great";
-
+			judgeString = "";
 			great++;
 
-		}else if(judge_Score == NOMAL) {
-			judgeString ="";
 
 		} else if (judge_Score == NOMAL) {
-			judgeString = "Nomal";
-
+			judgeString = "";
 			nomal++;
 
-		}else if(judge_Score == BAD) {
-			judgeString ="";
 
 		} else if (judge_Score == BAD) {
-			judgeString = "Bad";
-
+			judgeString = "";
 			bad++;
 		} else {
 			judgeString = "";
 		}
-		}
+		
 
 	}
 
