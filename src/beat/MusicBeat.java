@@ -32,7 +32,7 @@ public class MusicBeat {
 					new BeatPlay(startTime + gap * 44, "D"), new BeatPlay(startTime + gap * 45, "S"),
 					new BeatPlay(startTime + gap * 46, "F"), new BeatPlay(startTime + gap * 47, "L"),
 					new BeatPlay(startTime + gap * 48, "J"), new BeatPlay(startTime + gap * 49, "K"),
-					new BeatPlay(startTime + gap * 50, "Space"), new BeatPlay(startTime + gap * 51, "D"),
+					new BeatPlay(startTime + gap * 50, "F"), new BeatPlay(startTime + gap * 51, "D"),
 					new BeatPlay(startTime + gap * 52, "S"), new BeatPlay(startTime + gap * 53, "F"),
 					new BeatPlay(startTime + gap * 54, "L"), new BeatPlay(startTime + gap * 56, "L") };
 
@@ -163,7 +163,7 @@ public class MusicBeat {
 					new BeatPlay(startTime + gap * 554, "J"), new BeatPlay(startTime + gap * 563, "S"),
 					new BeatPlay(startTime + gap * 572, "L"), new BeatPlay(startTime + gap * 581, "F"),
 					new BeatPlay(startTime + gap * 590, "J"), new BeatPlay(startTime + gap * 599, "S"),
-					new BeatPlay(startTime + gap * 608, "L"), new BeatPlay(startTime + gap * 628, ""), };
+					new BeatPlay(startTime + gap * 608, "L"),  };
 			return beats;
 		}
 
@@ -325,7 +325,7 @@ public class MusicBeat {
 					new BeatPlay(startTime + gap * 488, "S"), new BeatPlay(startTime + gap * 490, "L"),
 					new BeatPlay(startTime + gap * 491, "J"),
 					new BeatPlay(startTime + gap * 493, "F"), new BeatPlay(startTime + gap * 495, "S"),
-					new BeatPlay(startTime + gap * 497, "F"), new BeatPlay(startTime + gap * 499, "Space"),
+					new BeatPlay(startTime + gap * 497, "F"), new BeatPlay(startTime + gap * 499, "K"),
 					new BeatPlay(startTime + gap * 500, "S"),
 					new BeatPlay(startTime + gap * 502, "J"), new BeatPlay(startTime + gap * 504, "L"),
 					new BeatPlay(startTime + gap * 506, "J"), new BeatPlay(startTime + gap * 508, "K"),
@@ -342,7 +342,7 @@ public class MusicBeat {
 					new BeatPlay(startTime + gap * 538, "S"), new BeatPlay(startTime + gap * 538, "F"), new BeatPlay(startTime + gap * 538, "K"), 
 					new BeatPlay(startTime + gap * 540, "D"),
 					new BeatPlay(startTime + gap * 542, "J"), new BeatPlay(startTime + gap * 542, "L"), new BeatPlay(startTime + gap * 542, "D"), 
-					new BeatPlay(startTime + gap * 544, "Space"), new BeatPlay(startTime + gap * 545, "F"),
+					new BeatPlay(startTime + gap * 544, "K"), new BeatPlay(startTime + gap * 545, "F"),
 					new BeatPlay(startTime + gap * 547, "L"), new BeatPlay(startTime + gap * 549, "L"),
 					new BeatPlay(startTime + gap * 551, "L"), new BeatPlay(startTime + gap * 553, "D"),
 					new BeatPlay(startTime + gap * 554, "J"),
@@ -552,10 +552,9 @@ public class MusicBeat {
 					new BeatPlay(startTime + gap * 166, "J"), new BeatPlay(startTime + gap * 169, "L"),
 					new BeatPlay(startTime + gap * 170, "L"), new BeatPlay(startTime + gap * 171, "J"),
 					new BeatPlay(startTime + gap * 172, "J"), new BeatPlay(startTime + gap * 173, "J"),
-					new BeatPlay(startTime + gap * 180, ""), };
+					};
 			return beats;
 		}
-		
 		
 		return null;
 	}

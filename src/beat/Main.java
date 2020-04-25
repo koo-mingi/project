@@ -11,10 +11,7 @@ public class Main {
 	public static final int REACH_TIME = 2;
 	
 	public static void main(String[] args) {
-		
-		 new MainFrame();
-		
-		
+		 new MainFrame();	
 	}
 
 }
