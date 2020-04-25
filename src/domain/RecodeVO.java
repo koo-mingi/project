@@ -1,6 +1,8 @@
 package domain;
 
-public class RecodeVO {
+import java.io.Serializable;
+
+public class RecodeVO implements Serializable{
 	
 	// RecodeTBL Table
 	private int userno;
