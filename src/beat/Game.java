@@ -2,11 +2,14 @@ package beat;
 
 import java.awt.Color;
 
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -261,6 +264,7 @@ public class Game extends Thread {
 		setGrade();
 		setSongRecodeVO();
 		setRecodeVO();
+		saveRecodeVO();
 //		System.out.println("게임 종료");
 		if (gameMusic != null)
 			gameMusic.close();
@@ -315,6 +319,20 @@ public class Game extends Thread {
 		}
 		for(RecodeVO vo : Main.MYRECODE) {
 			System.out.println(vo);
+		}
+	}
+	// 기록 저장
+	public void saveRecodeVO() {
+		try(FileOutputStream fos = new FileOutputStream(Main.file.getPath());
+			ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			for(int i =0 ; i<Main.MYRECODE.size();i++) {
+				oos.writeObject(Main.MYRECODE.get(i));
+						
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

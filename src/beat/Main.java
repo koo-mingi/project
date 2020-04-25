@@ -30,24 +30,26 @@ public class Main {
 		MYRECODE.add(new RecodeVO(0, 5, "", 0, 0, 0, 0, 0, 0, 0, "")); //3번 노래 easy
 		MYRECODE.add(new RecodeVO(0, 6, "", 0, 0, 0, 0, 0, 0, 0, "")); //3번 노래 hard
 		
-		// 파일에 내용이 저장이 안됨.. 
+		// 저장된 내용을 읽어 오기
 		try {
-			file =  new File(Main.class.getResource("../save/myrecode.save").toURI());
+			file =  new File(Main.class.getResource("../save/myrecode.ser").toURI());
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		}
 		
-		try(FileOutputStream fos= new FileOutputStream(file);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			FileInputStream fis = new FileInputStream(file);
+		try(
+//			FileOutputStream fos= new FileOutputStream(file.getPath());
+//			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			FileInputStream fis = new FileInputStream(file.getPath());
 			ObjectInputStream ois = new ObjectInputStream(fis)){
 						
 			for(int i =0 ; i<MYRECODE.size();i++) {
-				oos.writeObject(MYRECODE.get(i));
+//				oos.writeObject(MYRECODE.get(i));
 				MYRECODE.set(i, (RecodeVO) ois.readObject()); //readObject()를 호출하면 그 스트림의 다음 객체를 받아올 수 있다. 
 				System.out.println(MYRECODE.get(i));
 				
 			}
+
 			
 		} catch (IOException e) {
 			e.printStackTrace();

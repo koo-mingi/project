@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class RecodeVO implements Serializable{
 	
+	//private static final long seralVersionUID = 1L;
 	// RecodeTBL Table
 	private int userno;
 	private int songid;
