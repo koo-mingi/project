@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import domain.RecodeVO;
+
 public class Game extends Thread {
 
 	private Image gameInfoImage = new ImageIcon(Main.class.getResource("../images/gameInfo.png")).getImage();
@@ -28,9 +30,10 @@ public class Game extends Thread {
 	private Image noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	private Image noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 
-	private String titleName;
-	private String difficulty;
-	private String musicTitle; // 이름 실행 이름
+	private String titleName;  // 현재 실행중인 곡 이름
+	private String difficulty; // 현재 곡 난이도
+	private String musicTitle; // 현재 실행중인 곡 파일 이름
+	private int trackNo;       // 현재 실행중인 곡 번호
 	private int score = 0;
 	public static int COMBO = 0;
 	private int maxCombo = 0;
@@ -39,8 +42,10 @@ public class Game extends Thread {
 	private int nomal = 0;
 	private int bad = 0;
 	private int miss = 0;
+	private String grade = "D";
 	public static boolean game_State = true; // 게임 상태
 	private String judgeString = ""; // 게임 판정 글자
+	private SongRecodeVO songRecode; // 현재 플레이 기록을 저장하는 객체
 
 	private MusicBeat musicBeat = new MusicBeat();
 	private Music gameMusic;
@@ -68,13 +73,14 @@ public class Game extends Thread {
 //		System.out.println(musicName);
 //	}
 
-	public Game(String titleName, String difficulty, String musicTitle) {
+	public Game(String titleName, String difficulty, String musicTitle,int trackNo) {
 		super();
 		this.titleName = titleName;
 		this.difficulty = difficulty;
 		this.musicTitle = musicTitle;
+		this.trackNo = trackNo;
 		gameMusic = new Music(this.musicTitle, false);
-
+		
 	}
 
 	public void screenDraw(Graphics2D g) {
@@ -230,11 +236,64 @@ public class Game extends Thread {
 
 	public void close() {
 		game_State = false;
+		setGrade();
+		setSongRecodeVO();
+		setRecodeVO();
 //		System.out.println("게임 종료");
 		if (gameMusic != null)
 			gameMusic.close();
 		interrupt();
 
+	}
+	// 현재 순간의 기록을 객체에 저장
+	public void setSongRecodeVO() {
+		songRecode = new SongRecodeVO(titleName, difficulty, score, perfect, great, nomal, bad, miss, maxCombo, grade);
+		System.out.println(songRecode);
+	}
+	
+	// 현재 순간의 기록을 저장한 객체 반환
+	public SongRecodeVO getSongRecodeVO() {
+				
+		return songRecode;
+	}
+	public String setGrade() {
+		int totalnote = perfect + great + nomal + bad + miss;
+		int maxScore = totalnote * PERFECT;
+		if(score != 0) {
+			if(score >= (maxScore*0.9)) {
+				return grade = "S";
+			}else if(score >= (maxScore*0.8)) {
+				return grade = "A";
+			}else if(score >= (maxScore*0.7)) {
+				return grade = "B";
+			}else if(score >= (maxScore*0.6)) {
+				return grade = "C";
+			}
+		}
+		return grade;
+	}
+	
+	// 현재 기록과 비교해서 최고기록을 저장.
+	public void setRecodeVO() {
+		int index;
+		if(difficulty.equals("Hard")) {
+			index = trackNo + 1;
+		}else {
+			index = trackNo;
+		}
+		if(score > Main.MYRECODE.get(index).getScore()) {
+			Main.MYRECODE.get(index).setScore(score);
+			Main.MYRECODE.get(index).setGrade(grade);
+			Main.MYRECODE.get(index).setCombo(maxCombo);
+			Main.MYRECODE.get(index).setAcBad(bad);
+			Main.MYRECODE.get(index).setAcGood(nomal);
+			Main.MYRECODE.get(index).setAcGreat(great);
+			Main.MYRECODE.get(index).setAcPerfect(perfect);
+			Main.MYRECODE.get(index).setAcMiss(miss);
+		}
+		for(RecodeVO vo : Main.MYRECODE) {
+			System.out.println(vo);
+		}
 	}
 
 	public boolean musicFinish() {
