@@ -124,33 +124,33 @@ public class Game extends Thread {
 		g.drawString("L", 420, 435);
 
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Elephant", Font.BOLD, 26));
+		g.setFont(new Font("Jokerman", Font.BOLD, 26));
 		g.drawString(intCasting(score, 0), 360, 550);
 
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Elephant", Font.BOLD, 26));
+		g.setFont(new Font("Jokerman", Font.BOLD, 26));
 		g.drawString(intCasting(COMBO, 1), 230, 200);
 
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Elephant", Font.BOLD, 24));
+		g.setFont(new Font("Jokerman", Font.BOLD, 24));
 		g.drawString(judgeString, 230, 380);
 
 		// 임시로 maxcombo 및 판정 수 띄우기
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Elephant", Font.BOLD, 24));
+		g.setFont(new Font("Jokerman", Font.BOLD, 24));
 		g.drawString("maxcombo", 584, 100);
 		g.setColor(Color.yellow);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(maxCombo, 1), 620, 130);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(perfect, 1), 620, 180);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(great, 1), 620, 200);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(nomal, 1), 620, 220);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(bad, 1), 620, 240);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(miss, 1), 620, 260);
 
 		for (int i = 0; i < noteList.size(); i++) {

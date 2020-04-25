@@ -38,7 +38,7 @@ public class GamePlay extends JPanel{
 	private Image screenImage;
 	private Graphics screenGraphic;
 
-	private Image background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
+	private Image background = new ImageIcon(Main.class.getResource("../images/bluewave.gif")).getImage();
 	private boolean isGameScreen = true;
 	
 	private beat.KeyListener keyListener = new beat.KeyListener();

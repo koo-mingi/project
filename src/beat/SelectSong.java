@@ -28,7 +28,6 @@ public class SelectSong extends JPanel {
 	
 	private Image screenImage;
 	private Graphics screenGraphic;
-	private Image selectedImage = new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
 	private Image background = new ImageIcon(Main.class.getResource("../images/electric_guitar.jpg")).getImage();
 	
 	private boolean isMainScreen = true;
@@ -44,9 +43,11 @@ public class SelectSong extends JPanel {
 	private Music selectedMusic;
 	private int trackNo = 0;
 	
-	private String titleName = "Spring";  // 선택된 곡의 이름
+	private String titleName; // = "Spring";  // 선택된 곡의 이름
 	private String difficulty = "Easy"; // 선택된 곡의 난이도
 	private String musicTitle; // 선택된 곡 파일이름
+	private Image selectedImage; //= new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
+	
 
 	private int easy_hard_select = 0; //어떤 버튼이 선택 됐는지 확인하는 것 - 0이면 선택 X, 1이면 easy, 2면 hard
 	/**
@@ -60,9 +61,9 @@ public class SelectSong extends JPanel {
 		
 	
 		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악, 해당곡 이름
-		trackList.add(new Track(null, "Happy Life start image.jpg", null, "Fredji_Happy Life_Selected.mp3", "Fredji_Happy Life_Play.mp3","Happy Life - Fredji"));
-		trackList.add(new Track(null, "Chilling start image.jpg", null, "Oshova_Chilling.mp3", "Oshova_Chilling.mp3","Chilling - Oshova"));
-		trackList.add(new Track(null, "Harmony start image.jpg", null, "Ikson_Harmony_Selected.mp3", "Ikson_Harmony_Play.mp3","Harmony - Ikson"));
+		trackList.add(new Track(null, "Happy Life start image.jpg", "Aurora.gif", "Fredji_Happy Life_Selected.mp3", "Fredji_Happy Life_Play.mp3","Happy Life - Fredji"));
+		trackList.add(new Track(null, "Chilling start image.jpg", "Wolf.gif", "Oshova_Chilling.mp3", "Oshova_Chilling.mp3","Chilling - Oshova"));
+		trackList.add(new Track(null, "Harmony start image.jpg", "particles.gif", "Ikson_Harmony_Selected.mp3", "Ikson_Harmony_Play.mp3","Harmony - Ikson"));
 		
 		selectTrack(0);
 
