@@ -49,19 +49,22 @@ public class Game extends Thread {
 
 	private MusicBeat musicBeat = new MusicBeat();
 	private Music gameMusic;
+	private Music gameBeatSoundS;
+	private Music gameBeatSoundD;
+	private Music gameBeatSoundF;
+	private Music gameBeatSoundJ;
+	private Music gameBeatSoundK;
+	private Music gameBeatSoundL;
 
 	// Note 판정을 위해 끌어 쓰려고 여기 선언 --> static final로
 	public static final int JUDGE_BAR_Y = 415;
 	public static final int GAME_INFO_Y = 475;
-	
-	
+
 	private final int PERFECT = 50;
 	private final int GREAT = 40;
 	private final int NOMAL = 30;
 	private final int BAD = 11;
 
-	
-	
 	private List<Note> noteList = new ArrayList<Note>();
 //	private Music music;
 //	private String musicName;
@@ -125,45 +128,45 @@ public class Game extends Thread {
 		g.drawString("J", 294, 435);
 		g.drawString("K", 357, 435);
 		g.drawString("L", 420, 435);
-		
+
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Elephant", Font.BOLD, 26));
-		g.drawString(intCasting(score,0), 360, 550);
+		g.setFont(new Font("Jokerman", Font.BOLD, 26));
+		g.drawString(intCasting(score, 0), 360, 550);
 
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Elephant", Font.BOLD, 26));
-		g.drawString(intCasting(COMBO,1), 230, 200);
-		
+		g.setFont(new Font("Jokerman", Font.BOLD, 26));
+		g.drawString(intCasting(COMBO, 1), 230, 200);
+
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Elephant", Font.BOLD, 24));
+		g.setFont(new Font("Jokerman", Font.BOLD, 24));
 		g.drawString(judgeString, 230, 380);
-		
+
 		// 임시로 maxcombo 및 판정 수 띄우기
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Elephant", Font.BOLD, 24));
+		g.setFont(new Font("Jokerman", Font.BOLD, 24));
 		g.drawString("maxcombo", 584, 100);
 		g.setColor(Color.yellow);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(maxCombo,1), 620, 130);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(perfect,1), 620, 180);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(great,1), 620, 200);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(nomal,1), 620, 220);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(bad,1), 620, 240);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(miss,1), 620, 260);
-		
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
+		g.drawString(intCasting(maxCombo, 1), 620, 130);
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
+		g.drawString(intCasting(perfect, 1), 620, 180);
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
+		g.drawString(intCasting(great, 1), 620, 200);
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
+		g.drawString(intCasting(nomal, 1), 620, 220);
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
+		g.drawString(intCasting(bad, 1), 620, 240);
+		g.setFont(new Font("Jokerman", Font.BOLD, 18));
+		g.drawString(intCasting(miss, 1), 620, 260);
+
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
-					
-			if(note.noteMiss(note.position())) {
+
+			if (note.noteMiss(note.position())) {
 				judgeString = "miss";
 				miss++;
 			}
-			
+
 			if (!note.isProceeded()) {
 				noteList.remove(i);
 				i--;
@@ -177,61 +180,80 @@ public class Game extends Thread {
 	public void pressS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("S");
+		gameBeatSoundS = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundS.start();
 	}
 
 	public void pressD() {
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("D");
+		gameBeatSoundD = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundD.start();
 	}
 
 	public void pressF() {
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("F");
+		gameBeatSoundF = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundF.start();
 	}
 
 	public void pressJ() {
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("J");
+		gameBeatSoundJ = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundJ.start();
 	}
 
 	public void pressK() {
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("K");
+		gameBeatSoundK = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundK.start();
 	}
 
 	public void pressL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("L");
+		gameBeatSoundL = new Music("BeatSound_Big.mp3", true);
+		gameBeatSoundL.start();
 	}
+
 
 	public void releaseS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+		gameBeatSoundS.close();
 	}
 
 	public void releaseD() {
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+		gameBeatSoundD.close();
 	}
 
 	public void releaseF() {
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+		gameBeatSoundF.close();
 	}
 
 	public void releaseJ() {
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+		gameBeatSoundJ.close();
 	}
 
 	public void releaseK() {
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+		gameBeatSoundK.close();
 	}
 
 	public void releaseL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
+		gameBeatSoundL.close();
 	}
 
 	@Override
 	public void run() {
 		dropNotes();
-		
+
 	}
 
 	public void close() {
@@ -303,13 +325,13 @@ public class Game extends Thread {
 		}
 		return result;
 	}
-	
+
 	public void maxCombo() {
-		if(maxCombo < COMBO) {
+		if (maxCombo < COMBO) {
 			maxCombo = COMBO;
 		}
 	}
-	
+
 	public void judge(String input) {
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
@@ -326,12 +348,11 @@ public class Game extends Thread {
 
 	// score 점수 앞에 0 붙이기 : 002124,000123
 	public String intCasting(int score, int type) {
-		
-		int scoreLength  = (int) (Math.log10(score) + 1);
+
+		int scoreLength = (int) (Math.log10(score) + 1);
 		String result = "000000";
-		if(type == 0) { // 점수
-				
-						
+		if (type == 0) { // 점수
+
 			if (scoreLength == 1) {
 				result = "00000" + String.valueOf(score);
 			}
@@ -350,10 +371,9 @@ public class Game extends Thread {
 			if (scoreLength == 6) {
 				result = "" + String.valueOf(score);
 			}
-		}
-		else if(type == 1) { // 콤보
+		} else if (type == 1) { // 콤보
 			result = "0000";
-			
+
 			if (scoreLength == 1) {
 				result = "000" + String.valueOf(score);
 			}
@@ -366,42 +386,39 @@ public class Game extends Thread {
 			if (scoreLength == 4) {
 				result = "" + String.valueOf(score);
 			}
-			
+
 		}
 		return result;
 	}
 
 	public void judgeString(int judge_Score) {
-		if(judge_Score == PERFECT) {
-			judgeString ="Perfect";
+		if (judge_Score == PERFECT) {
+			judgeString = "Perfect";
 			perfect++;
-		}else if(judge_Score == GREAT) {
-			judgeString ="Great";
+		} else if (judge_Score == GREAT) {
+			judgeString = "Great";
 			great++;
-		}else if(judge_Score == NOMAL) {
-			judgeString ="Nomal";
+		} else if (judge_Score == NOMAL) {
+			judgeString = "Nomal";
 			nomal++;
-		}else if(judge_Score == BAD) {
-			judgeString ="Bad";
+		} else if (judge_Score == BAD) {
+			judgeString = "Bad";
 			bad++;
-		}else {
-			judgeString ="";
+		} else {
+			judgeString = "";
 		}
-		
-		
+
 	}
-	
+
 	public void dropNotes() {
 		BeatPlay[] beats = null;
 		// difficult 변수 선언하고 이걸 &&로 해서 easy hard 구분
 		if (titleName.equals("Happy Life - Fredji")) {
 			beats = musicBeat.happy_Life(difficulty);
 			// all = beats.length * 50; // ?? 이게 뭘까요?
-		} 
-		else if (titleName.equals("Chilling - Oshova")) {
+		} else if (titleName.equals("Chilling - Oshova")) {
 			beats = musicBeat.chilling(difficulty);
-		}
-		else if (titleName.equals("Harmony - Ikson")) {
+		} else if (titleName.equals("Harmony - Ikson")) {
 			beats = musicBeat.harmony(difficulty);
 		}
 
@@ -421,20 +438,17 @@ public class Game extends Thread {
 				if (!dropped) {
 					try {
 						Thread.sleep(5);
-					} 
-					catch (InterruptedException ex) {
+					} catch (InterruptedException ex) {
 						Thread.currentThread().interrupt();
-						//Thread.sleep(5);로 인해서 InterruptedException이 발생하면 그냥 interrupt해버림
-					}
-					catch(Exception e) {
-						e.printStackTrace(); //다른 에러나면 여기서 캐치
+						// Thread.sleep(5);로 인해서 InterruptedException이 발생하면 그냥 interrupt해버림
+					} catch (Exception e) {
+						e.printStackTrace(); // 다른 에러나면 여기서 캐치
 					}
 				}
 				// 텀 두면서 떨구기 -> 계속 스레드 실행상태가 아니라 좀 쉬다가 하게끔
 			}
-		}
-		else {
-			//흠...필요할진 모르겠는데 혹시 beats가 null일 때 처리
+		} else {
+			// 흠...필요할진 모르겠는데 혹시 beats가 null일 때 처리
 			System.out.println("beats값이 null임");
 		}
 	}

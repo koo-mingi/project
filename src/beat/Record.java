@@ -214,7 +214,7 @@ public class Record extends JPanel {
 		add(lblNewLabel_3_3_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setIcon(new ImageIcon(Record.class.getResource("/images/mainBackground.png")));
+		lblNewLabel_4.setIcon(new ImageIcon(Record.class.getResource("/images/particles.gif")));
 		lblNewLabel_4.setBounds(0, 0, 800, 600);
 		add(lblNewLabel_4);
 
