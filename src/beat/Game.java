@@ -39,7 +39,7 @@ public class Game extends Thread {
 	private int maxCombo = 0;
 	private int perfect = 0;
 	private int great = 0;
-	private int nomal = 0;
+	private int normal = 0;
 	private int bad = 0;
 	private int miss = 0;
 	private String grade = "D";
@@ -62,7 +62,7 @@ public class Game extends Thread {
 
 	private final int PERFECT = 50;
 	private final int GREAT = 40;
-	private final int NOMAL = 30;
+	private final int NORMAL = 30;
 	private final int BAD = 11;
 
 	private List<Note> noteList = new ArrayList<Note>();
@@ -153,7 +153,7 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(great, 1), 620, 200);
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
-		g.drawString(intCasting(nomal, 1), 620, 220);
+		g.drawString(intCasting(normal, 1), 620, 220);
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(bad, 1), 620, 240);
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
@@ -269,7 +269,7 @@ public class Game extends Thread {
 	}
 	// 현재 순간의 기록을 객체에 저장
 	public void setSongRecodeVO() {
-		songRecode = new SongRecodeVO(titleName, difficulty, score, perfect, great, nomal, bad, miss, maxCombo, grade);
+		songRecode = new SongRecodeVO(titleName, difficulty, score, perfect, great, normal, bad, miss, maxCombo, grade);
 		System.out.println(songRecode);
 	}
 	
@@ -279,7 +279,7 @@ public class Game extends Thread {
 		return songRecode;
 	}
 	public String setGrade() {
-		int totalnote = perfect + great + nomal + bad + miss;
+		int totalnote = perfect + great + normal + bad + miss;
 		int maxScore = totalnote * PERFECT;
 		if(score != 0) {
 			if(score >= (maxScore*0.9)) {
@@ -308,7 +308,7 @@ public class Game extends Thread {
 			Main.MYRECODE.get(index).setGrade(grade);
 			Main.MYRECODE.get(index).setCombo(maxCombo);
 			Main.MYRECODE.get(index).setAcBad(bad);
-			Main.MYRECODE.get(index).setAcGood(nomal);
+			Main.MYRECODE.get(index).setAcGood(normal);
 			Main.MYRECODE.get(index).setAcGreat(great);
 			Main.MYRECODE.get(index).setAcPerfect(perfect);
 			Main.MYRECODE.get(index).setAcMiss(miss);
@@ -398,9 +398,9 @@ public class Game extends Thread {
 		} else if (judge_Score == GREAT) {
 			judgeString = "Great";
 			great++;
-		} else if (judge_Score == NOMAL) {
-			judgeString = "Nomal";
-			nomal++;
+		} else if (judge_Score == NORMAL) {
+			judgeString = "Normal";
+			normal++;
 		} else if (judge_Score == BAD) {
 			judgeString = "Bad";
 			bad++;
