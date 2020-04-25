@@ -182,7 +182,7 @@ public class GamePlay extends JPanel{
 			
 			if(game.musicFinish()) {
 				if(gameFinish == null) { 
-					System.out.println("스레드 생성");
+					System.out.println("음악 종료 및 게임 종료 스레드 생성");
 					gameFinish = new GameFinishThread();
 					gameFinish.start();
 				}

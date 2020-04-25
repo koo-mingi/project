@@ -32,8 +32,8 @@ public class Game extends Thread {
 	private String difficulty;
 	private String musicTitle; // 이름 실행 이름
 	private int score = 0;
-	private int scoreLength;
 	public static int combo = 0;
+	private String judgeString = "";
 
 	private MusicBeat musicBeat = new MusicBeat();
 	private Music gameMusic;
@@ -44,7 +44,7 @@ public class Game extends Thread {
 	
 	private final int PERFECT = 50;
 	private final int GREAT = 40;
-	private final int GOOD = 30;
+	private final int NOMAL = 30;
 	private final int BAD = 11;
 
 	
@@ -111,17 +111,26 @@ public class Game extends Thread {
 		g.drawString("J", 294, 435);
 		g.drawString("K", 357, 435);
 		g.drawString("L", 420, 435);
-		g.setColor(Color.LIGHT_GRAY);
-
+		
+		g.setColor(Color.WHITE);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
-		g.drawString(intCasting(score), 360, 550);
+		g.drawString(intCasting(score,0), 360, 550);
 
-		g.setColor(Color.LIGHT_GRAY);
+		g.setColor(Color.CYAN);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
-		g.drawString(intCasting(combo), 360, 400);
+		g.drawString(intCasting(combo,1), 230, 200);
+		
+		g.setColor(Color.CYAN);
+		g.setFont(new Font("Elephant", Font.BOLD, 24));
+		g.drawString(judgeString, 230, 380);
 
 		for (int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
+					
+			if(note.noteMiss(note.position())) {
+				judgeString = "miss";
+			}
+			
 			if (!note.isProceeded()) {
 				noteList.remove(i);
 				i--;
@@ -214,39 +223,76 @@ public class Game extends Thread {
 
 			if (input.equals(note.getNoteType())) {
 
+				judgeString(note.judge());
 				score += note.judge();
-				scoreLength = (int) (Math.log10(score) + 1);
-//				combo += 1;
 				break;
 			}
 		}
 	}
 
 	// score 점수 앞에 0 붙이기 : 002124,000123
-	public String intCasting(int score) {
+	public String intCasting(int score, int type) {
+		
+		int scoreLength  = (int) (Math.log10(score) + 1);
 		String result = "000000";
-		if (scoreLength == 1) {
-			result = "00000" + String.valueOf(score);
+		if(type == 0) { // 점수
+				
+						
+			if (scoreLength == 1) {
+				result = "00000" + String.valueOf(score);
+			}
+			if (scoreLength == 2) {
+				result = "0000" + String.valueOf(score);
+			}
+			if (scoreLength == 3) {
+				result = "000" + String.valueOf(score);
+			}
+			if (scoreLength == 4) {
+				result = "00" + String.valueOf(score);
+			}
+			if (scoreLength == 5) {
+				result = "0" + String.valueOf(score);
+			}
+			if (scoreLength == 6) {
+				result = "" + String.valueOf(score);
+			}
 		}
-		if (scoreLength == 2) {
-			result = "0000" + String.valueOf(score);
+		else if(type == 1) { // 콤보
+			result = "0000";
+			
+			if (scoreLength == 1) {
+				result = "000" + String.valueOf(score);
+			}
+			if (scoreLength == 2) {
+				result = "00" + String.valueOf(score);
+			}
+			if (scoreLength == 3) {
+				result = "0" + String.valueOf(score);
+			}
+			if (scoreLength == 4) {
+				result = "" + String.valueOf(score);
+			}
+			
 		}
-		if (scoreLength == 3) {
-			result = "000" + String.valueOf(score);
-		}
-		if (scoreLength == 4) {
-			result = "00" + String.valueOf(score);
-		}
-		if (scoreLength == 5) {
-			result = "0" + String.valueOf(score);
-		}
-		if (scoreLength == 6) {
-			result = "" + String.valueOf(score);
-		}
-
 		return result;
 	}
 
+	public void judgeString(int judge) {
+		if(judge == PERFECT) {
+			judgeString ="Perfect";
+		}else if(judge == GREAT) {
+			judgeString ="Great";
+		}else if(judge == NOMAL) {
+			judgeString ="Nomal";
+		}else if(judge == BAD) {
+			judgeString ="Bad";
+		}else {
+			judgeString ="";
+		}
+		
+		
+	}
+	
 	public void dropNotes() {
 		BeatPlay[] beats = null;
 		// difficult 변수 선언하고 이걸 &&로 해서 easy hard 구분

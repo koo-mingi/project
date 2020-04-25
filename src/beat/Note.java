@@ -131,7 +131,19 @@ public class Note extends Thread{
 		}
 		return score;
 	}
+	public int position() {
+		
+		return y;
+	}
 	
+	public boolean noteMiss(int position) {
+		
+		if(position > Game.GAME_INFO_Y - (noteHeight /2)) 
+		{
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public void run() {
 		try {
