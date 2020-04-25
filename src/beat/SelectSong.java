@@ -242,7 +242,7 @@ public class SelectSong extends JPanel {
 			setVisible(false);
 			Game.game_State = true;
 			Game.COMBO = 0;
-			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle);
+			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle,trackNo);
 
 			
 			contentPane.add(gameplay,BorderLayout.CENTER);
