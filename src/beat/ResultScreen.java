@@ -28,6 +28,12 @@ public class ResultScreen extends JPanel{
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setLayout(null);
+
+		
+		btnSelectSong = new JButton("곡 선택으로 이동");
+		btnSelectSong.setFont(new Font("굴림", Font.BOLD, 15));
+		btnSelectSong.setBounds(40, 33, 149, 23);
+
 			
 		
 		
@@ -62,8 +68,10 @@ public class ResultScreen extends JPanel{
 
 		});
 		setLayout(null);
+
 		add(btnSelectSong);
 		
+
 		JLabel lblNewLabel = new JLabel("800000");
 		lblNewLabel.setForeground(new Color(0, 204, 255));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -160,6 +168,7 @@ public class ResultScreen extends JPanel{
 		lblNewLabel_1.setBounds(0, 0, 800, 600);
 		add(lblNewLabel_1);
 		
+
 		//노래 선택창으로 이동
 		btnSelectSong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
