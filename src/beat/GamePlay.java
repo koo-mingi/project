@@ -44,9 +44,6 @@ public class GamePlay extends JPanel{
 	private beat.KeyListener keyListener = new beat.KeyListener();
 
 
-
-	private Music gameMusic;
-
 	public static Game game;
 	private GameFinishThread gameFinish;
 	
@@ -62,12 +59,8 @@ public class GamePlay extends JPanel{
 		setLayout(null);
 
 		game= new Game(titleName,difficulty,musicTitle);
-			
+				
 
-	
-//		gameMusic = new Music(musicName, true);
-//		System.out.println(musicName + "gamePlay");
-//		game = new Game(gameMusic, musicName);
 		game.start();
 
 	
