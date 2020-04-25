@@ -223,8 +223,9 @@ public class Game extends Thread {
 
 			if (input.equals(note.getNoteType())) {
 
-				judgeString(note.judge());
-				score += note.judge();
+				int judge_Score = note.judge();
+				judgeString(judge_Score);
+				score += judge_Score;
 				break;
 			}
 		}
@@ -277,14 +278,14 @@ public class Game extends Thread {
 		return result;
 	}
 
-	public void judgeString(int judge) {
-		if(judge == PERFECT) {
+	public void judgeString(int judge_Score) {
+		if(judge_Score == PERFECT) {
 			judgeString ="Perfect";
-		}else if(judge == GREAT) {
+		}else if(judge_Score == GREAT) {
 			judgeString ="Great";
-		}else if(judge == NOMAL) {
+		}else if(judge_Score == NOMAL) {
 			judgeString ="Nomal";
-		}else if(judge == BAD) {
+		}else if(judge_Score == BAD) {
 			judgeString ="Bad";
 		}else {
 			judgeString ="";
