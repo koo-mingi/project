@@ -30,7 +30,6 @@ public class GamePlay extends JPanel{
 	
 	private JButton btnGameStop,btnGameResult;
 	
-	private PauseScreen pauseScreen;
 	private Lobby lobby;
 	private ResultScreen resultScreen;
 	
@@ -38,36 +37,28 @@ public class GamePlay extends JPanel{
 	private Image screenImage;
 	private Graphics screenGraphic;
 
-	private Image background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
+	private Image background = new ImageIcon(Main.class.getResource("../images/bluewave.gif")).getImage();
 	private boolean isGameScreen = true;
 	
 	private beat.KeyListener keyListener = new beat.KeyListener();
 
-
-
-	private Music gameMusic;
 
 	public static Game game;
 	private GameFinishThread gameFinish;
 	
 
 	
-	public GamePlay(JPanel contentPane,String titleName, String difficulty, String musicTitle) {
+	public GamePlay(JPanel contentPane,String titleName, String difficulty, String musicTitle,int trackNo) {
 		
 		this.contentPane = contentPane;
-
-		
+				
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 
 		setLayout(null);
 
-		game= new Game(titleName,difficulty,musicTitle);
-			
+		game= new Game(titleName,difficulty,musicTitle,trackNo);
+				
 
-	
-//		gameMusic = new Music(musicName, true);
-//		System.out.println(musicName + "gamePlay");
-//		game = new Game(gameMusic, musicName);
 		game.start();
 
 	
@@ -147,7 +138,7 @@ public class GamePlay extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 	
 				setVisible(false);
-				resultScreen = new ResultScreen(contentPane);
+				resultScreen = new ResultScreen(contentPane,game.getSongRecodeVO());
 				contentPane.add(resultScreen,BorderLayout.CENTER);
 				resultScreen.setVisible(true);
 				game.close();
@@ -192,7 +183,7 @@ public class GamePlay extends JPanel{
 						game.close();
 						System.out.println("스레드 종료");
 						setVisible(false);
-						resultScreen = new ResultScreen(contentPane);
+						resultScreen = new ResultScreen(contentPane,game.getSongRecodeVO());
 						contentPane.add(resultScreen,BorderLayout.CENTER);
 						resultScreen.setVisible(true);
 					}

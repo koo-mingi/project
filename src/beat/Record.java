@@ -129,73 +129,73 @@ public class Record extends JPanel {
 		lblNewLabel_3_2_2.setBounds(100, 415, 239, 40);
 		add(lblNewLabel_3_2_2);
 		
-		JLabel lblHappyEasyGrade = new JLabel("A");
+		JLabel lblHappyEasyGrade = new JLabel(Main.MYRECODE.get(0).getGrade());
 		lblHappyEasyGrade.setForeground(new Color(153, 255, 204));
 		lblHappyEasyGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHappyEasyGrade.setBounds(363, 275, 36, 40);
 		add(lblHappyEasyGrade);
 		
-		JLabel lblHappyEasyScore = new JLabel("800000");
+		JLabel lblHappyEasyScore = new JLabel(String.valueOf(Main.MYRECODE.get(0).getScore()));
 		lblHappyEasyScore.setForeground(new Color(255, 255, 153));
 		lblHappyEasyScore.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHappyEasyScore.setBounds(408, 275, 119, 40);
 		add(lblHappyEasyScore);
 		
-		JLabel lblChillingEasyGrade = new JLabel("A");
+		JLabel lblChillingEasyGrade = new JLabel(Main.MYRECODE.get(2).getGrade());
 		lblChillingEasyGrade.setForeground(new Color(153, 255, 204));
 		lblChillingEasyGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblChillingEasyGrade.setBounds(363, 345, 36, 40);
 		add(lblChillingEasyGrade);
 		
-		JLabel lblHarmonyEasyGrade = new JLabel("A");
+		JLabel lblHarmonyEasyGrade = new JLabel(Main.MYRECODE.get(4).getGrade());
 		lblHarmonyEasyGrade.setForeground(new Color(153, 255, 204));
 		lblHarmonyEasyGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHarmonyEasyGrade.setBounds(363, 415, 36, 40);
 		add(lblHarmonyEasyGrade);
 		
-		JLabel lblChillingEasyScore = new JLabel("800000");
+		JLabel lblChillingEasyScore = new JLabel(String.valueOf(Main.MYRECODE.get(2).getScore()));
 		lblChillingEasyScore.setForeground(new Color(255, 255, 153));
 		lblChillingEasyScore.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblChillingEasyScore.setBounds(408, 345, 119, 40);
 		add(lblChillingEasyScore);
 		
-		JLabel lblHarmonyEasyScore = new JLabel("800000");
+		JLabel lblHarmonyEasyScore = new JLabel(String.valueOf(Main.MYRECODE.get(5).getScore()));
 		lblHarmonyEasyScore.setForeground(new Color(255, 255, 153));
 		lblHarmonyEasyScore.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHarmonyEasyScore.setBounds(408, 415, 119, 40);
 		add(lblHarmonyEasyScore);
 		
-		JLabel lblHappyHardGrade = new JLabel("A");
+		JLabel lblHappyHardGrade = new JLabel(Main.MYRECODE.get(1).getGrade());
 		lblHappyHardGrade.setForeground(new Color(153, 255, 204));
 		lblHappyHardGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHappyHardGrade.setBounds(548, 275, 36, 40);
 		add(lblHappyHardGrade);
 		
-		JLabel lblChillingHardGrade = new JLabel("A");
+		JLabel lblChillingHardGrade = new JLabel(Main.MYRECODE.get(3).getGrade());
 		lblChillingHardGrade.setForeground(new Color(153, 255, 204));
 		lblChillingHardGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblChillingHardGrade.setBounds(548, 345, 36, 40);
 		add(lblChillingHardGrade);
 		
-		JLabel lblHarmonyHardGrade = new JLabel("A");
+		JLabel lblHarmonyHardGrade = new JLabel(Main.MYRECODE.get(5).getGrade());
 		lblHarmonyHardGrade.setForeground(new Color(153, 255, 204));
 		lblHarmonyHardGrade.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHarmonyHardGrade.setBounds(548, 415, 36, 40);
 		add(lblHarmonyHardGrade);
 		
-		JLabel lblHappyHardScore = new JLabel("800000");
+		JLabel lblHappyHardScore = new JLabel(String.valueOf(Main.MYRECODE.get(1).getScore()));
 		lblHappyHardScore.setForeground(new Color(255, 255, 153));
 		lblHappyHardScore.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHappyHardScore.setBounds(585, 275, 119, 40);
 		add(lblHappyHardScore);
 		
-		JLabel lblChillingHardScore = new JLabel("800000");
+		JLabel lblChillingHardScore = new JLabel(String.valueOf(Main.MYRECODE.get(3).getScore()));
 		lblChillingHardScore.setForeground(new Color(255, 255, 153));
 		lblChillingHardScore.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblChillingHardScore.setBounds(585, 345, 119, 40);
 		add(lblChillingHardScore);
 		
-		JLabel lblHarmonyHardScore = new JLabel("800000");
+		JLabel lblHarmonyHardScore = new JLabel(String.valueOf(Main.MYRECODE.get(5).getScore()));
 		lblHarmonyHardScore.setForeground(new Color(255, 255, 153));
 		lblHarmonyHardScore.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHarmonyHardScore.setBounds(585, 415, 119, 40);
@@ -214,7 +214,7 @@ public class Record extends JPanel {
 		add(lblNewLabel_3_3_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setIcon(new ImageIcon(Record.class.getResource("/images/mainBackground.png")));
+		lblNewLabel_4.setIcon(new ImageIcon(Record.class.getResource("/images/particles.gif")));
 		lblNewLabel_4.setBounds(0, 0, 800, 600);
 		add(lblNewLabel_4);
 
@@ -230,6 +230,7 @@ public class Record extends JPanel {
 
 			}
 		});
+		
 
 	}
 }

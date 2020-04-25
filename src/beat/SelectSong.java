@@ -28,7 +28,6 @@ public class SelectSong extends JPanel {
 	
 	private Image screenImage;
 	private Graphics screenGraphic;
-	private Image selectedImage = new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
 	private Image background = new ImageIcon(Main.class.getResource("../images/electric_guitar.jpg")).getImage();
 	
 	private boolean isMainScreen = true;
@@ -44,11 +43,13 @@ public class SelectSong extends JPanel {
 	private Music selectedMusic;
 	private int trackNo = 0;
 	
-	private String titleName = "Spring";  // 선택된 곡의 이름
+	private String titleName; // = "Spring";  // 선택된 곡의 이름
 	private String difficulty = "Easy"; // 선택된 곡의 난이도
 	private String musicTitle; // 선택된 곡 파일이름
-
+	private Image selectedImage; //= new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
 	
+
+	private int easy_hard_select = 0; //어떤 버튼이 선택 됐는지 확인하는 것 - 0이면 선택 X, 1이면 easy, 2면 hard
 	/**
 	 * Create the panel.
 	 */
@@ -59,10 +60,10 @@ public class SelectSong extends JPanel {
 
 		
 	
-		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악
-		trackList.add(new Track(null, "Happy Life start image.jpg", null, "Fredji_Happy Life_Selected.mp3", "Fredji_Happy Life_Play.mp3","Happy Life - Fredji"));
-		trackList.add(new Track(null, "Chilling start image.jpg", null, "Oshova_Chilling.mp3", "Oshova_Chilling.mp3","Chilling - Oshova"));
-		trackList.add(new Track(null, "Harmony start image.jpg", null, "Ikson_Harmony_Selected.mp3", "Ikson_Harmony_Play.mp3","Harmony - Ikson"));
+		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악, 해당곡 이름
+		trackList.add(new Track(null, "Happy Life start image.jpg", "Aurora.gif", "Fredji_Happy Life_Selected.mp3", "Fredji_Happy Life_Play.mp3","Happy Life - Fredji"));
+		trackList.add(new Track(null, "Chilling start image.jpg", "Wolf.gif", "Oshova_Chilling.mp3", "Oshova_Chilling.mp3","Chilling - Oshova"));
+		trackList.add(new Track(null, "Harmony start image.jpg", "particles.gif", "Ikson_Harmony_Selected.mp3", "Ikson_Harmony_Play.mp3","Harmony - Ikson"));
 		
 		selectTrack(0);
 
@@ -109,14 +110,10 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
-
-				
-
 //				selectedMusic.close();
 
 			}
-				
-				
+			
 		});
 		add(btnStart);
 		
@@ -133,7 +130,7 @@ public class SelectSong extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 								
 				btnLeft.setForeground(Color.YELLOW);
-				btnLeft.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				btnLeft.setCursor(new Cursor(Cursor.HAND_CURSOR)); // 버튼위에 마우스 올려놓으면 손 모양으로 커서 모양 변함
 			}
 			public void mouseExited(MouseEvent e) {
 		       
@@ -245,7 +242,7 @@ public class SelectSong extends JPanel {
 			setVisible(false);
 			Game.game_State = true;
 			Game.COMBO = 0;
-			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle);
+			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle,trackNo);
 
 			
 			contentPane.add(gameplay,BorderLayout.CENTER);
@@ -280,6 +277,7 @@ public class SelectSong extends JPanel {
 	
 	// 난이도 이지 선택
 		btnEasy.addMouseListener(new MouseAdapter() {
+			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 								
@@ -287,13 +285,17 @@ public class SelectSong extends JPanel {
 				btnEasy.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			public void mouseExited(MouseEvent e) {
-		       
+		       if(easy_hard_select == 0 || easy_hard_select == 2) {
 				btnEasy.setForeground(new Color(255, 255, 240));
 				btnEasy.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		       }
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				easy_hard_select = 1; //easy 선택시
 				difficulty = "Easy";
+				btnEasy.setForeground(Color.YELLOW);
+				btnHard.setForeground(new Color(255, 255, 240));
 			}
 		
 		});
@@ -307,13 +309,17 @@ public class SelectSong extends JPanel {
 				btnHard.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			public void mouseExited(MouseEvent e) {
-		       
+		       if(easy_hard_select == 0 || easy_hard_select == 1) {
 				btnHard.setForeground(new Color(255, 255, 240));
 				btnHard.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		       }
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				easy_hard_select = 2;
 				difficulty = "Hard";
+				btnHard.setForeground(Color.YELLOW);
+				btnEasy.setForeground(new Color(255, 255, 240));
 			}
 		
 		});

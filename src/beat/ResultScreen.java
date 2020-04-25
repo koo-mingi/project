@@ -18,7 +18,7 @@ public class ResultScreen extends JPanel{
 	
 	SelectSong  selectSong;  
 	
-	public ResultScreen(JPanel contentPane) {
+	public ResultScreen(JPanel contentPane,SongRecodeVO vo) {
 		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setLayout(null);

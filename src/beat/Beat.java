@@ -166,8 +166,8 @@ public class Beat extends JPanel{
 			        	contentPane.add(lobby,BorderLayout.CENTER);
 			        	introMusic.close();
 			        	lobby.setVisible(true);
-//			        	lobby.setFocusable(true);
-			        	
+		        	
+			        	// DB 정보 받아서 기록 초기화
 //			             로그인 참 거짓 여부를 판단
 //			            boolean existLogin = LoginService.loginTest(id, password);
 			        	
