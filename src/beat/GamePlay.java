@@ -123,12 +123,12 @@ public class GamePlay extends JPanel{
 		btnGameStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
+				game.close();
 				setVisible(false);
 				lobby = new Lobby(contentPane);
 				contentPane.add(lobby,BorderLayout.CENTER);
 				lobby.setVisible(true);
-				game.close();
+				
 
 			}
 		});
@@ -136,12 +136,12 @@ public class GamePlay extends JPanel{
 		// 결과화면으로 이동
 		btnGameResult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-	
+				game.close();
 				setVisible(false);
 				resultScreen = new ResultScreen(contentPane,game.getSongRecodeVO());
 				contentPane.add(resultScreen,BorderLayout.CENTER);
 				resultScreen.setVisible(true);
-				game.close();
+				
 		
 			}
 		});

@@ -37,7 +37,7 @@ public class ResultScreen extends JPanel{
 			
 		
 		
-		JLabel lblGrade = new JLabel("A");
+		JLabel lblGrade = new JLabel(vo.getGrade());
 		lblGrade.setForeground(new Color(0, 255, 255));
 		lblGrade.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrade.setFont(new Font("Jokerman", Font.BOLD, 99));
@@ -72,12 +72,12 @@ public class ResultScreen extends JPanel{
 		add(btnSelectSong);
 		
 
-		JLabel lblNewLabel = new JLabel("800000");
-		lblNewLabel.setForeground(new Color(0, 204, 255));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Jokerman", Font.BOLD, 40));
-		lblNewLabel.setBounds(115, 360, 200, 60);
-		add(lblNewLabel);
+		JLabel lblScore = new JLabel(String.valueOf(vo.getScore()));
+		lblScore.setForeground(new Color(0, 204, 255));
+		lblScore.setHorizontalAlignment(SwingConstants.CENTER);
+		lblScore.setFont(new Font("Jokerman", Font.BOLD, 40));
+		lblScore.setBounds(115, 360, 200, 60);
+		add(lblScore);
 		
 		JLabel lblPerfect = new JLabel("Perfect");
 		lblPerfect.setForeground(new Color(0, 51, 255));
@@ -86,19 +86,19 @@ public class ResultScreen extends JPanel{
 		lblPerfect.setBounds(350, 200, 160, 40);
 		add(lblPerfect);
 		
-		JLabel lblHappyLife = new JLabel("Happy Life");
-		lblHappyLife.setForeground(new Color(255, 255, 51));
-		lblHappyLife.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHappyLife.setFont(new Font("Jokerman", Font.BOLD, 40));
-		lblHappyLife.setBounds(220, 100, 300, 60);
-		add(lblHappyLife);
+		JLabel lbltitleName = new JLabel(vo.getTitleName());
+		lbltitleName.setForeground(new Color(255, 255, 51));
+		lbltitleName.setHorizontalAlignment(SwingConstants.CENTER);
+		lbltitleName.setFont(new Font("Jokerman", Font.BOLD, 40));
+		lbltitleName.setBounds(220, 100, 300, 60);
+		add(lbltitleName);
 		
-		JLabel lblHard = new JLabel("HARD");
-		lblHard.setForeground(new Color(255, 255, 51));
-		lblHard.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHard.setFont(new Font("Jokerman", Font.BOLD, 40));
-		lblHard.setBounds(500, 100, 160, 60);
-		add(lblHard);
+		JLabel lblDifficulty = new JLabel(vo.getDifficulty());
+		lblDifficulty.setForeground(new Color(255, 255, 51));
+		lblDifficulty.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDifficulty.setFont(new Font("Jokerman", Font.BOLD, 40));
+		lblDifficulty.setBounds(500, 100, 160, 60);
+		add(lblDifficulty);
 		
 		JLabel lblGreat = new JLabel("Great");
 		lblGreat.setForeground(new Color(51, 153, 204));
@@ -107,12 +107,12 @@ public class ResultScreen extends JPanel{
 		lblGreat.setBounds(350, 250, 160, 40);
 		add(lblGreat);
 		
-		JLabel lblGood = new JLabel("Normal");
-		lblGood.setForeground(new Color(51, 255, 153));
-		lblGood.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGood.setFont(new Font("Jokerman", Font.BOLD, 30));
-		lblGood.setBounds(350, 300, 160, 40);
-		add(lblGood);
+		JLabel lblNormal = new JLabel("Normal");
+		lblNormal.setForeground(new Color(51, 255, 153));
+		lblNormal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNormal.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblNormal.setBounds(350, 300, 160, 40);
+		add(lblNormal);
 		
 		JLabel lblBad = new JLabel("Bad");
 		lblBad.setForeground(new Color(255, 204, 0));
@@ -128,40 +128,40 @@ public class ResultScreen extends JPanel{
 		lblMiss.setBounds(350, 400, 160, 40);
 		add(lblMiss);
 		
-		JLabel lblPerfect_5 = new JLabel("0000");
-		lblPerfect_5.setForeground(new Color(0, 51, 255));
-		lblPerfect_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPerfect_5.setFont(new Font("Jokerman", Font.BOLD, 30));
-		lblPerfect_5.setBounds(540, 200, 160, 40);
-		add(lblPerfect_5);
+		JLabel lblPerfectScore = new JLabel(String.valueOf(vo.getAcPerfect()));
+		lblPerfectScore.setForeground(new Color(0, 51, 255));
+		lblPerfectScore.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPerfectScore.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblPerfectScore.setBounds(540, 200, 160, 40);
+		add(lblPerfectScore);
 		
-		JLabel lblPerfect_6 = new JLabel("0000");
-		lblPerfect_6.setForeground(new Color(51, 153, 204));
-		lblPerfect_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPerfect_6.setFont(new Font("Jokerman", Font.BOLD, 30));
-		lblPerfect_6.setBounds(540, 250, 160, 40);
-		add(lblPerfect_6);
+		JLabel lblGreateScore = new JLabel(String.valueOf(vo.getAcGreat()));
+		lblGreateScore.setForeground(new Color(51, 153, 204));
+		lblGreateScore.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGreateScore.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblGreateScore.setBounds(540, 250, 160, 40);
+		add(lblGreateScore);
 		
-		JLabel lblPerfect_7 = new JLabel("0000");
-		lblPerfect_7.setForeground(new Color(51, 255, 153));
-		lblPerfect_7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPerfect_7.setFont(new Font("Jokerman", Font.BOLD, 30));
-		lblPerfect_7.setBounds(540, 300, 160, 40);
-		add(lblPerfect_7);
+		JLabel lblNormalScore = new JLabel(String.valueOf(vo.getacNormal()));
+		lblNormalScore.setForeground(new Color(51, 255, 153));
+		lblNormalScore.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNormalScore.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblNormalScore.setBounds(540, 300, 160, 40);
+		add(lblNormalScore);
 		
-		JLabel lblPerfect_8 = new JLabel("0000");
-		lblPerfect_8.setForeground(new Color(255, 204, 0));
-		lblPerfect_8.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPerfect_8.setFont(new Font("Jokerman", Font.BOLD, 30));
-		lblPerfect_8.setBounds(540, 350, 160, 40);
-		add(lblPerfect_8);
+		JLabel lblBadScore = new JLabel(String.valueOf(vo.getAcBad()));
+		lblBadScore.setForeground(new Color(255, 204, 0));
+		lblBadScore.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBadScore.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblBadScore.setBounds(540, 350, 160, 40);
+		add(lblBadScore);
 		
-		JLabel lblPerfect_9 = new JLabel("0000");
-		lblPerfect_9.setForeground(new Color(255, 204, 204));
-		lblPerfect_9.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPerfect_9.setFont(new Font("Jokerman", Font.BOLD, 30));
-		lblPerfect_9.setBounds(540, 400, 160, 40);
-		add(lblPerfect_9);
+		JLabel lblMisScore = new JLabel(String.valueOf(vo.getAcMiss()));
+		lblMisScore.setForeground(new Color(255, 204, 204));
+		lblMisScore.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMisScore.setFont(new Font("Jokerman", Font.BOLD, 30));
+		lblMisScore.setBounds(540, 400, 160, 40);
+		add(lblMisScore);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(ResultScreen.class.getResource("/images/ezgif.com-resize (7).gif")));
