@@ -104,8 +104,6 @@ public class Ranking extends JPanel {
 		songList = new JComboBox<String>(model);
 		songList.setSelectedIndex(0);
 		songList.setBounds(403, 121, 193, 21);
-//		SongList.setBorder(null);
-//		SongList.setOpaque(false);
 		add(songList);
 //		SongList.getSelectedIndex(); 콤보박스에서 선택된  인덱스 가져오기.
 		
