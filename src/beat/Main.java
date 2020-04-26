@@ -71,9 +71,10 @@ public class Main {
 			client.start();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("서버연결에 실패했습니다. 연결없이 실행합니다.");
 		}finally {
-			client.interrupt();
+			//client.interrupt();
 		}
 		
 		 new MainFrame();
