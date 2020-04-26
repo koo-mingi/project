@@ -166,7 +166,7 @@ public class Beat extends JPanel{
 			            // 메시지를 날린다.
 			            JOptionPane.showMessageDialog(null, "빈칸이 있네요");
 			        } else {
-			        	Main.client.login(vo);
+//			        	Main.client.login(vo);
 			        	setVisible(false);
 			        	contentPane.add(lobby,BorderLayout.CENTER);
 			        	introMusic.close();
