@@ -24,6 +24,7 @@ public class Main {
 	public static ArrayList<RecodeVO> MYRECODE= new ArrayList<RecodeVO>(); // 개인 기록 저장
 	public static File file;
 	public static ClientThread client;
+	public static boolean serverConnection = false;
 	public static void main(String[] args) {
 		 
 		MYRECODE.add(new RecodeVO(0, 1, "", 0, 0, 0, 0, 0, 0, 0, "")); //1번 노래 easy
@@ -67,6 +68,7 @@ public class Main {
 			System.out.println("서버에 접속 요청 중...");
 			Socket socket = new Socket(ServerIp, 7777);
 			System.out.println("서버 접속..");
+			serverConnection = true;
 			client = new ClientThread(socket);
 			client.start();
 			
