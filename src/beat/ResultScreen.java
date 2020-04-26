@@ -90,14 +90,14 @@ public class ResultScreen extends JPanel{
 		lbltitleName.setForeground(new Color(255, 255, 51));
 		lbltitleName.setHorizontalAlignment(SwingConstants.CENTER);
 		lbltitleName.setFont(new Font("Jokerman", Font.BOLD, 40));
-		lbltitleName.setBounds(220, 100, 300, 60);
+		lbltitleName.setBounds(50, 100, 450, 60);
 		add(lbltitleName);
 		
 		JLabel lblDifficulty = new JLabel(vo.getDifficulty());
 		lblDifficulty.setForeground(new Color(255, 255, 51));
 		lblDifficulty.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDifficulty.setFont(new Font("Jokerman", Font.BOLD, 40));
-		lblDifficulty.setBounds(500, 100, 160, 60);
+		lblDifficulty.setBounds(500, 100, 200, 60);
 		add(lblDifficulty);
 		
 		JLabel lblGreat = new JLabel("Great");
