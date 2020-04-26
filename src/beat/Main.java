@@ -11,6 +11,8 @@ import java.net.Socket;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import domain.RecodeVO;
 import network.ClientThread;
 
@@ -75,6 +77,7 @@ public class Main {
 		} catch (IOException e) {
 			//e.printStackTrace();
 			System.out.println("서버연결에 실패했습니다. 연결없이 실행합니다.");
+			JOptionPane.showMessageDialog(null, "서버 연결에 실패했습니다. 연결없이 실행합니다");
 		}finally {
 			//client.interrupt();
 		}
