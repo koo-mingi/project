@@ -49,10 +49,11 @@ public class SelectSong extends JPanel {
 	private String difficulty = "Easy"; // 선택된 곡의 난이도
 	private String musicTitle; // 선택된 곡 파일이름
 	private Image selectedImage; //= new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
-	private int index=0; // 저장된 곡의 Index. easy =
+	private int index=0; // 저장된 곡의 Index. easy = track *2, hard = track *2 +1
+	private JLabel lblMyBestScore,lblMyBestGrade,lblMyMaxCombo;
 	
 
-	private int easy_hard_select = 0; //어떤 버튼이 선택 됐는지 확인하는 것 - 0이면 선택 X, 1이면 easy, 2면 hard
+	private int easy_hard_select = 1; //어떤 버튼이 선택 됐는지 확인하는 것 - 0이면 선택 X, 1이면 easy, 2면 hard
 	/**
 	 * Create the panel.
 	 */
@@ -73,7 +74,7 @@ public class SelectSong extends JPanel {
 			
 		
 		btnEasy = new JButton("Easy");
-		btnEasy.setForeground(new Color(255, 255, 240));
+		btnEasy.setForeground(Color.YELLOW);
 		btnEasy.setFont(new Font("Jokerman", Font.BOLD, 40));
 		btnEasy.setContentAreaFilled(false);
 		btnEasy.setFocusPainted(false);
@@ -145,19 +146,19 @@ public class SelectSong extends JPanel {
 		add(btnLeft);
 
 		
-		JLabel lblMyBestScore = new JLabel();
+		lblMyBestScore = new JLabel(String.valueOf(Main.MYRECODE.get(index).getScore()));
 		lblMyBestScore.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblMyBestScore.setForeground(Color.WHITE);
 		lblMyBestScore.setBounds(100, 500, 108, 35);
 		add(lblMyBestScore);
 		
-		JLabel lblMyBestGrade = new JLabel("MyBestGrade");
+		lblMyBestGrade = new JLabel(Main.MYRECODE.get(index).getGrade());
 		lblMyBestGrade.setForeground(Color.WHITE);
 		lblMyBestGrade.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblMyBestGrade.setBounds(243, 500, 108, 35);
 		add(lblMyBestGrade);
 		
-		JLabel lblMyMaxCombo = new JLabel("MyMaxCombo");
+		lblMyMaxCombo = new JLabel(String.valueOf(Main.MYRECODE.get(index).getCombo()));
 		lblMyMaxCombo.setBackground(new Color(255, 255, 240));
 		lblMyMaxCombo.setForeground(Color.WHITE);
 		lblMyMaxCombo.setFont(new Font("Jokerman", Font.BOLD, 24));
@@ -263,6 +264,7 @@ public class SelectSong extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			selectLeft();
 			// 곡에 해당하는 내 기록 가져와서 화면에 출력
+			setRecode();
 			
 		}
 	});
@@ -274,6 +276,7 @@ public class SelectSong extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				selectRight();
 				// 곡에 해당하는 내 기록 가져와서 화면에 출력
+				setRecode();
 				
 			}
 		});
@@ -299,6 +302,7 @@ public class SelectSong extends JPanel {
 				difficulty = "Easy";
 				btnEasy.setForeground(Color.YELLOW);
 				btnHard.setForeground(new Color(255, 255, 240));
+				setRecode();
 			}
 		
 		});
@@ -323,6 +327,7 @@ public class SelectSong extends JPanel {
 				difficulty = "Hard";
 				btnHard.setForeground(Color.YELLOW);
 				btnEasy.setForeground(new Color(255, 255, 240));
+				setRecode();
 			}
 		
 		});
@@ -365,7 +370,7 @@ public class SelectSong extends JPanel {
 			titleName = trackList.get(trackNo).getTitleName();
 			musicTitle = trackList.get(trackNo).getGameMusic();
 			selectedMusic.start();
-						
+									
 		}
 		
 		public void selectLeft() {
@@ -384,16 +389,17 @@ public class SelectSong extends JPanel {
 				trackNo++;
 			}
 			selectTrack(trackNo);
-		}
+	}
 		
-		public int setRecode() {
-			int index;
+		public void setRecode() {
 			if(difficulty.equals("Hard")) {
 				index = trackNo*2 + 1;
 			}else {
 				index = trackNo*2;
 			}
-			return index;
+			lblMyBestScore.setText(String.valueOf(Main.MYRECODE.get(index).getScore()));
+			lblMyBestGrade.setText(Main.MYRECODE.get(index).getGrade());
+			lblMyMaxCombo.setText(String.valueOf(Main.MYRECODE.get(index).getCombo()));
 		}
 	
 }
