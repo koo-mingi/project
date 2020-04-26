@@ -7,10 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import domain.RecodeVO;
+import network.ClientThread;
 
 
 public class Main {
@@ -21,6 +23,7 @@ public class Main {
 	public static final int REACH_TIME = 2;
 	public static ArrayList<RecodeVO> MYRECODE= new ArrayList<RecodeVO>(); // 개인 기록 저장
 	public static File file;
+	public static ClientThread client;
 	public static void main(String[] args) {
 		 
 		MYRECODE.add(new RecodeVO(0, 1, "", 0, 0, 0, 0, 0, 0, 0, "")); //1번 노래 easy
@@ -50,15 +53,32 @@ public class Main {
 				
 			}
 
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
 		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
-		 new MainFrame();	
+		}	
+		
+		// 네트워크 연결
+		String ServerIp = "127.0.0.1";
+		try {
+			System.out.println("서버에 접속 요청 중...");
+			Socket socket = new Socket(ServerIp, 7777);
+			System.out.println("서버 접속..");
+			client = new ClientThread(socket);
+			client.start();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			client.interrupt();
+		}
+		
+		 new MainFrame();
+		 
+		
 	}
 	
 	
