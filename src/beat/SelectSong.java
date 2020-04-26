@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import domain.RecodeVO;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
@@ -47,6 +49,7 @@ public class SelectSong extends JPanel {
 	private String difficulty = "Easy"; // 선택된 곡의 난이도
 	private String musicTitle; // 선택된 곡 파일이름
 	private Image selectedImage; //= new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
+	private int index=0; // 저장된 곡의 Index. easy =
 	
 
 	private int easy_hard_select = 0; //어떤 버튼이 선택 됐는지 확인하는 것 - 0이면 선택 X, 1이면 easy, 2면 hard
@@ -142,7 +145,7 @@ public class SelectSong extends JPanel {
 		add(btnLeft);
 
 		
-		JLabel lblMyBestScore = new JLabel("MyBestScore");
+		JLabel lblMyBestScore = new JLabel();
 		lblMyBestScore.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblMyBestScore.setForeground(Color.WHITE);
 		lblMyBestScore.setBounds(100, 500, 108, 35);
@@ -381,6 +384,16 @@ public class SelectSong extends JPanel {
 				trackNo++;
 			}
 			selectTrack(trackNo);
+		}
+		
+		public int setRecode() {
+			int index;
+			if(difficulty.equals("Hard")) {
+				index = trackNo*2 + 1;
+			}else {
+				index = trackNo*2;
+			}
+			return index;
 		}
 	
 }

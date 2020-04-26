@@ -340,9 +340,9 @@ public class Game extends Thread {
 	public void setRecodeVO() {
 		int index;
 		if(difficulty.equals("Hard")) {
-			index = trackNo + 1;
+			index = trackNo*2 + 1;
 		}else {
-			index = trackNo;
+			index = trackNo*2;
 		}
 		if(score > Main.MYRECODE.get(index).getScore()) {
 			Main.MYRECODE.get(index).setScore(score);
