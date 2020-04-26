@@ -92,23 +92,24 @@ public class Note extends Thread {
 	 */
 
 	
-	public String judgeImage() {
-		if (y < Game.JUDGE_BAR_Y + 3 && y > Game.JUDGE_BAR_Y - 12) {
-			close();
-			return "Perfect";
-		}
-	 else if (y < Game.JUDGE_BAR_Y + 10 && y > Game.JUDGE_BAR_Y - 20) {
-		 close();
-		 return "Great";
-	 } else if (y < Game.JUDGE_BAR_Y + 20 && y >= Game.JUDGE_BAR_Y - 28) {
-		 close();
-		 return "Nomal";
-	 } else if (y < Game.JUDGE_BAR_Y + 25 && y >= Game.JUDGE_BAR_Y - 40) {
-		 close();
-		 return "Bad";
-	 }
-		return "None";
-	}
+//	public String judgeImage() {
+//		if (y < Game.JUDGE_BAR_Y + 3 && y > Game.JUDGE_BAR_Y - 12) {
+//			close();
+//			return "Perfect";
+//		}
+//	 else if (y < Game.JUDGE_BAR_Y + 10 && y > Game.JUDGE_BAR_Y - 20) {
+//		 close();
+//		 return "Great";
+//	 } else if (y < Game.JUDGE_BAR_Y + 20 && y >= Game.JUDGE_BAR_Y - 28) {
+//		 close();
+//		 return "Nomal";
+//	 } else if (y < Game.JUDGE_BAR_Y + 25 && y >= Game.JUDGE_BAR_Y - 40) {
+//		 close();
+//		 return "Bad";
+//	 }
+//		return "None";
+//	}
+	
 	public int getY() {
 		return y;
 	}

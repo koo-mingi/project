@@ -166,18 +166,18 @@ public class Game extends Thread {
 		g.drawString("maxcombo", 584, 100);
 		g.setColor(Color.yellow);
 
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(maxCombo,1), 620, 130);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(perfect,1), 620, 180);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(great,1), 620, 200);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(normal,1), 620, 220);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(bad,1), 620, 240);
-		g.setFont(new Font("Elephant", Font.BOLD, 18));
-		g.drawString(intCasting(miss,1), 620, 260);
+//		g.setFont(new Font("Elephant", Font.BOLD, 18));
+//		g.drawString(intCasting(maxCombo,1), 620, 130);
+//		g.setFont(new Font("Elephant", Font.BOLD, 18));
+//		g.drawString(intCasting(perfect,1), 620, 180);
+//		g.setFont(new Font("Elephant", Font.BOLD, 18));
+//		g.drawString(intCasting(great,1), 620, 200);
+//		g.setFont(new Font("Elephant", Font.BOLD, 18));
+//		g.drawString(intCasting(normal,1), 620, 220);
+//		g.setFont(new Font("Elephant", Font.BOLD, 18));
+//		g.drawString(intCasting(bad,1), 620, 240);
+//		g.setFont(new Font("Elephant", Font.BOLD, 18));
+//		g.drawString(intCasting(miss,1), 620, 260);
 		
 		g.drawImage(JudgeImage, 180, 220,null);
 		
@@ -358,7 +358,7 @@ public class Game extends Thread {
 			System.out.println(vo);
 		}
 	}
-	// 기록 저장
+	// 기록을 파일에 저장
 	public void saveRecodeVO() {
 		try(FileOutputStream fos = new FileOutputStream(Main.file.getPath());
 			ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -392,12 +392,11 @@ public class Game extends Thread {
 			Note note = noteList.get(i);
 
 			if (input.equals(note.getNoteType())) {
-				judgeEvent(note.judgeImage()); // 판단 이미지
-				
-
-				int judge_Score = note.judge();
-				judgeString(judge_Score);
-				score += judge_Score;
+				int judgeScore = note.judge();
+				judgeEvent(judgeScore); // 판단 이미지
+								
+				judgeString(judgeScore);
+				score += judgeScore;
 				break;
 			}
 		}
@@ -450,27 +449,24 @@ public class Game extends Thread {
 
 	
 	
-	public void judgeEvent(String judgeImage) {
-		 if(judgeImage.equals("miss")) {
-				JudgeImage = new ImageIcon(Main.class.getResource("../images/Miss.png")).getImage();
-				
-			}
-			else if(judgeImage.equals("Bad")) {
+	public void judgeEvent(int judgeImage) {
+		 
+		    if(judgeImage == BAD) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Bad.png")).getImage();
 				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
 				
 			}
-			else if(judgeImage.equals("Nomal")) {
+			else if(judgeImage == NORMAL) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Normal.png")).getImage();
 				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
 				
 			}
-			else if(judgeImage.equals("Great")) {
+			else if(judgeImage == GREAT) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Great.png")).getImage();
 				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
 				
 			}
-			else if(judgeImage.equals("Perfect")) {
+			else if(judgeImage == PERFECT) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Perfect.png")).getImage();
 				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
 				
@@ -485,8 +481,6 @@ public class Game extends Thread {
 	
 	public void judgeString(int judge_Score) {
 
-		
-
 		if (judge_Score == PERFECT) {
 			judgeString = "";
 			perfect++;
@@ -496,7 +490,7 @@ public class Game extends Thread {
 			great++;
 
 		} else if (judge_Score == NORMAL) {
-			judgeString = "Normal";
+			judgeString = "";
 			normal++;
 
 		} else if (judge_Score == BAD) {
