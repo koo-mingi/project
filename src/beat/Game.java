@@ -26,7 +26,10 @@ public class Game extends Thread {
 	private Image judgementLineImage = new ImageIcon(Main.class.getResource("../images/judgementLine.png")).getImage();
 	
 	private Image JudgeImage;
-	private Image flare;
+	
+	
+	private Image sun = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+	private Image blueFlare = new ImageIcon(Main.class.getResource("../images/blueFlare.png")).getImage();
 	
 	
 //	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
@@ -140,7 +143,11 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.PLAIN, 22));
 		g.setColor(Color.DARK_GRAY);
 		g.drawString("S", 105, 435);
-		g.drawImage(flare, 180, 220,null);
+		
+		
+		g.drawImage(sun, 20, 340,null);
+		g.drawImage(blueFlare, 115, 180, null);
+		
 		
 		g.drawString("D", 168, 435);
 		g.drawString("F", 231, 435);
@@ -220,6 +227,8 @@ public class Game extends Thread {
 	public void pressS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("S");
+		sun = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+
 		gameBeatSoundS = new Music("drumSmall3.mp3", true);
 		gameBeatSoundS.start();
 	}
@@ -263,6 +272,7 @@ public class Game extends Thread {
 	public void releaseS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 		gameBeatSoundS.close();
+		sun = new ImageIcon(Main.class.getResource("")).getImage();
 	}
 
 	public void releaseD() {
@@ -453,25 +463,25 @@ public class Game extends Thread {
 		 
 		    if(judgeImage == BAD) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Bad.png")).getImage();
-				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+			
 				
+			
 			}
 			else if(judgeImage == NORMAL) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Normal.png")).getImage();
-				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
 				
 			}
 			else if(judgeImage == GREAT) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Great.png")).getImage();
-				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
+				
 				
 			}
 			else if(judgeImage == PERFECT) {
 				JudgeImage = new ImageIcon(Main.class.getResource("../images/Perfect.png")).getImage();
-				flare = new ImageIcon(Main.class.getResource("../images/Flare.png")).getImage();
+				
 				
 			}
-			
 			
 			
 			
@@ -482,6 +492,7 @@ public class Game extends Thread {
 	public void judgeString(int judge_Score) {
 
 		if (judge_Score == PERFECT) {
+			
 			judgeString = "";
 			perfect++;
 
