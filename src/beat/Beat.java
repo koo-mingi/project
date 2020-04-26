@@ -166,14 +166,15 @@ public class Beat extends JPanel{
 			            // 메시지를 날린다.
 			            JOptionPane.showMessageDialog(null, "빈칸이 있네요.");
 			        } else {
-
-//			        	Main.client.login(vo);
-			        	setVisible(false);
-			        	contentPane.add(lobby,BorderLayout.CENTER);
-			        	introMusic.close();
-			        	lobby.setVisible(true);
+//			        	
 			        	
-			        	if(Main.serverConnection) Main.client.login(vo);
+			        	if(Main.serverConnection) {
+			        		Main.client.login(vo);
+			        		setVisible(false);
+		        			contentPane.add(lobby,BorderLayout.CENTER);
+		        			introMusic.close();
+		        			lobby.setVisible(true);
+			        	}
 			        	else if(id.equals("admin")){
 			        		JOptionPane.showMessageDialog(null, "관리자로 접속합니다.","접속",JOptionPane.INFORMATION_MESSAGE,null);
 			        		setVisible(false);

@@ -3,6 +3,7 @@ package beat;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -43,14 +44,31 @@ public class Main {
 			e1.printStackTrace();
 		}
 		
+		// 파일이 없으면 파일 생성
+		if(!file.exists() || !file.canRead())
+		{
+			
+			try (FileOutputStream fos= new FileOutputStream(file.getPath());
+				ObjectOutputStream oos = new ObjectOutputStream(fos)){
+				
+				for(int i =0 ; i<MYRECODE.size();i++) {
+					oos.writeObject(MYRECODE.get(i));
+				}
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			
+		}
 		try(
-//			FileOutputStream fos= new FileOutputStream(file.getPath());
-//			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
 			FileInputStream fis = new FileInputStream(file.getPath());
 			ObjectInputStream ois = new ObjectInputStream(fis)){
 						
 			for(int i =0 ; i<MYRECODE.size();i++) {
-//				oos.writeObject(MYRECODE.get(i));
 				MYRECODE.set(i, (RecodeVO) ois.readObject()); //readObject()를 호출하면 그 스트림의 다음 객체를 받아올 수 있다. 
 				System.out.println(MYRECODE.get(i));
 				
