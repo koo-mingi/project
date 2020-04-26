@@ -18,6 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractButton;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
 public class Ranking extends JPanel {
@@ -101,16 +102,22 @@ public class Ranking extends JPanel {
 
 		});
 		add(btnLOBBY);
-
-		JComboBox SongList = new JComboBox();
-		SongList.setBounds(403, 121, 193, 21);
+		
+		String songNames[] = {"Happy Life","Chilling","Harmony"};
+		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(songNames);
+		JComboBox<String> songList = new JComboBox<String>(model);
+		songList.setSelectedIndex(0);
+		songList.setBounds(403, 121, 193, 21);
 //		SongList.setBorder(null);
 //		SongList.setOpaque(false);
-		add(SongList);
-
-		JComboBox Difficulty = new JComboBox();
-		Difficulty.setBounds(608, 121, 118, 21);
-		add(Difficulty);
+		add(songList);
+//		SongList.getSelectedIndex(); 콤보박스에서 선택된  인덱스 가져오기.
+		
+		String songDifficulty[] = {"Easy","Hard"};
+		JComboBox<String> difficultyList = new JComboBox<>(songDifficulty);
+		difficultyList.setSelectedIndex(0);
+		difficultyList.setBounds(608, 121, 118, 21);
+		add(difficultyList);
 
 		lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(new ImageIcon(Ranking.class.getResource("/images/rowLINE.png")));
