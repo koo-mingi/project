@@ -115,13 +115,11 @@ public class Game extends Thread {
 
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
 		g.drawString(intCasting(score), 360, 550);
-<<<<<<< HEAD
+
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Elephant", Font.BOLD, 26));
 		g.drawString(intCasting(combo), 360, 400);
-=======
 
->>>>>>> branch 'master' of https://github.com/koo-mingi/project.git
 		
 		for(int i = 0; i< noteList.size(); i++) {
 			Note note = noteList.get(i);
