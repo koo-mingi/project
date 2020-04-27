@@ -85,7 +85,7 @@ public class UserDAO {
 				vo.setPassword(rs.getString("password"));
 				vo.setName(rs.getString("name"));
 				vo.setEmail(rs.getString("email"));
-			}			
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,7 +94,7 @@ public class UserDAO {
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 	
 
-//	Song DB select
+//	Song DB - select
 	public SongVO getSongTbl(int songId) {
 		
 		String sql	= "select * from SongTBL where songid = ?";
@@ -105,6 +105,33 @@ public class UserDAO {
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 			
 			pstmt.setInt(1, songId);
+			
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				vo=new SongVO();
+				vo.setSongId(rs.getInt("songId"));
+				vo.setSongName(rs.getString("songName"));
+				vo.setDifficulty(rs.getString("difficulty"));
+				vo.setSpeed(rs.getString("speed"));
+			}		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+//	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
+	
+//	Song DB - 노래 제목으로 DB 찾기
+public SongVO getSongFindTbl(String songname) {
+		
+		String sql	= "select * from SongTBL where songname = ?";
+		SongVO vo	= null;
+		
+		try (Connection con = getConnection();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setString(1, songname);
 			
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -152,7 +179,7 @@ public class UserDAO {
 	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 
-//	Recode DB Select
+//	Recode DB Select번역
 	public RecodeVO getRecodeTbl(int userno, int songid) {
 		RecodeVO vo	= null;
 		
@@ -185,6 +212,8 @@ public class UserDAO {
 		}
 		return vo;
 	}
+	
+	// Select All Recode (기록 전체)
 	
 //	where절 들어가는 유저정보
 //	전체리스트 가져오는게 있고
