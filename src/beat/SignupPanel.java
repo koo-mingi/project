@@ -1,8 +1,12 @@
 package beat;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class SignupPanel extends JFrame{
 	private JTextField txtname;
@@ -17,7 +22,7 @@ public class SignupPanel extends JFrame{
 	private JTextField txtpw;
 	private JTextField txtrpw;
 	private JTextField txtmail;
-	
+	private  JLabel lblsingUpTitle;
 	private JButton btncreate,btncancle;
 	
 	public  SignupPanel() {
@@ -32,76 +37,143 @@ public class SignupPanel extends JFrame{
 
         
         
-        JLabel lblNewLabel = new JLabel("회원가입");
-        lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 40));
-        lblNewLabel.setBounds(130, 61, 183, 53);
-        getContentPane().add(lblNewLabel);
+        lblsingUpTitle = new JLabel("Sign Up");
+        lblsingUpTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        lblsingUpTitle.setForeground(Color.WHITE);
+        lblsingUpTitle.setFont(new Font("Jokerman", Font.BOLD, 45));
+        lblsingUpTitle.setBounds(110, 60, 180, 60);
+        getContentPane().add(lblsingUpTitle);
         
         
-        JLabel lblNewLabel_1 = new JLabel("이름");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_1.setBounds(84, 160, 79, 15);
-        getContentPane().add(lblNewLabel_1);
+        JLabel lblName = new JLabel("이름");
+        lblName.setForeground(Color.WHITE);
+        lblName.setFont(new Font("HY목판L", Font.BOLD, 12));
+        lblName.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblName.setBounds(84, 160, 80, 15);
+        getContentPane().add(lblName);
         
         // 이름 입력 - txtname
         txtname = new JTextField();
-        txtname.setBounds(197, 157, 116, 21);
+        txtname.setBounds(200, 160, 116, 21);
+        txtname.setForeground(Color.WHITE);
+        txtname.setOpaque(false);
         getContentPane().add(txtname);
         txtname.setColumns(10);
         
-        JLabel lblNewLabel_2 = new JLabel("아이디");
-        lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_2.setBounds(84, 212, 79, 15);
-        getContentPane().add(lblNewLabel_2);
+        JLabel lblId = new JLabel("아이디");
+        lblId.setForeground(Color.WHITE);
+        lblId.setFont(new Font("HY목판L", Font.BOLD, 12));
+        lblId.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblId.setBounds(84, 200, 79, 15);
+        getContentPane().add(lblId);
         
         // 아이디 입력 - txtid
         txtid = new JTextField();
-        txtid.setBounds(197, 209, 116, 21);
+        txtid.setBounds(200, 200, 116, 21);
+        txtid.setForeground(Color.WHITE);
+        txtid.setOpaque(false);
         getContentPane().add(txtid);
         txtid.setColumns(10);
         
-        JLabel lblNewLabel_3 = new JLabel("비밀번호");
-        lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_3.setBounds(84, 258, 79, 15);
-        getContentPane().add(lblNewLabel_3);
+        JLabel lblPassword = new JLabel("비밀번호");
+        lblPassword.setForeground(Color.WHITE);
+        lblPassword.setFont(new Font("HY목판L", Font.BOLD, 12));
+        lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblPassword.setBounds(84, 240, 79, 15);
+        getContentPane().add(lblPassword);
         
         // 비밀번호 입력 - txtpw
         txtpw = new JTextField();
-        txtpw.setBounds(197, 255, 116, 21);
+        txtpw.setBounds(200, 240, 116, 21);
+        txtpw.setForeground(Color.WHITE);
+        txtpw.setOpaque(false);
         getContentPane().add(txtpw);
         txtpw.setColumns(10);
         
-        JLabel lblNewLabel_4 = new JLabel("비밀번호 확인");
-        lblNewLabel_4.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_4.setBounds(66, 301, 97, 15);
-        getContentPane().add(lblNewLabel_4);
+        JLabel lblPasswordAgain = new JLabel("비밀번호 확인");
+        lblPasswordAgain.setForeground(Color.WHITE);
+        lblPasswordAgain.setFont(new Font("HY목판L", Font.BOLD, 12));
+        lblPasswordAgain.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblPasswordAgain.setBounds(66, 280, 97, 15);
+        getContentPane().add(lblPasswordAgain);
         
         // 비밀번호 재입력 - txtrpw
         txtrpw = new JTextField();
-        txtrpw.setBounds(197, 298, 116, 21);
+        txtrpw.setBounds(200, 280, 116, 21);
+        txtrpw.setForeground(Color.WHITE);
+        txtrpw.setOpaque(false);
         getContentPane().add(txtrpw);
         txtrpw.setColumns(10);
         
         JLabel lblNewLabel_5 = new JLabel("이메일");
+        lblNewLabel_5.setForeground(Color.WHITE);
+        lblNewLabel_5.setFont(new Font("HY목판L", Font.BOLD, 12));
         lblNewLabel_5.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblNewLabel_5.setBounds(106, 338, 57, 15);
+        lblNewLabel_5.setBounds(106, 320, 57, 15);
         getContentPane().add(lblNewLabel_5);
         
         // 이메일 입력 - txtmail
         txtmail = new JTextField();
-        txtmail.setBounds(197, 338, 116, 21);
+        txtmail.setBounds(200, 320, 116, 21);
+        txtmail.setForeground(Color.WHITE);
+        txtmail.setOpaque(false);
         getContentPane().add(txtmail);
         txtmail.setColumns(10);
         
         // 회원가입 완료 버튼 - btncreate
         btncreate = new JButton("완료");
-        btncreate.setBounds(66, 427, 97, 23);
+        btncreate.setForeground(Color.WHITE);
+        btncreate.setFont(new Font("HY목판L", Font.BOLD, 12));
+        btncreate.setBounds(85, 400, 100, 25);
         getContentPane().add(btncreate);
+        btncreate.setContentAreaFilled(false);
+        btncreate.setFocusPainted(false);
+        btncreate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+							
+				btncreate.setForeground(Color.YELLOW);
+				btncreate.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		        
+				btncreate.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+				btncreate.setForeground(Color.WHITE);
+		    }
+		
+		});
+		getContentPane().add(btncreate);
+        
         
         // 회원가입 취소 버튼 = btncancle
         btncancle = new JButton("취소");
-        btncancle.setBounds(216, 427, 97, 23);
+        btncancle.setForeground(Color.WHITE);
+        btncancle.setFont(new Font("HY목판L", Font.BOLD, 12));
+        btncancle.setBounds(215, 400, 100, 25);
         getContentPane().add(btncancle);
+        btncancle.setContentAreaFilled(false);
+        btncancle.setFocusPainted(false);
+        btncancle.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+							
+				btncancle.setForeground(Color.YELLOW);
+				btncancle.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+			public void mouseExited(MouseEvent e) {
+		        
+				btncancle.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+				btncancle.setForeground(Color.WHITE);
+		    }
+		
+		});
+		getContentPane().add(btncancle);
+		
+		JLabel lblSignupBackground = new JLabel("");
+		lblSignupBackground.setIcon(new ImageIcon(SignupPanel.class.getResource("/images/SignupBackground.gif")));
+		lblSignupBackground.setBounds(0, 0, 394, 522);
+		getContentPane().add(lblSignupBackground);
+        
         
         setVisible(true);
         
@@ -166,6 +238,5 @@ public class SignupPanel extends JFrame{
 			}
 		});
 	}
-	
 }
 
