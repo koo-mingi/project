@@ -49,26 +49,7 @@ public class ClientThread extends Thread {
 	}
 	
 	
-//	public UserVO login(UserVO vo) {
-//		if(dos!=null)
-//			try {
-//				dos.writeUTF("LOGIN");
-//				oos.writeObject(vo);
-//				while(dis!=null) {
-//					if(dis.readUTF().equals("LOGINSUCCESS")) {
-//						vo = (UserVO) ois.readObject();
-//						System.out.println(vo);
-//						break;
-//					}
-//				}
-//							
-//			} catch (IOException | ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		return vo;
-//	}
-	
+
 	public UserVO login(UserVO vo) {
 		if(dos!=null)
 			try {

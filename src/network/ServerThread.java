@@ -97,7 +97,12 @@ public class ServerThread extends Thread {
 					else if(modeStr.equals("RANKING")) mode = RANKING;
 					switch (mode) {
 					case LOGIN:
-						vo = new UserVO(1, "관리자", "1111", "나", "ㅁㅁ");
+						try {
+							vo = (UserVO) ois.readObject();
+						} catch (ClassNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						name = vo.getUserId();
 						dos.writeUTF("LOGINSUCCESS");
 						oos.writeObject(vo);

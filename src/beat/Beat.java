@@ -165,7 +165,8 @@ public class Beat extends JPanel{
 				String id = textField.getText();
 				char[] pass = passwordField.getPassword();
 				String password = new String(pass);
-				
+				vo.setUserId(id);
+				vo.setPassword(password);
 				  if (id.equals("") || password.equals("")) {
 			            // 메시지를 날린다.
 			            JOptionPane.showMessageDialog(null, "빈칸이 있네요.");
@@ -173,9 +174,9 @@ public class Beat extends JPanel{
 //			        	
 			        	
 			        	if(Main.serverConnection) {
-			        		Main.client.login(vo);
-			          		setUserInfo(vo);
-			           		//Main.client.userRecord();
+			        		new networkFrame("LOGIN", vo, null);
+			          		//setUserInfo(vo);
+			           		
 			        		setVisible(false);
 		        			contentPane.add(lobby,BorderLayout.CENTER);
 		        			introMusic.close();
