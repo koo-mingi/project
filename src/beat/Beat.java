@@ -18,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import domain.RecodeVO;
 import domain.UserVO;
 import persistence.UserDAO;
 
@@ -37,7 +38,7 @@ public class Beat extends JPanel{
 	private JButton btlogin; //로그인 버튼
 	private JButton btsign;  //회원가입 버튼
 	private JLabel lblBackGroundIMG; // 백그라운드 이미지
-	private UserVO vo;
+	private UserVO vo = new UserVO();
 	
 	private Lobby lobby;
 	
@@ -170,7 +171,8 @@ public class Beat extends JPanel{
 //			        	
 			        	
 			        	if(Main.serverConnection) {
-			        		Main.client.login(vo);
+			        		vo=Main.client.login(vo);
+			           		setUserInfo(vo);
 			        		setVisible(false);
 		        			contentPane.add(lobby,BorderLayout.CENTER);
 		        			introMusic.close();
@@ -188,30 +190,27 @@ public class Beat extends JPanel{
 			        		JOptionPane.showMessageDialog(null, "서버가 끊겼네요. 관리자로 접속하세요.","끊김",JOptionPane.WARNING_MESSAGE);
 			        	}
 			        	
+<<<<<<< HEAD
 			        	
 //			            boolean existLogin = LoginService.loginTest(id, password);
+=======
+>>>>>>> branch 'master' of https://github.com/koo-mingi/project.git
 			        	
 			        }
 			}
 		});
 		}
+	
+	public void setUserInfo(UserVO vo) {
+		//System.out.println(vo); 서버로부터 넘겨 받은 정보가 제대로 담겨 있는지 확인.
+		for(RecodeVO rvo : Main.MYRECODE) {
+			rvo.setUserid(vo.getUserId());
+			rvo.setUserno(vo.getUserNo());
+		}
+	}
 }
 
-		 
-//		            if (existLogin) {
-//		                // 로그인 성공일 경우
-//		                JOptionPane.showMessageDialog(null, "로그인 성공");
-//		            } else {
-//		                // 로그인 실패일 경우
-//		                JOptionPane.showMessageDialog(null, "로그인 실패");
-//		            }
-//		 
-//		        }
-//		        password = null;
-//		 
-//		    
-//			}
-//		});
+
 		
 		
 	

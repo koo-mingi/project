@@ -46,7 +46,7 @@ public class ClientThread extends Thread {
 	}
 	
 	
-	public void login(UserVO vo) {
+	public UserVO login(UserVO vo) {
 		if(dos!=null)
 			try {
 				dos.writeUTF("LOGIN");
@@ -63,5 +63,6 @@ public class ClientThread extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		return vo;
 	}
 }
