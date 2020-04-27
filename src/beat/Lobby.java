@@ -8,6 +8,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -197,11 +199,24 @@ public class Lobby extends JPanel {
 		// 게임종료
 		btnEnd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				saveRecodeVO();
 				System.exit(0);
 			}
 
 		});
 
+	}
+	public void saveRecodeVO() {
+		try(FileOutputStream fos = new FileOutputStream(Main.file.getPath());
+			ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			for(int i =0 ; i<Main.MYRECODE.size();i++) {
+				oos.writeObject(Main.MYRECODE.get(i));
+						
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
