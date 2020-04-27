@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -170,8 +172,9 @@ public class Beat extends JPanel{
 //			        	
 			        	
 			        	if(Main.serverConnection) {
-			        		vo=Main.client.login(vo);
-			           		setUserInfo(vo);
+			        		Main.client.login(vo);
+			          		setUserInfo(vo);
+			           		//Main.client.userRecord();
 			        		setVisible(false);
 		        			contentPane.add(lobby,BorderLayout.CENTER);
 		        			introMusic.close();
@@ -201,7 +204,9 @@ public class Beat extends JPanel{
 			rvo.setUserid(vo.getUserId());
 			rvo.setUserno(vo.getUserNo());
 		}
+		System.out.println(vo);
 	}
+	
 }
 
 

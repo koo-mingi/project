@@ -7,9 +7,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import domain.RecodeVO;
 import domain.UserVO;
 
 public class ServerThread extends Thread {
@@ -53,8 +55,13 @@ public class ServerThread extends Thread {
 		private DataInputStream dis;
 		private ObjectOutputStream oos;
 		private ObjectInputStream ois;
+		private UserVO vo;
+		private ArrayList<RecodeVO> recodeVO;
 		private int mode = 0; // 기본 상태
 		private final int LOGIN = 1; // 로그인 모드.
+		private final int USERRECORD = 2; //개인 유저 정보 모드
+		private final int CREATUSER = 3; // 유저 생성 모드
+		private final int RANKING = 4; // 랭킹 조회 모드
 		
 		
 		public ServerReceiver(Socket socket) {
@@ -85,15 +92,47 @@ public class ServerThread extends Thread {
 					String modeStr = dis.readUTF();
 					System.out.println("받은 문자"+modeStr);
 					if(modeStr.equals("LOGIN")) mode = LOGIN;
-					
+					else if(modeStr.equals("USERRECORD")) mode = USERRECORD;
+					else if(modeStr.equals("CREATUSER")) mode = CREATUSER;
+					else if(modeStr.equals("RANKING")) mode = RANKING;
 					switch (mode) {
 					case LOGIN:
-						UserVO vo = new UserVO(1, "관리자", "1111", "나", "ㅁㅁ");
+						vo = new UserVO(1, "관리자", "1111", "나", "ㅁㅁ");
 						name = vo.getUserId();
 						dos.writeUTF("LOGINSUCCESS");
 						oos.writeObject(vo);
 						break;
-
+					case USERRECORD:
+						
+						dos.writeUTF("USERRECORDSUCCESS");
+						oos.writeObject(recodeVO);
+						System.out.println("성공");
+						break;
+					case CREATUSER:
+						vo = new UserVO();
+						try {
+							vo = (UserVO)ois.readObject();
+							System.out.println(vo);
+							if("성공"=="성공") {
+								dos.writeUTF("CREATUSERSUCCESS");
+							}else {
+								dos.writeUTF("CREATUSERFAIL");
+							}
+							
+						} catch (ClassNotFoundException e) {
+							e.printStackTrace();
+						}
+						break;
+					case RANKING:
+						recodeVO = new ArrayList<RecodeVO>();
+						recodeVO.add(new RecodeVO());
+						if(true) {
+							dos.writeUTF("RANKINGSUCCESS");
+							oos.writeObject(recodeVO);
+						}else
+							dos.writeUTF("RANKINGFAIL");
+						
+						break;
 					default:
 						break;
 					}

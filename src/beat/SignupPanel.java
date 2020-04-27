@@ -11,12 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import domain.UserVO;
+
 public class SignupPanel extends JFrame{
 	private JTextField txtname;
 	private JTextField txtid;
 	private JTextField txtpw;
 	private JTextField txtrpw;
 	private JTextField txtmail;
+	private UserVO vo = new UserVO();
 	
 	private JButton btncreate,btncancle;
 	
@@ -121,11 +124,22 @@ public class SignupPanel extends JFrame{
 		        if (name.equals("") || id.equals("") || pass.equals("") || pass1.equals("") || mail.equals("") ) {
 		            // 메시지를 날린다.
 		            JOptionPane.showMessageDialog(null, "빈칸이 있네요");
-		        } else {
-		        	JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
-				 dispose();
+		        } else if(pass.equals(pass1)){
+		        	
+		        	vo.setUserId(id);
+		        	vo.setName(name);
+		        	vo.setPassword(pass);
+		        	vo.setEmail(mail);
+		        	if(Main.client.createUser(vo)) { // 회원가입이 되었다고 연락이 오면.
+		        		JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
+		        		Main.client.userRecord();
+		        		dispose();
+		        	}
 		        	
 		        	
+		        	
+		        }else {
+		        	 JOptionPane.showMessageDialog(null, "비번을 다시 입력하세요.");
 		        }
 				}
 			});

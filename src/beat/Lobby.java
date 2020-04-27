@@ -10,12 +10,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import domain.RecodeVO;
+import domain.UserVO;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -39,12 +43,14 @@ public class Lobby extends JPanel {
 	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/END_BASIC.png"));
 
 	// private int mouseX, mouseY;
-
+	private ArrayList<RecodeVO> recodeVO = new ArrayList<RecodeVO>();
+	
 	public Lobby(JPanel contentPane) {
 		this.contentPane = contentPane;
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 		setLayout(null);
-
+		
+		
 		Music introMusic = new Music("introMusic1.mp3", true);
 		introMusic.start();
 
@@ -186,12 +192,15 @@ public class Lobby extends JPanel {
 		// 랭킹창으로 이동
 		btnRanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
+				//recodeVO = Main.client.rankingInfo();
+				
 				setVisible(false);
-				ranking = new Ranking(contentPane);
+				ranking = new Ranking(contentPane,recodeVO);
 				contentPane.add(ranking, BorderLayout.CENTER);
 				ranking.setVisible(true);
 				introMusic.close();
+				
 
 			}
 		});
@@ -206,6 +215,8 @@ public class Lobby extends JPanel {
 		});
 
 	}
+	
+	//기록을 저장파일에 저장
 	public void saveRecodeVO() {
 		try(FileOutputStream fos = new FileOutputStream(Main.file.getPath());
 			ObjectOutputStream oos = new ObjectOutputStream(fos)) {

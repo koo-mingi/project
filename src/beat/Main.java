@@ -1,6 +1,8 @@
 package beat;
 
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,13 +31,13 @@ public class Main {
 	public static ClientThread client;
 	public static boolean serverConnection = false;
 	public static void main(String[] args) {
-		 
-		MYRECODE.add(new RecodeVO(0, 1, "", 0, 0, 0, 0, 0, 0, 0, "")); //1번 노래 easy
-		MYRECODE.add(new RecodeVO(0, 2, "", 0, 0, 0, 0, 0, 0, 0, "")); //1번 노래 hard
-		MYRECODE.add(new RecodeVO(0, 3, "", 0, 0, 0, 0, 0, 0, 0, "")); //2번 노래 easy
-		MYRECODE.add(new RecodeVO(0, 4, "", 0, 0, 0, 0, 0, 0, 0, "")); //2번 노래 hard
-		MYRECODE.add(new RecodeVO(0, 5, "", 0, 0, 0, 0, 0, 0, 0, "")); //3번 노래 easy
-		MYRECODE.add(new RecodeVO(0, 6, "", 0, 0, 0, 0, 0, 0, 0, "")); //3번 노래 hard
+	
+		MYRECODE.add(new RecodeVO(0, 1, "", 0, 0, 0, 0, 0, 0, 0, "Grade")); //1번 노래 easy
+		MYRECODE.add(new RecodeVO(0, 2, "", 0, 0, 0, 0, 0, 0, 0, "Grade")); //1번 노래 hard
+		MYRECODE.add(new RecodeVO(0, 3, "", 0, 0, 0, 0, 0, 0, 0, "Grade")); //2번 노래 easy
+		MYRECODE.add(new RecodeVO(0, 4, "", 0, 0, 0, 0, 0, 0, 0, "Grade")); //2번 노래 hard
+		MYRECODE.add(new RecodeVO(0, 5, "", 0, 0, 0, 0, 0, 0, 0, "Grade")); //3번 노래 easy
+		MYRECODE.add(new RecodeVO(0, 6, "", 0, 0, 0, 0, 0, 0, 0, "Grade")); //3번 노래 hard
 		
 		// 저장된 내용을 읽어 오기
 		file =  new File("myrecode.ser");
