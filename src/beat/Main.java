@@ -38,28 +38,31 @@ public class Main {
 		MYRECODE.add(new RecodeVO(0, 6, "", 0, 0, 0, 0, 0, 0, 0, "")); //3번 노래 hard
 		
 		// 저장된 내용을 읽어 오기
-		try {
-			file =  new File(Main.class.getResource("../save/myrecode.ser").toURI());
-		} catch (URISyntaxException e1) {
-			e1.printStackTrace();
-		}
+		file =  new File("myrecode.ser");
 		
+				
 		// 파일이 없으면 파일 생성
-		if(!file.exists() || !file.canRead())
+		if(!file.exists())
 		{
-			
-			try (FileOutputStream fos= new FileOutputStream(file.getPath());
-				ObjectOutputStream oos = new ObjectOutputStream(fos)){
-				
-				for(int i =0 ; i<MYRECODE.size();i++) {
-					oos.writeObject(MYRECODE.get(i));
-				}
-				
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			try {
+				file.createNewFile();
+				try (FileOutputStream fos= new FileOutputStream(file.getPath());
+						ObjectOutputStream oos = new ObjectOutputStream(fos)){
+						
+						for(int i =0 ; i<MYRECODE.size();i++) {
+							oos.writeObject(MYRECODE.get(i));
+						}
+						
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+			} catch (IOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
 			}
+			
 			
 			
 		}
