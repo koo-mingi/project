@@ -60,6 +60,10 @@ public class ClientThread extends Thread {
 						vo = (UserVO) ois.readObject();
 						System.out.println(vo);
 						break;
+					}else if(dis.readUTF().equals("LOGINFAIL")){
+						
+						System.out.println(vo);
+						break;
 					}
 				}
 							
@@ -70,16 +74,20 @@ public class ClientThread extends Thread {
 		return vo;
 	}
 	
-	
-	public ArrayList<RecodeVO> userRecord(){
+	// 개인유저의 기록 가져오기
+	public ArrayList<RecodeVO> getUserRecord(UserVO vo){
 		if(dos!=null)
 			try {
+				dos.writeUTF("GETUSERRECORD");
+				oos.writeObject(vo);
 				while(dis!=null) {
-					dos.writeUTF("USERRECORD");
-					if(dis.readUTF().equals("USERRECORDSUCCESS")) {
-						System.out.println("성공");
+					if(dis.readUTF().equals("GETUSERRECORDSUCCESS")) {
+						System.out.println("개인 기록 획득 성공");
 						recodeVO = (ArrayList<RecodeVO>) ois.readObject();
 						System.out.println(recodeVO);
+						break;
+					}else if(dis.readUTF().equals("GETUSERRECORDFAIL")){
+						
 						break;
 					}
 				}
@@ -91,39 +99,94 @@ public class ClientThread extends Thread {
 		return recodeVO;
 	}
 	
-	public boolean createUser(UserVO vo) {
+	public UserVO createUser(UserVO vo) {
+		UserVO uservo = null;
 		if(dos!=null)
 			try {
 				dos.writeUTF("CREATUSER");
 				oos.writeObject(vo);
 				while(dis!=null) {
 					if(dis.readUTF().equals("CREATUSERSUCCESS")) {
+						uservo = (UserVO)ois.readObject();
 						System.out.println("유저 생성 성공");
-						return true;
+						break;
 					}else if(dis.readUTF().equals("CREATUSERFAIL")){
-						return false;
+						System.out.println("유저 생성 실패");
 					}
 				}
 							
-			} catch (IOException e) {
+			} catch (IOException | ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		return false;
+		return uservo;
 	}
 	
+	// 새로운 개인 유저 기록을 DB에 쓰기
+	public void setUserRecord(ArrayList<RecodeVO> recordList) {
+		if(dos!=null) {
+			try {
+				dos.writeUTF("SETUSERRECORD");
+				oos.writeObject(recordList);
+				while(dis!=null) {
+					System.out.println("기록 DB에 보냄");
+					if(dis.readUTF().equals("SETUSERRECORDSUCCESS")){
+						System.out.println("기록 DB 저장 성공");
+						
+						break;
+					}else if(dis.readUTF().equals("SETUSERRECORDFAIL"))
+					{
+						System.out.println("기록 DB 저장 실패");
+						break;
+					}
+				}
+			} catch (IOException  e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	// 기존 유저의 기록을 업데이트
+	public void updateUserRecord(RecodeVO recordVO) {
+		if(dos!=null) {
+			try {
+				dos.writeUTF("SETUSERRECORD");
+				oos.writeObject(recordVO);
+				while(dis!=null) {
+					System.out.println("기록 DB에 보냄");
+					if(dis.readUTF().equals("SETUSERRECORDSUCCESS")){
+						System.out.println("기록 DB 저장 성공");
+						
+						break;
+					}else if(dis.readUTF().equals("SETUSERRECORDFAIL"))
+					{
+						System.out.println("기록 DB 저장 실패");
+						break;
+					}
+				}
+			} catch (IOException  e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	// 전체 유저의 기록을 DB로부터 받기
 	@SuppressWarnings("unchecked")
-	public ArrayList<RecodeVO> rankingInfo() {
+	public ArrayList<RecodeVO> getAllRankingInfo() {
 		System.out.println("랭킹 요청");
 		if(dos!=null) {
 			try {
 				dos.writeUTF("RANKING");
 				System.out.println("랭킹 문자 보냄");
 				while(dis!=null) {
-					System.out.println("랭킹 문자 보냄");
 					if(dis.readUTF().equals("RANKINGSUCCESS")){
 						System.out.println("랭킹 조회 성공");
-						//recodeVO = (ArrayList<RecodeVO>) ois.readObject();
+						recodeVO = (ArrayList<RecodeVO>) ois.readObject();
+						System.out.println("랭킹 조회:"+recodeVO);
 						break;
 					}else if(dis.readUTF().equals("RANKINGFAIL"))
 					{
@@ -131,7 +194,7 @@ public class ClientThread extends Thread {
 						break;
 					}
 				}
-			} catch (IOException /* | ClassNotFoundException */ e) {
+			} catch (IOException  | ClassNotFoundException  e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -357,7 +357,7 @@ public class Game extends Thread {
 		return grade;
 	}
 
-	// 현재 기록과 비교해서 최고기록을 저장.
+	// 현재 기록과 비교해서 최고기록을 저장 및 DB에 올리기
 	public void setRecodeVO() {
 		int index;
 		if (difficulty.equals("Hard")) {
@@ -378,6 +378,7 @@ public class Game extends Thread {
 		for (RecodeVO vo : Main.MYRECODE) {
 			System.out.println(vo);
 		}
+		Main.client.setUserRecord(Main.MYRECODE);
 	}
 
 	// 기록을 파일에 저장

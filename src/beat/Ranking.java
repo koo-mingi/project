@@ -387,12 +387,12 @@ public class Ranking extends JPanel {
 	
 	public void setRanking() {
 		
-		int index = 0;
+		int index = 1; //songid 번호
 		int i=0;
 		if(difficultyList.getSelectedIndex() == 0) { // Easy 선택 시.
-			index = songList.getSelectedIndex()*2;
-		}else {										 // Hard 선택 시.
 			index = songList.getSelectedIndex()*2 + 1;
+		}else {										 // Hard 선택 시.
+			index = songList.getSelectedIndex()*2 + 2;
 		}
 		// 값이 비어있을 경우에 대비해 기본값으로 초기화.
 		for(int j=0;j<5;j++) {

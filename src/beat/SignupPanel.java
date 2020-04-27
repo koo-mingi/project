@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
+import domain.RecodeVO;
 import domain.UserVO;
 
 public class SignupPanel extends JFrame{
@@ -206,13 +207,16 @@ public class SignupPanel extends JFrame{
 		        	vo.setName(name);
 		        	vo.setPassword(pass);
 		        	vo.setEmail(mail);
-		        	if(Main.client.createUser(vo)) { // 회원가입이 되었다고 연락이 오면.
+		        	if((vo = Main.client.createUser(vo)) != null) { // 회원가입이 되었다고 연락이 오면.
+		        		
+		        		setUserInfo(vo);
 		        		JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
-		        		Main.client.userRecord();
+		        		Main.client.setUserRecord(Main.MYRECODE);     // 개인 유저 기록을 DB에 초기화.
 		        		dispose();
+		        	}else {
+		        		JOptionPane.showMessageDialog(null, "회원가입이 실패했습니다.");
 		        	}
-		        	
-		        	
+		        			        	
 		        	
 		        }else {
 		        	 JOptionPane.showMessageDialog(null, "비번을 다시 입력하세요.");
@@ -255,6 +259,14 @@ public class SignupPanel extends JFrame{
 				
 			}
 		});
+	}
+	public void setUserInfo(UserVO vo) {
+		//System.out.println(vo); 서버로부터 넘겨 받은 정보가 제대로 담겨 있는지 확인.
+		for(RecodeVO rvo : Main.MYRECODE) {
+			rvo.setUserid(vo.getUserId());
+			rvo.setUserno(vo.getUserNo());
+		}
+		System.out.println("회원가입 정보: "+vo);
 	}
 }
 

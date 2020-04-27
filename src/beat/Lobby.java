@@ -193,7 +193,7 @@ public class Lobby extends JPanel {
 		btnRanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//recodeVO = Main.client.rankingInfo();
+				recodeVO = Main.client.getAllRankingInfo();
 				
 				setVisible(false);
 				ranking = new Ranking(contentPane,recodeVO);

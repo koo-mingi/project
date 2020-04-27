@@ -174,9 +174,11 @@ public class Beat extends JPanel{
 //			        	
 			        	
 			        	if(Main.serverConnection) {
-			        		new networkFrame("LOGIN", vo, null);
-			          		//setUserInfo(vo);
-			           		
+			        		vo = Main.client.login(vo); // DB에서 유저 정보 가져옴
+			          		setUserInfo(vo);            // DB 유저정보를 로컬과 동기화.
+			          									
+			          		Main.client.getUserRecord(vo);	// DB의 개인 기록을 로컬에 동기화.
+			          		
 			        		setVisible(false);
 		        			contentPane.add(lobby,BorderLayout.CENTER);
 		        			introMusic.close();
@@ -208,7 +210,14 @@ public class Beat extends JPanel{
 		}
 		System.out.println(vo);
 	}
-	
+	public void setRecord(ArrayList<RecodeVO> voList) {
+		
+		ArrayList<RecodeVO> recordVO = voList;
+		for(int i = 0 ;i<recordVO.size();i++) {
+  			recordVO.get(i);
+  			
+  		}
+	}
 }
 
 

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import domain.RecodeVO;
 import domain.SongVO;
@@ -150,11 +151,11 @@ public SongVO getSongFindTbl(String songname) {
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 
 //	Recode DB Insert
-	//vo
+	
 	public int insertRecodeTbl(RecodeVO vo) {
 		int result	= 0;
 		
-		String sql	= "insert into RecodeTBL value(seqgaro.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql	= "insert into RecodeTBL value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -177,8 +178,75 @@ public SongVO getSongFindTbl(String songname) {
 		}
 		return result;
 	}
+	
+	// 개인 기록 새로 저장
+	public int insertRecodeTbl(ArrayList<RecodeVO> recordList) {
+		int result	= 0;
+		
+		for(int i=0;i<recordList.size();i++) {
+		String sql	= "insert into RecodeTBL value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try (Connection con = getConnection();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setInt(1, recordList.get(i).getUserno());
+			pstmt.setInt(2, recordList.get(i).getSongid());
+			pstmt.setString(3, recordList.get(i).getUserid());
+			pstmt.setInt(4, recordList.get(i).getScore());
+			pstmt.setInt(4, recordList.get(i).getAcPerfect());
+			pstmt.setInt(6, recordList.get(i).getAcGreat());
+			pstmt.setInt(7, recordList.get(i).getAcBad());
+			pstmt.setInt(8, recordList.get(i).getAcMiss());
+			pstmt.setInt(9, recordList.get(i).getCombo());
+			pstmt.setString(10, recordList.get(i).getGrade());
+			
+			result = pstmt.executeUpdate();
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		}
+		return result;
+	}
 //	끝 ----------------------------------------------------------------------------------------------------------------------------------------------
 
+// 개인 곡 기록 업데이트
+	public int updateRecodeTbl(RecodeVO recordVO) {
+		int result	= 0;
+		
+		
+		String sql	= "update RecodeTBL set(userno, songid, userid, score, AcPerfect, AcGreat, AcGood, AcBad, AcMiss, combo,grade)="
+				+ "?,?,?,?,?,?,?,?,?,?,?) where userno=? and songid=?";
+		
+		try (Connection con = getConnection();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setInt(1, recordVO.getUserno());
+			pstmt.setInt(2, recordVO.getSongid());
+			pstmt.setString(3, recordVO.getUserid());
+			pstmt.setInt(4, recordVO.getScore());
+			pstmt.setInt(5, recordVO.getAcPerfect());
+			pstmt.setInt(6, recordVO.getAcGreat());
+			pstmt.setInt(7, recordVO.getAcGood());
+			pstmt.setInt(8, recordVO.getAcBad());
+			pstmt.setInt(9, recordVO.getAcMiss());
+			pstmt.setInt(10, recordVO.getCombo());
+			pstmt.setString(11, recordVO.getGrade());
+			pstmt.setInt(12, recordVO.getUserno());
+			pstmt.setInt(13, recordVO.getSongid());
+			
+			result = pstmt.executeUpdate();
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
 //	Recode DB Select번역
 	public RecodeVO getRecodeTbl(int userno, int songid) {
 		RecodeVO vo	= null;
@@ -213,7 +281,71 @@ public SongVO getSongFindTbl(String songname) {
 		return vo;
 	}
 	
-	// Select All Recode (기록 전체)
+	// 개인의 모든 기록 가져오기
+	public ArrayList<RecodeVO> getUserRecodeTbl(int userno) {
+		ArrayList<RecodeVO> recordVO = new ArrayList<RecodeVO>();
+		RecodeVO vo	= null;
+		
+		String sql	= "select * from RecodeTBL where userno = ? order by songid";
+		try (Connection con = getConnection();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
+						
+			
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				vo=new RecodeVO();
+				vo.setUserno(rs.getInt("userno"));
+				vo.setSongid(rs.getInt("songid"));
+				vo.setUserid(rs.getString("userid"));
+				vo.setScore(rs.getInt("score"));
+				vo.setAcPerfect(rs.getInt("AcPerfect"));
+				vo.setAcGreat(rs.getInt("AcGreat"));
+				vo.setAcGood(rs.getInt("AcGood"));
+				vo.setAcBad(rs.getInt("AcBad"));
+				vo.setAcMiss(rs.getInt("AcMiss"));
+				vo.setAcMiss(rs.getInt("combo"));
+				vo.setGrade(rs.getString("grade"));
+				recordVO.add(vo);
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return recordVO;
+	}
+	
+	// Select All Recode (모든 유저 기록)
+	public ArrayList<RecodeVO> getAllUserRecodeTbl() {
+		ArrayList<RecodeVO> recordVO = new ArrayList<RecodeVO>();
+		RecodeVO vo	= null;
+		
+		String sql	= "select * from RecodeTBL order by songid, score";
+		try (Connection con = getConnection();
+			 PreparedStatement pstmt = con.prepareStatement(sql)){
+						
+			
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				vo=new RecodeVO();
+				vo.setUserno(rs.getInt("userno"));
+				vo.setSongid(rs.getInt("songid"));
+				vo.setUserid(rs.getString("userid"));
+				vo.setScore(rs.getInt("score"));
+				vo.setAcPerfect(rs.getInt("AcPerfect"));
+				vo.setAcGreat(rs.getInt("AcGreat"));
+				vo.setAcGood(rs.getInt("AcGood"));
+				vo.setAcBad(rs.getInt("AcBad"));
+				vo.setAcMiss(rs.getInt("AcMiss"));
+				vo.setAcMiss(rs.getInt("combo"));
+				vo.setGrade(rs.getString("grade"));
+				recordVO.add(vo);
+			}	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return recordVO;
+	}
 	
 //	where절 들어가는 유저정보
 //	전체리스트 가져오는게 있고
