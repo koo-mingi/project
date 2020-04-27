@@ -253,7 +253,7 @@ public class Game extends Thread {
 	public void pressJ() {
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("J");
-		gameBeatSoundJ = new Music("drumBig3.mp3", true);
+		gameBeatSoundJ = new Music("drumBeat.mp3", true);
 		gameBeatSoundJ.start();
 		gameBeatSoundJ.setLoop(false);
 	}
