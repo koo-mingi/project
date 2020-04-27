@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 
 import domain.RecodeVO;
 import domain.UserVO;
+import persistence.UserDAO;
 
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -176,8 +177,8 @@ public class Beat extends JPanel{
 		        			contentPane.add(lobby,BorderLayout.CENTER);
 		        			introMusic.close();
 		        			lobby.setVisible(true);
-			        	}
-			        	else if(id.equals("admin")){
+		        			
+			        	} else if(id.equals("admin")){
 			        		JOptionPane.showMessageDialog(null, "관리자로 접속합니다.","접속",JOptionPane.INFORMATION_MESSAGE,null);
 			        		setVisible(false);
 		        			contentPane.add(lobby,BorderLayout.CENTER);
@@ -185,10 +186,15 @@ public class Beat extends JPanel{
 		        			lobby.setVisible(true);
 			        		
 			        		
-			        	}else {
+			        	} else {
 			        		JOptionPane.showMessageDialog(null, "서버가 끊겼네요. 관리자로 접속하세요.","끊김",JOptionPane.WARNING_MESSAGE);
 			        	}
 			        	
+<<<<<<< HEAD
+			        	
+//			            boolean existLogin = LoginService.loginTest(id, password);
+=======
+>>>>>>> branch 'master' of https://github.com/koo-mingi/project.git
 			        	
 			        }
 			}
