@@ -166,7 +166,7 @@ public class Beat extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-			if (e.getActionCommand().equals("btlogin")) 
+			if (e.getActionCommand().equals("btlogin") || e.getSource() == btlogin) 
 			{
 				String id = textField.getText();
 				char[] pass = passwordField.getPassword();
@@ -200,7 +200,7 @@ public class Beat extends JPanel implements ActionListener {
 
 				}
 			}
-			else if(e.getActionCommand().equals("btsign")) {
+			else if(e.getActionCommand().equals("btsign") || e.getSource() == btsign) {
 				SignupPanel frame = new SignupPanel();
 			}
 	}
