@@ -190,12 +190,7 @@ public class Beat extends JPanel{
 			        		JOptionPane.showMessageDialog(null, "서버가 끊겼네요. 관리자로 접속하세요.","끊김",JOptionPane.WARNING_MESSAGE);
 			        	}
 			        	
-<<<<<<< HEAD
-			        	
-//			            boolean existLogin = LoginService.loginTest(id, password);
-=======
->>>>>>> branch 'master' of https://github.com/koo-mingi/project.git
-			        	
+
 			        }
 			}
 		});
