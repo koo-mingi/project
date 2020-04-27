@@ -229,22 +229,25 @@ public class Game extends Thread {
 		judge("S");
 		sun = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
 
-		gameBeatSoundS = new Music("drumSmall3.mp3", true);
+		gameBeatSoundS = new Music("drumBeat.mp3", true);
 		gameBeatSoundS.start();
+		gameBeatSoundS.setLoop(false);
 	}
 
 	public void pressD() {
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("D");
-		gameBeatSoundD = new Music("drumSmall1.mp3", true);
+		gameBeatSoundD = new Music("drumBeat.mp3", true);
 		gameBeatSoundD.start();
+		gameBeatSoundD.setLoop(false);
 	}
 
 	public void pressF() {
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("F");
-		gameBeatSoundF = new Music("drumSmall2.mp3", true);
+		gameBeatSoundF = new Music("drumBeat.mp3", true);
 		gameBeatSoundF.start();
+		gameBeatSoundF.setLoop(false);
 	}
 
 	public void pressJ() {
@@ -252,52 +255,49 @@ public class Game extends Thread {
 		judge("J");
 		gameBeatSoundJ = new Music("drumBig3.mp3", true);
 		gameBeatSoundJ.start();
+		gameBeatSoundJ.setLoop(false);
 	}
 
 	public void pressK() {
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("K");
-		gameBeatSoundK = new Music("drumBig2.mp3", true);
+		gameBeatSoundK = new Music("drumBeat.mp3", true);
 		gameBeatSoundK.start();
+		gameBeatSoundK.setLoop(false);
 	}
 
 	public void pressL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("L");
-		gameBeatSoundL = new Music("drumBig1.mp3", true);
+		gameBeatSoundL = new Music("drumBeat.mp3", true);
 		gameBeatSoundL.start();
+		gameBeatSoundL.setLoop(false);
 	}
 
 
 	public void releaseS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
-		gameBeatSoundS.close();
 		sun = new ImageIcon(Main.class.getResource("")).getImage();
 	}
 
 	public void releaseD() {
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
-		gameBeatSoundD.close();
 	}
 
 	public void releaseF() {
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
-		gameBeatSoundF.close();
 	}
 
 	public void releaseJ() {
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
-		gameBeatSoundJ.close();
 	}
 
 	public void releaseK() {
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
-		gameBeatSoundK.close();
 	}
 
 	public void releaseL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
-		gameBeatSoundL.close();
 	}
 
 	@Override
