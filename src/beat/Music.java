@@ -52,4 +52,10 @@ public class Music extends Thread{
 		}
 	}
 
+	public void setLoop(boolean isLoop) {
+		this.isLoop = isLoop;
+	}
+	
+	
+
 }
