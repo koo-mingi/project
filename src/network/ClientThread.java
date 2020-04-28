@@ -152,17 +152,17 @@ public class ClientThread extends Thread {
 	public void updateUserRecord(RecodeVO recordVO) {
 		if(dos!=null) {
 			try {
-				dos.writeUTF("SETUSERRECORD");
+				dos.writeUTF("UPDATEUSERRECORD");
 				oos.writeObject(recordVO);
 				while(dis!=null) {
-					System.out.println("기록 DB에 보냄");
-					if(dis.readUTF().equals("SETUSERRECORDSUCCESS")){
-						System.out.println("기록 DB 저장 성공");
+					System.out.println("update 기록 DB에 보냄");
+					if(dis.readUTF().equals("UPDATEUSERRECORDSUCCESS")){
+						System.out.println("update 기록 DB 저장 성공");
 						
 						break;
-					}else if(dis.readUTF().equals("SETUSERRECORDFAIL"))
+					}else if(dis.readUTF().equals("UPDATEUSERRECORDFAIL"))
 					{
-						System.out.println("기록 DB 저장 실패");
+						System.out.println("update 기록 DB 저장 실패");
 						break;
 					}
 				}

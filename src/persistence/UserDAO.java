@@ -46,7 +46,7 @@ public class UserDAO {
 	public int insertUserTbl(UserVO vo) {
 		int result	= 0;
 		
-		String sql	= "insert into UserTBL value(seqgaro.nextval, ?, ?, ?, ?)";
+		String sql	= "insert into UserTBL values(seqgaro.nextval, ?, ?, ?, ?)";
 					// SQL문을 연결된 OracleDB에 PreparedStatement를 통해서 보낸다
 					// 실행하는 과정에서 오라클과 동일해야된다
 		try (Connection con = getConnection();
@@ -155,7 +155,7 @@ public SongVO getSongFindTbl(String songname) {
 	public int insertRecodeTbl(RecodeVO vo) {
 		int result	= 0;
 		
-		String sql	= "insert into RecodeTBL value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql	= "insert into RecodeTBL values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -184,7 +184,7 @@ public SongVO getSongFindTbl(String songname) {
 		int result	= 0;
 		
 		for(int i=0;i<recordList.size();i++) {
-		String sql	= "insert into RecodeTBL value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql	= "insert into RecodeTBL values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -193,12 +193,13 @@ public SongVO getSongFindTbl(String songname) {
 			pstmt.setInt(2, recordList.get(i).getSongid());
 			pstmt.setString(3, recordList.get(i).getUserid());
 			pstmt.setInt(4, recordList.get(i).getScore());
-			pstmt.setInt(4, recordList.get(i).getAcPerfect());
+			pstmt.setInt(5, recordList.get(i).getAcPerfect());
 			pstmt.setInt(6, recordList.get(i).getAcGreat());
-			pstmt.setInt(7, recordList.get(i).getAcBad());
-			pstmt.setInt(8, recordList.get(i).getAcMiss());
-			pstmt.setInt(9, recordList.get(i).getCombo());
-			pstmt.setString(10, recordList.get(i).getGrade());
+			pstmt.setInt(7, recordList.get(i).getAcGood());
+			pstmt.setInt(8, recordList.get(i).getAcBad());
+			pstmt.setInt(9, recordList.get(i).getAcMiss());
+			pstmt.setInt(10, recordList.get(i).getCombo());
+			pstmt.setString(11, recordList.get(i).getGrade());
 			
 			result = pstmt.executeUpdate();
 			
@@ -290,6 +291,7 @@ public SongVO getSongFindTbl(String songname) {
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 						
+			pstmt.setInt(1, userno);
 			
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -319,11 +321,10 @@ public SongVO getSongFindTbl(String songname) {
 		ArrayList<RecodeVO> recordVO = new ArrayList<RecodeVO>();
 		RecodeVO vo	= null;
 		
-		String sql	= "select * from RecodeTBL order by songid, score";
+		String sql	= "select * from RecodeTBL order by songid, score DESC";
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 						
-			
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				vo=new RecodeVO();

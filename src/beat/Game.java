@@ -139,12 +139,12 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.PLAIN, 22));
 		g.setColor(Color.DARK_GRAY);
 
-		g.drawImage(sunS, 18, 330, null);
-		g.drawImage(sunD, 81, 330, null);
-		g.drawImage(sunF, 144, 330, null);
-		g.drawImage(sunJ, 207, 330, null);
-		g.drawImage(sunK, 270, 330, null);
-		g.drawImage(sunL, 333, 330, null);
+		g.drawImage(sunS, 60, 380, null);
+		g.drawImage(sunD, 123, 380, null);
+		g.drawImage(sunF, 186, 380, null);
+		g.drawImage(sunJ, 249, 380, null);
+		g.drawImage(sunK, 312, 380, null);
+		g.drawImage(sunL, 375, 380, null);
 //		g.drawImage(blueFlareBad, 115, 180, null);
 //		g.drawImage(blueFlareNormal, 115, 85, null);
 //		g.drawImage(yellowFlareGreat, 140, 190, null);
@@ -160,6 +160,14 @@ public class Game extends Thread {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Jokerman", Font.BOLD, 26));
 		g.drawString(intCasting(score, 0), 360, 550);
+
+
+//		g.setFont(new Font("Elephant", Font.BOLD, 26));
+//		g.drawString(intCasting(score), 360, 550);
+//
+//		g.setColor(Color.LIGHT_GRAY);
+//		g.setFont(new Font("Elephant", Font.BOLD, 26));
+//		g.drawString(intCasting(combo), 360, 400);
 
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Jokerman", Font.BOLD, 26));
@@ -188,7 +196,11 @@ public class Game extends Thread {
 //		g.setFont(new Font("Elephant", Font.BOLD, 18));
 //		g.drawString(intCasting(miss,1), 620, 260);
 
-		g.drawImage(JudgeImage, 180, 220, null);
+
+		
+		g.drawImage(JudgeImage, 180, 220,null);
+		
+
 
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(maxCombo, 1), 620, 130);
@@ -228,7 +240,7 @@ public class Game extends Thread {
 	public void pressS() {
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("S");
-		sunS = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+		sunS = new ImageIcon(Main.class.getResource("../images/bluebomb.gif")).getImage();
 		gameBeatSoundS = new Music("drumBeat.mp3", true);
 		gameBeatSoundS.start();
 		gameBeatSoundS.setLoop(false);
@@ -237,7 +249,7 @@ public class Game extends Thread {
 	public void pressD() {
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("D");
-		sunD = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+		sunD = new ImageIcon(Main.class.getResource("../images/bluebomb.gif")).getImage();
 		gameBeatSoundD = new Music("drumBeat.mp3", true);
 		gameBeatSoundD.start();
 		gameBeatSoundD.setLoop(false);
@@ -246,7 +258,7 @@ public class Game extends Thread {
 	public void pressF() {
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("F");
-		sunF = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+		sunF = new ImageIcon(Main.class.getResource("../images/bluebomb.gif")).getImage();
 		gameBeatSoundF = new Music("drumBeat.mp3", true);
 		gameBeatSoundF.start();
 		gameBeatSoundF.setLoop(false);
@@ -255,7 +267,7 @@ public class Game extends Thread {
 	public void pressJ() {
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed4.png")).getImage();
 		judge("J");
-		sunJ = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+		sunJ = new ImageIcon(Main.class.getResource("../images/bluebomb.gif")).getImage();
 		gameBeatSoundJ = new Music("drumBeat.mp3", true);
 		gameBeatSoundJ.start();
 		gameBeatSoundJ.setLoop(false);
@@ -264,7 +276,7 @@ public class Game extends Thread {
 	public void pressK() {
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed3.png")).getImage();
 		judge("K");
-		sunK = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+		sunK = new ImageIcon(Main.class.getResource("../images/bluebomb.gif")).getImage();
 		gameBeatSoundK = new Music("drumBeat.mp3", true);
 		gameBeatSoundK.start();
 		gameBeatSoundK.setLoop(false);
@@ -273,7 +285,7 @@ public class Game extends Thread {
 	public void pressL() {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed2.png")).getImage();
 		judge("L");
-		sunL = new ImageIcon(Main.class.getResource("../images/sun.png")).getImage();
+		sunL = new ImageIcon(Main.class.getResource("../images/bluebomb.gif")).getImage();
 		gameBeatSoundL = new Music("drumBeat.mp3", true);
 		gameBeatSoundL.start();
 		gameBeatSoundL.setLoop(false);
@@ -485,7 +497,7 @@ public class Game extends Thread {
 
 		} else if (judgeImage == PERFECT) {
 			JudgeImage = new ImageIcon(Main.class.getResource("../images/Perfect.png")).getImage();
-			Flare = new ImageIcon(Main.class.getResource("../images/yellowFlarePerfect.png")).getImage();
+			Flare = new ImageIcon(Main.class.getResource("../images/yellowbomb.gif")).getImage();
 
 		}
 
