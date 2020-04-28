@@ -529,6 +529,12 @@ public class Game extends Thread {
 
 		if (beats != null) {
 			int i = 0;
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			gameMusic.start();
 			while (i < beats.length && !isInterrupted()) {
 				boolean dropped = false;
