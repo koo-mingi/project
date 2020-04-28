@@ -193,12 +193,13 @@ public SongVO getSongFindTbl(String songname) {
 			pstmt.setInt(2, recordList.get(i).getSongid());
 			pstmt.setString(3, recordList.get(i).getUserid());
 			pstmt.setInt(4, recordList.get(i).getScore());
-			pstmt.setInt(4, recordList.get(i).getAcPerfect());
+			pstmt.setInt(5, recordList.get(i).getAcPerfect());
 			pstmt.setInt(6, recordList.get(i).getAcGreat());
-			pstmt.setInt(7, recordList.get(i).getAcBad());
-			pstmt.setInt(8, recordList.get(i).getAcMiss());
-			pstmt.setInt(9, recordList.get(i).getCombo());
-			pstmt.setString(10, recordList.get(i).getGrade());
+			pstmt.setInt(7, recordList.get(i).getAcGood());
+			pstmt.setInt(8, recordList.get(i).getAcBad());
+			pstmt.setInt(9, recordList.get(i).getAcMiss());
+			pstmt.setInt(10, recordList.get(i).getCombo());
+			pstmt.setString(11, recordList.get(i).getGrade());
 			
 			result = pstmt.executeUpdate();
 			
