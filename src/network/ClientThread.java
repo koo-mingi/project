@@ -56,11 +56,12 @@ public class ClientThread extends Thread {
 				dos.writeUTF("LOGIN");
 				oos.writeObject(vo);
 				while(dis!=null) {
-					if(dis.readUTF().equals("LOGINSUCCESS")) {
+					String receiveStr = dis.readUTF();
+					if(receiveStr.equals("LOGINSUCCESS")) {
 						vo = (UserVO) ois.readObject();
 						System.out.println(vo);
 						break;
-					}else if(dis.readUTF().equals("LOGINFAIL")){
+					}else if(receiveStr.equals("LOGINFAIL")){
 						
 						System.out.println(vo);
 						break;
@@ -81,12 +82,13 @@ public class ClientThread extends Thread {
 				dos.writeUTF("GETUSERRECORD");
 				oos.writeObject(vo);
 				while(dis!=null) {
-					if(dis.readUTF().equals("GETUSERRECORDSUCCESS")) {
+					String receiveStr = dis.readUTF();
+					if(receiveStr.equals("GETUSERRECORDSUCCESS")) {
 						System.out.println("개인 기록 획득 성공");
 						recodeVO = (ArrayList<RecodeVO>) ois.readObject();
 						System.out.println(recodeVO);
 						break;
-					}else if(dis.readUTF().equals("GETUSERRECORDFAIL")){
+					}else if(receiveStr.equals("GETUSERRECORDFAIL")){
 						
 						break;
 					}
@@ -105,13 +107,18 @@ public class ClientThread extends Thread {
 			try {
 				dos.writeUTF("CREATUSER");
 				oos.writeObject(vo);
+				System.out.println("유저 정보 보냄");
 				while(dis!=null) {
-					if(dis.readUTF().equals("CREATUSERSUCCESS")) {
+					String receiveStr = dis.readUTF();
+					if(receiveStr.equals("CREATUSERSUCCESS")) {
 						uservo = (UserVO)ois.readObject();
 						System.out.println("유저 생성 성공");
 						break;
-					}else if(dis.readUTF().equals("CREATUSERFAIL")){
+					}else if(receiveStr.equals("CREATUSERFAIL")){
 						System.out.println("유저 생성 실패");
+						break;
+					}else if(receiveStr.equals("USEREXIST")) {
+						break;
 					}
 				}
 							
@@ -130,11 +137,12 @@ public class ClientThread extends Thread {
 				oos.writeObject(recordList);
 				while(dis!=null) {
 					System.out.println("기록 DB에 보냄");
-					if(dis.readUTF().equals("SETUSERRECORDSUCCESS")){
+					String receiveStr = dis.readUTF();
+					if(receiveStr.equals("SETUSERRECORDSUCCESS")){
 						System.out.println("기록 DB 저장 성공");
 						
 						break;
-					}else if(dis.readUTF().equals("SETUSERRECORDFAIL"))
+					}else if(receiveStr.equals("SETUSERRECORDFAIL"))
 					{
 						System.out.println("기록 DB 저장 실패");
 						break;
@@ -156,11 +164,12 @@ public class ClientThread extends Thread {
 				oos.writeObject(recordVO);
 				while(dis!=null) {
 					System.out.println("update 기록 DB에 보냄");
-					if(dis.readUTF().equals("UPDATEUSERRECORDSUCCESS")){
+					String receiveStr = dis.readUTF();
+					if(receiveStr.equals("UPDATEUSERRECORDSUCCESS")){
 						System.out.println("update 기록 DB 저장 성공");
 						
 						break;
-					}else if(dis.readUTF().equals("UPDATEUSERRECORDFAIL"))
+					}else if(receiveStr.equals("UPDATEUSERRECORDFAIL"))
 					{
 						System.out.println("update 기록 DB 저장 실패");
 						break;
@@ -183,12 +192,13 @@ public class ClientThread extends Thread {
 				dos.writeUTF("RANKING");
 				System.out.println("랭킹 문자 보냄");
 				while(dis!=null) {
-					if(dis.readUTF().equals("RANKINGSUCCESS")){
+					String receiveStr = dis.readUTF();
+					if(receiveStr.equals("RANKINGSUCCESS")){
 						System.out.println("랭킹 조회 성공");
 						recodeVO = (ArrayList<RecodeVO>) ois.readObject();
 						System.out.println("랭킹 조회:"+recodeVO);
 						break;
-					}else if(dis.readUTF().equals("RANKINGFAIL"))
+					}else if(receiveStr.equals("RANKINGFAIL"))
 					{
 						System.out.println("랭킹 조회 실패");
 						break;

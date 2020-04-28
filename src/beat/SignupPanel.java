@@ -26,7 +26,7 @@ public class SignupPanel extends JFrame{
 	private JTextField txtrpw;
 	private JTextField txtmail;
 
-	private UserVO vo = new UserVO();
+	private UserVO vo;
 	
 
 	private  JLabel lblsingUpTitle;
@@ -202,7 +202,7 @@ public class SignupPanel extends JFrame{
 		            // 메시지를 날린다.
 		            JOptionPane.showMessageDialog(null, "빈칸이 있네요");
 		        } else if(pass.equals(pass1)){
-		        	
+		        	vo = new UserVO();
 		        	vo.setUserId(id);
 		        	vo.setName(name);
 		        	vo.setPassword(pass);
@@ -215,6 +215,7 @@ public class SignupPanel extends JFrame{
 		        		dispose();
 		        	}else {
 		        		JOptionPane.showMessageDialog(null, "회원가입이 실패했습니다.");
+		        		
 		        	}
 		        			        	
 		        	
