@@ -57,7 +57,7 @@ public class ServerThread extends Thread {
 		private ObjectOutputStream oos;
 		private ObjectInputStream ois;
 		private UserVO vo;
-		private ArrayList<RecodeVO> recordList=new ArrayList<RecodeVO>();
+		private ArrayList<RecodeVO> recordList;
 		private int mode = 0; // 기본 상태
 		private final int LOGIN = 1; // 로그인 모드.
 		private final int GETUSERRECORD = 2; //개인 유저 기록 획득 모드
@@ -133,6 +133,7 @@ public class ServerThread extends Thread {
 //----------------------------------------------------------------------------------------------------------------
 						try {
 							vo = (UserVO)ois.readObject();
+							recordList=new ArrayList<RecodeVO>();
 							recordList = service.getUserRecord(vo.getUserNo());
 						} catch (ClassNotFoundException e1) {
 							e1.printStackTrace();
@@ -195,6 +196,7 @@ public class ServerThread extends Thread {
 					case RANKING:
 						// DB 연동 되었을 때
 //----------------------------------------------------------------------------------------------------------------	
+						recordList=new ArrayList<RecodeVO>();
 						recordList = service.getAllUserRecord();
 						if(!recordList.isEmpty()) {
 							dos.writeUTF("RANKINGSUCCESS");
@@ -217,6 +219,7 @@ public class ServerThread extends Thread {
 						
 						break;
 					case SETUSERRECORD:
+						recordList=new ArrayList<RecodeVO>();
 						recordList = (ArrayList<RecodeVO>)ois.readObject();
 						// DB가 켜져있을 시 가능
 //----------------------------------------------------------------------------------------------------------------
