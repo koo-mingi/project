@@ -389,6 +389,7 @@ public class Game extends Thread {
 			// 최고 기록을 업데이트
 			Main.client.updateUserRecord(Main.MYRECODE.get(index));
 		}
+		System.out.println("현재 로컬의 전체 기록:");
 		for (RecodeVO vo : Main.MYRECODE) {
 			System.out.println(vo);
 		}

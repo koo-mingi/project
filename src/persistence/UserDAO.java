@@ -217,7 +217,7 @@ public SongVO getSongFindTbl(String songname) {
 		int result	= 0;
 		
 		
-		String sql	= "update RecodeTBL set(score=?, AcPerfect=?, AcGreat=?, AcGood=?, AcBad=?, AcMiss=?, combo=?,grade=?)"
+		String sql	= "update RecodeTBL set score=?, AcPerfect=?, AcGreat=?, AcGood=?, AcBad=?, AcMiss=?, combo=?,grade=?"
 				+" where userno=? and songid=?";
 		
 		try (Connection con = getConnection();
