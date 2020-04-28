@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import domain.RecodeVO;
+import domain.UserVO;
+
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -33,6 +37,7 @@ public class Beat extends JPanel{
 	private JButton btlogin; //로그인 버튼
 	private JButton btsign;  //회원가입 버튼
 	private JLabel lblBackGroundIMG; // 백그라운드 이미지
+	private UserVO vo = new UserVO();
 	
 	private Lobby lobby;
 	
@@ -160,38 +165,46 @@ public class Beat extends JPanel{
 				
 				  if (id.equals("") || password.equals("")) {
 			            // 메시지를 날린다.
-			            JOptionPane.showMessageDialog(null, "빈칸이 있네요");
+			            JOptionPane.showMessageDialog(null, "빈칸이 있네요.");
 			        } else {
-			        	setVisible(false);
-			        	contentPane.add(lobby,BorderLayout.CENTER);
-			        	introMusic.close();
-			        	lobby.setVisible(true);
-//			        	lobby.setFocusable(true);
+//			        	
 			        	
-//			             로그인 참 거짓 여부를 판단
-//			            boolean existLogin = LoginService.loginTest(id, password);
+			        	if(Main.serverConnection) {
+			        		vo=Main.client.login(vo);
+			           		setUserInfo(vo);
+			        		setVisible(false);
+		        			contentPane.add(lobby,BorderLayout.CENTER);
+		        			introMusic.close();
+		        			lobby.setVisible(true);
+			        	}
+			        	else if(id.equals("admin")){
+			        		JOptionPane.showMessageDialog(null, "관리자로 접속합니다.","접속",JOptionPane.INFORMATION_MESSAGE,null);
+			        		setVisible(false);
+		        			contentPane.add(lobby,BorderLayout.CENTER);
+		        			introMusic.close();
+		        			lobby.setVisible(true);
+			        		
+			        		
+			        	}else {
+			        		JOptionPane.showMessageDialog(null, "서버가 끊겼네요. 관리자로 접속하세요.","끊김",JOptionPane.WARNING_MESSAGE);
+			        	}
+			        	
 			        	
 			        }
 			}
 		});
 		}
+	
+	public void setUserInfo(UserVO vo) {
+		//System.out.println(vo); 서버로부터 넘겨 받은 정보가 제대로 담겨 있는지 확인.
+		for(RecodeVO rvo : Main.MYRECODE) {
+			rvo.setUserid(vo.getUserId());
+			rvo.setUserno(vo.getUserNo());
+		}
+	}
 }
 
-		 
-//		            if (existLogin) {
-//		                // 로그인 성공일 경우
-//		                JOptionPane.showMessageDialog(null, "로그인 성공");
-//		            } else {
-//		                // 로그인 실패일 경우
-//		                JOptionPane.showMessageDialog(null, "로그인 실패");
-//		            }
-//		 
-//		        }
-//		        password = null;
-//		 
-//		    
-//			}
-//		});
+
 		
 		
 	

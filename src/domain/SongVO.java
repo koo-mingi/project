@@ -1,6 +1,8 @@
 package domain;
 
-public class SongVO {
+import java.io.Serializable;
+
+public class SongVO implements Serializable{
 	
 	// SongTBL Table
 	private int songId;

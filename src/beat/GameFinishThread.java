@@ -6,7 +6,7 @@ public class GameFinishThread extends Thread {
 	public void run() {
 		long start = System.currentTimeMillis();
 		try {
-			sleep(3000);
+			sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

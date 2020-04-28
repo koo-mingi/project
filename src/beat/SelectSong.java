@@ -16,10 +16,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import domain.RecodeVO;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-
-import com.sun.glass.ui.Screen;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -30,7 +30,6 @@ public class SelectSong extends JPanel {
 	
 	private Image screenImage;
 	private Graphics screenGraphic;
-	private Image selectedImage = new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
 	private Image background = new ImageIcon(Main.class.getResource("../images/electric_guitar.jpg")).getImage();
 	
 	private boolean isMainScreen = true;
@@ -46,11 +45,15 @@ public class SelectSong extends JPanel {
 	private Music selectedMusic;
 	private int trackNo = 0;
 	
-	private String titleName = "Spring";  // 선택된 곡의 이름
+	private String titleName; // = "Spring";  // 선택된 곡의 이름
 	private String difficulty = "Easy"; // 선택된 곡의 난이도
 	private String musicTitle; // 선택된 곡 파일이름
-
+	private Image selectedImage; //= new ImageIcon(Main.class.getResource("../images/spring.png")).getImage();
+	private int index=0; // 저장된 곡의 Index. easy = track *2, hard = track *2 +1
+	private JLabel lblMyBestScore,lblMyBestGrade,lblMyMaxCombo;
 	
+
+	private int easy_hard_select = 1; //어떤 버튼이 선택 됐는지 확인하는 것 - 0이면 선택 X, 1이면 easy, 2면 hard
 	/**
 	 * Create the panel.
 	 */
@@ -61,16 +64,17 @@ public class SelectSong extends JPanel {
 
 		
 	
-		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악
-		trackList.add(new Track(null, "spring.png", null, "introMusic1.mp3", "introMusic1.mp3","Spring"));
-		trackList.add(new Track(null, "city.png", null, "introMusic1.mp3", "introMusic1.mp3","titlename"));
+		// 타이틀이미지,게임선택 창 표지이미지, 해당곡을 실행했을때 이미지 ,게임선택창 음악, 해당곡을 선택했을때 음악, 해당곡 이름
+		trackList.add(new Track(null, "Happy Life start image.jpg", "Aurora.gif", "Fredji_Happy Life_Selected.mp3", "Fredji_Happy Life_Play.mp3","Happy Life - Fredji"));
+		trackList.add(new Track(null, "Chilling start image.jpg", "Wolf.gif", "Oshova_Chilling.mp3", "Oshova_Chilling.mp3","Chilling - Oshova"));
+		trackList.add(new Track(null, "Harmony start image.jpg", "particles.gif", "Ikson_Harmony_Selected.mp3", "Ikson_Harmony_Play.mp3","Harmony - Ikson"));
 		
 		selectTrack(0);
 
 			
 		
 		btnEasy = new JButton("Easy");
-		btnEasy.setForeground(new Color(255, 255, 240));
+		btnEasy.setForeground(Color.YELLOW);
 		btnEasy.setFont(new Font("Jokerman", Font.BOLD, 40));
 		btnEasy.setContentAreaFilled(false);
 		btnEasy.setFocusPainted(false);
@@ -110,14 +114,10 @@ public class SelectSong extends JPanel {
 		    }
 			@Override
 			public void mousePressed(MouseEvent e) {
-
-				
-
 //				selectedMusic.close();
 
 			}
-				
-				
+			
 		});
 		add(btnStart);
 		
@@ -134,7 +134,7 @@ public class SelectSong extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 								
 				btnLeft.setForeground(Color.YELLOW);
-				btnLeft.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				btnLeft.setCursor(new Cursor(Cursor.HAND_CURSOR)); // 버튼위에 마우스 올려놓으면 손 모양으로 커서 모양 변함
 			}
 			public void mouseExited(MouseEvent e) {
 		       
@@ -146,19 +146,19 @@ public class SelectSong extends JPanel {
 		add(btnLeft);
 
 		
-		JLabel lblMyBestScore = new JLabel("MyBestScore");
+		lblMyBestScore = new JLabel(String.valueOf(Main.MYRECODE.get(index).getScore()));
 		lblMyBestScore.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblMyBestScore.setForeground(Color.WHITE);
 		lblMyBestScore.setBounds(100, 500, 108, 35);
 		add(lblMyBestScore);
 		
-		JLabel lblMyBestGrade = new JLabel("MyBestGrade");
+		lblMyBestGrade = new JLabel(Main.MYRECODE.get(index).getGrade());
 		lblMyBestGrade.setForeground(Color.WHITE);
 		lblMyBestGrade.setFont(new Font("Jokerman", Font.BOLD, 24));
 		lblMyBestGrade.setBounds(243, 500, 108, 35);
 		add(lblMyBestGrade);
 		
-		JLabel lblMyMaxCombo = new JLabel("MyMaxCombo");
+		lblMyMaxCombo = new JLabel(String.valueOf(Main.MYRECODE.get(index).getCombo()));
 		lblMyMaxCombo.setBackground(new Color(255, 255, 240));
 		lblMyMaxCombo.setForeground(Color.WHITE);
 		lblMyMaxCombo.setFont(new Font("Jokerman", Font.BOLD, 24));
@@ -229,7 +229,7 @@ public class SelectSong extends JPanel {
 			lobby =  new Lobby(contentPane);
 			contentPane.add(lobby,BorderLayout.CENTER);
         	lobby.setVisible(true);
-        	
+        	selectedMusic.close();
 		}
 	});
 	
@@ -244,11 +244,11 @@ public class SelectSong extends JPanel {
 				selectedMusic.close();
 			}
 			setVisible(false);
+			Game.game_State = true;
+			Game.COMBO = 0;
+			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle,trackNo);
 
-			gameplay =  new GamePlay(contentPane,titleName,difficulty,musicTitle);
-
-			//gameplay =  new GamePlay(contentPane, trackList.get(trackNo).getGameMusic() , trackList.get(trackNo).getGameImage());
-
+			
 			contentPane.add(gameplay,BorderLayout.CENTER);
         	gameplay.setVisible(true);
         	selectedMusic.close();
@@ -264,6 +264,7 @@ public class SelectSong extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			selectLeft();
 			// 곡에 해당하는 내 기록 가져와서 화면에 출력
+			setRecode();
 			
 		}
 	});
@@ -275,12 +276,14 @@ public class SelectSong extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				selectRight();
 				// 곡에 해당하는 내 기록 가져와서 화면에 출력
+				setRecode();
 				
 			}
 		});
 	
 	// 난이도 이지 선택
 		btnEasy.addMouseListener(new MouseAdapter() {
+			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 								
@@ -288,13 +291,18 @@ public class SelectSong extends JPanel {
 				btnEasy.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			public void mouseExited(MouseEvent e) {
-		       
+		       if(easy_hard_select == 0 || easy_hard_select == 2) {
 				btnEasy.setForeground(new Color(255, 255, 240));
 				btnEasy.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		       }
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				easy_hard_select = 1; //easy 선택시
 				difficulty = "Easy";
+				btnEasy.setForeground(Color.YELLOW);
+				btnHard.setForeground(new Color(255, 255, 240));
+				setRecode();
 			}
 		
 		});
@@ -308,13 +316,18 @@ public class SelectSong extends JPanel {
 				btnHard.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			public void mouseExited(MouseEvent e) {
-		       
+		       if(easy_hard_select == 0 || easy_hard_select == 1) {
 				btnHard.setForeground(new Color(255, 255, 240));
 				btnHard.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		       }
 		    }
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				easy_hard_select = 2;
 				difficulty = "Hard";
+				btnHard.setForeground(Color.YELLOW);
+				btnEasy.setForeground(new Color(255, 255, 240));
+				setRecode();
 			}
 		
 		});
@@ -357,7 +370,7 @@ public class SelectSong extends JPanel {
 			titleName = trackList.get(trackNo).getTitleName();
 			musicTitle = trackList.get(trackNo).getGameMusic();
 			selectedMusic.start();
-						
+									
 		}
 		
 		public void selectLeft() {
@@ -376,6 +389,17 @@ public class SelectSong extends JPanel {
 				trackNo++;
 			}
 			selectTrack(trackNo);
+	}
+		
+		public void setRecode() {
+			if(difficulty.equals("Hard")) {
+				index = trackNo*2 + 1;
+			}else {
+				index = trackNo*2;
+			}
+			lblMyBestScore.setText(String.valueOf(Main.MYRECODE.get(index).getScore()));
+			lblMyBestGrade.setText(Main.MYRECODE.get(index).getGrade());
+			lblMyMaxCombo.setText(String.valueOf(Main.MYRECODE.get(index).getCombo()));
 		}
 	
 }

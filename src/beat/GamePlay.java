@@ -4,12 +4,6 @@ import javax.swing.JFrame;
 
 import javax.swing.JPanel;
 
-
-
-
-import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory.Default;
-
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -36,7 +30,6 @@ public class GamePlay extends JPanel{
 	
 	private JButton btnGameStop,btnGameResult;
 	
-	private PauseScreen pauseScreen;
 	private Lobby lobby;
 	private ResultScreen resultScreen;
 	
@@ -44,36 +37,28 @@ public class GamePlay extends JPanel{
 	private Image screenImage;
 	private Graphics screenGraphic;
 
-	private Image background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
+	private Image background = new ImageIcon(Main.class.getResource("../images/bluewave.gif")).getImage();
 	private boolean isGameScreen = true;
 	
 	private beat.KeyListener keyListener = new beat.KeyListener();
 
-
-
-	private Music gameMusic;
 
 	public static Game game;
 	private GameFinishThread gameFinish;
 	
 
 	
-	public GamePlay(JPanel contentPane,String titleName, String difficulty,String musicTitle) {
+	public GamePlay(JPanel contentPane,String titleName, String difficulty, String musicTitle,int trackNo) {
 		
 		this.contentPane = contentPane;
-
-		
+				
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT); // 게임 창 크기
 
 		setLayout(null);
 
-		game= new Game(titleName,difficulty,musicTitle);
-			
+		game= new Game(titleName,difficulty,musicTitle,trackNo);
+				
 
-	
-//		gameMusic = new Music(musicName, true);
-//		System.out.println(musicName + "gamePlay");
-//		game = new Game(gameMusic, musicName);
 		game.start();
 
 	
@@ -138,12 +123,12 @@ public class GamePlay extends JPanel{
 		btnGameStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
+				game.close();
 				setVisible(false);
 				lobby = new Lobby(contentPane);
 				contentPane.add(lobby,BorderLayout.CENTER);
 				lobby.setVisible(true);
-				game.close();
+				
 
 			}
 		});
@@ -151,12 +136,12 @@ public class GamePlay extends JPanel{
 		// 결과화면으로 이동
 		btnGameResult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-	
+				game.close();
 				setVisible(false);
-				resultScreen = new ResultScreen(contentPane);
+				resultScreen = new ResultScreen(contentPane,game.getSongRecodeVO());
 				contentPane.add(resultScreen,BorderLayout.CENTER);
 				resultScreen.setVisible(true);
-				game.close();
+				
 		
 			}
 		});
@@ -188,16 +173,17 @@ public class GamePlay extends JPanel{
 			
 			if(game.musicFinish()) {
 				if(gameFinish == null) { 
-					System.out.println("스레드 생성");
+					System.out.println("음악 종료 및 게임 종료 스레드 생성");
 					gameFinish = new GameFinishThread();
 					gameFinish.start();
 				}
 					
 					if(gameFinish.state())
 					{
+						game.close();
 						System.out.println("스레드 종료");
 						setVisible(false);
-						resultScreen = new ResultScreen(contentPane);
+						resultScreen = new ResultScreen(contentPane,game.getSongRecodeVO());
 						contentPane.add(resultScreen,BorderLayout.CENTER);
 						resultScreen.setVisible(true);
 					}
