@@ -184,7 +184,7 @@ public SongVO getSongFindTbl(String songname) {
 		int result	= 0;
 		
 		for(int i=0;i<recordList.size();i++) {
-		String sql	= "insert into RecodeTBL values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql	= "insert into RecodeTBL values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -291,6 +291,7 @@ public SongVO getSongFindTbl(String songname) {
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 						
+			pstmt.setInt(1, userno);
 			
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -320,11 +321,10 @@ public SongVO getSongFindTbl(String songname) {
 		ArrayList<RecodeVO> recordVO = new ArrayList<RecodeVO>();
 		RecodeVO vo	= null;
 		
-		String sql	= "select * from RecodeTBL order by songid, score";
+		String sql	= "select * from RecodeTBL order by songid, score DESC";
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 						
-			
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				vo=new RecodeVO();
