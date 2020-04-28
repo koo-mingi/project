@@ -335,7 +335,7 @@ public SongVO getSongFindTbl(String songname) {
 				vo.setAcGood(rs.getInt("AcGood"));
 				vo.setAcBad(rs.getInt("AcBad"));
 				vo.setAcMiss(rs.getInt("AcMiss"));
-				vo.setAcMiss(rs.getInt("combo"));
+				vo.setCombo(rs.getInt("combo"));
 				vo.setGrade(rs.getString("grade"));
 				recordVO.add(vo);
 			}	
