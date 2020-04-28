@@ -223,19 +223,17 @@ public SongVO getSongFindTbl(String songname) {
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
 			
-			pstmt.setInt(1, recordVO.getUserno());
-			pstmt.setInt(2, recordVO.getSongid());
-			pstmt.setString(3, recordVO.getUserid());
-			pstmt.setInt(4, recordVO.getScore());
-			pstmt.setInt(5, recordVO.getAcPerfect());
-			pstmt.setInt(6, recordVO.getAcGreat());
-			pstmt.setInt(7, recordVO.getAcGood());
-			pstmt.setInt(8, recordVO.getAcBad());
-			pstmt.setInt(9, recordVO.getAcMiss());
-			pstmt.setInt(10, recordVO.getCombo());
-			pstmt.setString(11, recordVO.getGrade());
-			pstmt.setInt(12, recordVO.getUserno());
-			pstmt.setInt(13, recordVO.getSongid());
+			
+			pstmt.setInt(1, recordVO.getScore());
+			pstmt.setInt(2, recordVO.getAcPerfect());
+			pstmt.setInt(3, recordVO.getAcGreat());
+			pstmt.setInt(4, recordVO.getAcGood());
+			pstmt.setInt(5, recordVO.getAcBad());
+			pstmt.setInt(6, recordVO.getAcMiss());
+			pstmt.setInt(7, recordVO.getCombo());
+			pstmt.setString(8, recordVO.getGrade());
+			pstmt.setInt(9, recordVO.getUserno());
+			pstmt.setInt(10, recordVO.getSongid());
 			
 			result = pstmt.executeUpdate();
 			
