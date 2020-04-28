@@ -86,7 +86,10 @@ public class ClientThread extends Thread {
 					if(receiveStr.equals("GETUSERRECORDSUCCESS")) {
 						System.out.println("개인 기록 획득 성공");
 						recodeVO = (ArrayList<RecodeVO>) ois.readObject();
-						System.out.println(recodeVO);
+						for(RecodeVO rvo : recodeVO) {
+							System.out.println(rvo);
+						}
+						
 						break;
 					}else if(receiveStr.equals("GETUSERRECORDFAIL")){
 						
@@ -101,6 +104,7 @@ public class ClientThread extends Thread {
 		return recodeVO;
 	}
 	
+	// 유저 생성
 	public UserVO createUser(UserVO vo) {
 		UserVO uservo = null;
 		if(dos!=null)
@@ -196,7 +200,10 @@ public class ClientThread extends Thread {
 					if(receiveStr.equals("RANKINGSUCCESS")){
 						System.out.println("랭킹 조회 성공");
 						recodeVO = (ArrayList<RecodeVO>) ois.readObject();
-						System.out.println("랭킹 조회:"+recodeVO);
+						System.out.println("랭킹 조회:");
+						for(RecodeVO rvo : recodeVO) {
+							System.out.println(rvo);
+						}
 						break;
 					}else if(receiveStr.equals("RANKINGFAIL"))
 					{

@@ -89,7 +89,7 @@ public class Main {
 		
 		// 네트워크 연결
 		//String ServerIp = "127.0.0.1";
-		String ServerIp = "192.168.0.6";
+		String ServerIp = "192.168.0.4";
 		try {
 			System.out.println("서버에 접속 요청 중...");
 			Socket socket = new Socket(ServerIp, 7777);

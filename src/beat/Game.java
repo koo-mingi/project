@@ -386,11 +386,13 @@ public class Game extends Thread {
 			Main.MYRECODE.get(index).setAcGreat(great);
 			Main.MYRECODE.get(index).setAcPerfect(perfect);
 			Main.MYRECODE.get(index).setAcMiss(miss);
+			// 최고 기록을 업데이트
+			Main.client.updateUserRecord(Main.MYRECODE.get(index));
 		}
 		for (RecodeVO vo : Main.MYRECODE) {
 			System.out.println(vo);
 		}
-		Main.client.setUserRecord(Main.MYRECODE);
+		
 	}
 
 	// 기록을 파일에 저장
