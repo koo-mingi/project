@@ -46,7 +46,7 @@ public class UserDAO {
 	public int insertUserTbl(UserVO vo) {
 		int result	= 0;
 		
-		String sql	= "insert into UserTBL value(seqgaro.nextval, ?, ?, ?, ?)";
+		String sql	= "insert into UserTBL values(seqgaro.nextval, ?, ?, ?, ?)";
 					// SQL문을 연결된 OracleDB에 PreparedStatement를 통해서 보낸다
 					// 실행하는 과정에서 오라클과 동일해야된다
 		try (Connection con = getConnection();
@@ -155,7 +155,7 @@ public SongVO getSongFindTbl(String songname) {
 	public int insertRecodeTbl(RecodeVO vo) {
 		int result	= 0;
 		
-		String sql	= "insert into RecodeTBL value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql	= "insert into RecodeTBL values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -184,7 +184,7 @@ public SongVO getSongFindTbl(String songname) {
 		int result	= 0;
 		
 		for(int i=0;i<recordList.size();i++) {
-		String sql	= "insert into RecodeTBL value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql	= "insert into RecodeTBL values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection con = getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql)){

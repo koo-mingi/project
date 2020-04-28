@@ -161,6 +161,14 @@ public class Game extends Thread {
 		g.setFont(new Font("Jokerman", Font.BOLD, 26));
 		g.drawString(intCasting(score, 0), 360, 550);
 
+
+//		g.setFont(new Font("Elephant", Font.BOLD, 26));
+//		g.drawString(intCasting(score), 360, 550);
+//
+//		g.setColor(Color.LIGHT_GRAY);
+//		g.setFont(new Font("Elephant", Font.BOLD, 26));
+//		g.drawString(intCasting(combo), 360, 400);
+
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Jokerman", Font.BOLD, 26));
 		g.drawString(intCasting(COMBO, 1), 230, 200);
@@ -188,7 +196,11 @@ public class Game extends Thread {
 //		g.setFont(new Font("Elephant", Font.BOLD, 18));
 //		g.drawString(intCasting(miss,1), 620, 260);
 
-		g.drawImage(JudgeImage, 180, 220, null);
+
+		
+		g.drawImage(JudgeImage, 180, 220,null);
+		
+
 
 		g.setFont(new Font("Jokerman", Font.BOLD, 18));
 		g.drawString(intCasting(maxCombo, 1), 620, 130);
