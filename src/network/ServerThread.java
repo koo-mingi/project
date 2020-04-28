@@ -113,40 +113,40 @@ public class ServerThread extends Thread {
 						
 						// DB 연동 시 사용가능.
 //----------------------------------------------------------------------------------------------------------------
-//						if(service.loginCheck(vo.getUserId(), vo.getPassword()) == true) {
-//							vo = service.getUserinfo(vo.getUserId());
-//							dos.writeUTF("LOGINSUCCESS");
-//							oos.writeObject(vo);
-//						}else {
-//							dos.writeUTF("LOGINFAIL");
-//							
-//						}
+						if(service.loginCheck(vo.getUserId(), vo.getPassword()) == true) {
+							vo = service.getUserinfo(vo.getUserId());
+							dos.writeUTF("LOGINSUCCESS");
+							oos.writeObject(vo);
+						}else {
+							dos.writeUTF("LOGINFAIL");
+							
+						}
 //----------------------------------------------------------------------------------------------------------------
-						dos.writeUTF("LOGINSUCCESS");
-						oos.writeObject(vo);
-						
+//						dos.writeUTF("LOGINSUCCESS");
+//						oos.writeObject(vo);
+//						
 						break;
 					case GETUSERRECORD:
 						
 						
 						//DB 연동 시 사용.
 //----------------------------------------------------------------------------------------------------------------
-//						try {
-//							vo = (UserVO)ois.readObject();
-//							recodeList = service.getUserRecord(vo.getUserNo());
-//						} catch (ClassNotFoundException e1) {
-//							e1.printStackTrace();
-//						}
-//----------------------------------------------------------------------------------------------------------------						
-						// DB 연동 안할 떄 사용.
-						
 						try {
 							vo = (UserVO)ois.readObject();
-							//recordList.add(new RecodeVO(vo.getUserNo(), 0, vo.getUserId(), 111, 11, 11, 11, 11, 11, 11, "D"));
+							recordList = service.getUserRecord(vo.getUserNo());
 						} catch (ClassNotFoundException e1) {
 							e1.printStackTrace();
 						}
+//----------------------------------------------------------------------------------------------------------------						
+						// DB 연동 안할 떄 사용.
 						
+//						try {
+//							vo = (UserVO)ois.readObject();
+//							//recordList.add(new RecodeVO(vo.getUserNo(), 0, vo.getUserId(), 111, 11, 11, 11, 11, 11, 11, "D"));
+//						} catch (ClassNotFoundException e1) {
+//							e1.printStackTrace();
+//						}
+//						
 						
 						if(!recordList.isEmpty()) {
 							dos.writeUTF("GETUSERRECORDSUCCESS");
@@ -167,26 +167,26 @@ public class ServerThread extends Thread {
 							
 							//DB 연동되었을 떄.
 //----------------------------------------------------------------------------------------------------------------
-//							if(service.isUser(vo)) { // 유저가 있으면
-//								dos.writeUTF("USEREXIST");
-//							}else {					 // 유저가 없으면
-//								vo = service.signup(vo);
-//								if(vo != null) {// DB에 입력을 성공했으면
-//								
-//									dos.writeUTF("CREATUSERSUCCESS");
-//									oos.writeObject(vo);
-//								}else {
-//									dos.writeUTF("CREATUSERFAIL");
-//								}
-//							}
+							if(service.isUser(vo)) { // 유저가 있으면
+								dos.writeUTF("USEREXIST");
+							}else {					 // 유저가 없으면
+								vo = service.signup(vo);
+								if(vo != null) {// DB에 입력을 성공했으면
+								
+									dos.writeUTF("CREATUSERSUCCESS");
+									oos.writeObject(vo);
+								}else {
+									dos.writeUTF("CREATUSERFAIL");
+								}
+							}
 //----------------------------------------------------------------------------------------------------------------			
 							// DB 연동 안되었을 떄.
-							if("성공"=="성공") {
-								dos.writeUTF("CREATUSERSUCCESS");
-								oos.writeObject(vo);
-							}else {
-								dos.writeUTF("CREATUSERFAIL");
-							}
+//							if("성공"=="성공") {
+//								dos.writeUTF("CREATUSERSUCCESS");
+//								oos.writeObject(vo);
+//							}else {
+//								dos.writeUTF("CREATUSERFAIL");
+//							}
 							
 						} catch (ClassNotFoundException e) {
 							e.printStackTrace();
@@ -195,63 +195,63 @@ public class ServerThread extends Thread {
 					case RANKING:
 						// DB 연동 되었을 때
 //----------------------------------------------------------------------------------------------------------------	
-//						recordList = service.getAllUserRecord();
-//						if(!recordList.isEmpty()) {
-//							dos.writeUTF("RANKINGSUCCESS");
-//							oos.writeObject(recordList);
-//						}else {
-//							dos.writeUTF("RANKINGFAIL");
-//						}
+						recordList = service.getAllUserRecord();
+						if(!recordList.isEmpty()) {
+							dos.writeUTF("RANKINGSUCCESS");
+							oos.writeObject(recordList);
+						}else {
+							dos.writeUTF("RANKINGFAIL");
+						}
 //----------------------------------------------------------------------------------------------------------------	
 						
 						// DB 연동 안되었을 때
-						recordList.add(new RecodeVO());
-						for(RecodeVO vo : recordList) {
-							System.out.println(vo);
-						}
-						if(true) {
-							dos.writeUTF("RANKINGSUCCESS");
-							oos.writeObject(recordList);
-						}else
-							dos.writeUTF("RANKINGFAIL");
+//						recordList.add(new RecodeVO());
+//						for(RecodeVO vo : recordList) {
+//							System.out.println(vo);
+//						}
+//						if(true) {
+//							dos.writeUTF("RANKINGSUCCESS");
+//							oos.writeObject(recordList);
+//						}else
+//							dos.writeUTF("RANKINGFAIL");
 						
 						break;
 					case SETUSERRECORD:
 						recordList = (ArrayList<RecodeVO>)ois.readObject();
 						// DB가 켜져있을 시 가능
 //----------------------------------------------------------------------------------------------------------------
-//						if(service.setUserRecord(recordList)==true) {
-//							dos.writeUTF("SETUSERRECORDSUCCESS");
-//						}else {
-//							dos.writeUTF("SETUSERRECORDFAIL");
-//						}
-//----------------------------------------------------------------------------------------------------------------
-						if(true) {
+						if(service.setUserRecord(recordList)==true) {
 							dos.writeUTF("SETUSERRECORDSUCCESS");
-							System.out.println(recordList);
 						}else {
 							dos.writeUTF("SETUSERRECORDFAIL");
 						}
+//----------------------------------------------------------------------------------------------------------------
+//						if(true) {
+//							dos.writeUTF("SETUSERRECORDSUCCESS");
+//							System.out.println(recordList);
+//						}else {
+//							dos.writeUTF("SETUSERRECORDFAIL");
+//						}
 						//recordList.removeAll(recordList);
 						break;
 					case UPDATEUSERRECORD:
 						RecodeVO recordVO =(RecodeVO)ois.readObject();
 						// DB가 켜져있을 시 가능
 //----------------------------------------------------------------------------------------------------------------
-//						if(service.updateUserRecord(recordVO))
-//						{
-//							dos.writeUTF("UPDATEUSERRECORDSUCCESS");
-//						}else {
-//							dos.writeUTF("UPDATEUSERRECORDFAIL");
-//						}
-					
-//----------------------------------------------------------------------------------------------------------------
-						if(true){
-							System.out.println(recordVO);
+						if(service.updateUserRecord(recordVO))
+						{
 							dos.writeUTF("UPDATEUSERRECORDSUCCESS");
 						}else {
 							dos.writeUTF("UPDATEUSERRECORDFAIL");
 						}
+					
+//----------------------------------------------------------------------------------------------------------------
+//						if(true){
+//							System.out.println(recordVO);
+//							dos.writeUTF("UPDATEUSERRECORDSUCCESS");
+//						}else {
+//							dos.writeUTF("UPDATEUSERRECORDFAIL");
+//						}
 						
 						break;
 					default:
