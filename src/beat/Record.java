@@ -159,7 +159,7 @@ public class Record extends JPanel {
 		lblChillingEasyScore.setBounds(408, 345, 119, 40);
 		add(lblChillingEasyScore);
 		
-		JLabel lblHarmonyEasyScore = new JLabel(String.valueOf(Main.MYRECODE.get(5).getScore()));
+		JLabel lblHarmonyEasyScore = new JLabel(String.valueOf(Main.MYRECODE.get(4).getScore()));
 		lblHarmonyEasyScore.setForeground(new Color(255, 255, 153));
 		lblHarmonyEasyScore.setFont(new Font("Jokerman", Font.BOLD, 27));
 		lblHarmonyEasyScore.setBounds(408, 415, 119, 40);

@@ -78,7 +78,7 @@ public class Note extends Thread {
 		if (y > Game.GAME_INFO_Y - (noteHeight / 2)) {
 			// 게임화면 끝의 절반? 정도가 되면 노트 miss뜨면서 삭제
 			Game.COMBO = 0;
-			System.out.println("miss");
+//			System.out.println("miss");
 			close();
 		}
 	}
@@ -103,23 +103,19 @@ public class Note extends Thread {
 	public int judge() {
 		int score = 0;
 
-		if (y < Game.JUDGE_BAR_Y + 3 && y > Game.JUDGE_BAR_Y - 12) {
-			System.out.println("Perfect");
+		if (y < Game.JUDGE_BAR_Y + 9 && y > Game.JUDGE_BAR_Y - 12) {
 			score = 50;
 			Game.COMBO += 1;			
 			close();
-		} else if (y < Game.JUDGE_BAR_Y + 10 && y > Game.JUDGE_BAR_Y - 20) {
-			System.out.println("Great");
+		} else if (y < Game.JUDGE_BAR_Y + 15 && y > Game.JUDGE_BAR_Y - 20) {
 			score = 40;
 			Game.COMBO += 1;
 			close();
-		} else if (y < Game.JUDGE_BAR_Y + 20 && y >= Game.JUDGE_BAR_Y - 28) {
-			System.out.println("Nomal");
+		} else if (y < Game.JUDGE_BAR_Y + 25 && y >= Game.JUDGE_BAR_Y - 28) {
 			score = 30;
 			Game.COMBO += 1;
 			close();
-		} else if (y < Game.JUDGE_BAR_Y + 25 && y >= Game.JUDGE_BAR_Y - 40) {
-			System.out.println("Bad");
+		} else if (y < Game.JUDGE_BAR_Y + 30 && y >= Game.JUDGE_BAR_Y - 40) {
 			score = 11;
 			Game.COMBO += 1;
 			close();

@@ -22,4 +22,5 @@ ResultScreen: 결과창
 Music		: 음악 재생 클래스
 Track		: 곡 정보 저장?
 KeyListener : 말 그대로 키 리스너..?
-GameFinishThread : 게임 끄는 스레드?
+GameFinishThread : 음악이 꺼지면 5초간 유지되었다고 종료되는 스레드
+				    게임이 종료되는 시점을 맞출 수가 있다.

@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import domain.RecodeVO;
 
 import java.awt.Font;
@@ -57,8 +59,9 @@ public class Ranking extends JPanel {
 	private JLabel lblComboTitle;
 	private JLabel lblNewLabel_10;
 
-	public Ranking(JPanel contentPane) {
-
+	public Ranking(JPanel contentPane, ArrayList<RecodeVO> recodeVO) {
+		
+		
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setLayout(null);
 
@@ -66,18 +69,18 @@ public class Ranking extends JPanel {
 		introMusic.start();
 		
 		// 실험용으로 만들어 놓은 랭킹 객체
-		recodeVO.add(new RecodeVO(0, 0, "user1", 5000, 0, 0, 0, 0, 0, 0, ""));
-		recodeVO.add(new RecodeVO(0, 0, "user2", 4000, 0, 0, 0, 0, 0, 0, ""));
-		recodeVO.add(new RecodeVO(0, 0, "user3", 3000, 0, 0, 0, 0, 0, 0, ""));
-		recodeVO.add(new RecodeVO(0, 0, "user4", 2000, 0, 0, 0, 0, 0, 0, ""));
-		recodeVO.add(new RecodeVO(0, 0, "user5", 1000, 0, 0, 0, 0, 0, 0, ""));
+//		recodeVO.add(new RecodeVO(0, 0, "user1", 5000, 0, 0, 0, 0, 0, 0, ""));
+//		recodeVO.add(new RecodeVO(0, 0, "user2", 4000, 0, 0, 0, 0, 0, 0, ""));
+//		recodeVO.add(new RecodeVO(0, 0, "user3", 3000, 0, 0, 0, 0, 0, 0, ""));
+//		recodeVO.add(new RecodeVO(0, 0, "user4", 2000, 0, 0, 0, 0, 0, 0, ""));
+//		recodeVO.add(new RecodeVO(0, 0, "user5", 1000, 0, 0, 0, 0, 0, 0, ""));
+		// DB로부터 받은 정보를 객체에 저장.
+		if(recodeVO != null) this.recodeVO = recodeVO;
+		
 		
 		btnLOBBY = new JButton("<      LOBBY");
-
 		btnLOBBY.setBounds(12, 10, 230, 70);
-
 		btnLOBBY.setForeground(Color.WHITE);
-
 		btnLOBBY.setBorderPainted(false);
 		btnLOBBY.setContentAreaFilled(false);
 		btnLOBBY.setFocusPainted(false);
@@ -102,14 +105,14 @@ public class Ranking extends JPanel {
 		String songNames[] = {"Happy Life","Chilling","Harmony"};
 		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(songNames);
 		songList = new JComboBox<String>(model);
-		songList.setSelectedIndex(0);
+		songList.setSelectedIndex(0); // 기본은 0번 곡으로 설정
 		songList.setBounds(403, 121, 193, 21);
 		add(songList);
 //		SongList.getSelectedIndex(); 콤보박스에서 선택된  인덱스 가져오기.
 		
 		String songDifficulty[] = {"Easy","Hard"};
 		difficultyList = new JComboBox<>(songDifficulty);
-		difficultyList.setSelectedIndex(0);
+		difficultyList.setSelectedIndex(0); // 기본은 Easy로 설정
 		difficultyList.setBounds(608, 121, 118, 21);
 		add(difficultyList);
 
@@ -384,12 +387,12 @@ public class Ranking extends JPanel {
 	
 	public void setRanking() {
 		
-		int index = 0;
+		int index = 1; //songid 번호
 		int i=0;
 		if(difficultyList.getSelectedIndex() == 0) { // Easy 선택 시.
-			index = songList.getSelectedIndex()*2;
-		}else {										 // Hard 선택 시.
 			index = songList.getSelectedIndex()*2 + 1;
+		}else {										 // Hard 선택 시.
+			index = songList.getSelectedIndex()*2 + 2;
 		}
 		// 값이 비어있을 경우에 대비해 기본값으로 초기화.
 		for(int j=0;j<5;j++) {
