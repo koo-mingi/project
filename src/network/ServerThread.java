@@ -198,6 +198,11 @@ public class ServerThread extends Thread {
 //----------------------------------------------------------------------------------------------------------------	
 						recordList=new ArrayList<RecodeVO>();
 						recordList = service.getAllUserRecord();
+						System.out.println("DB 랭킹 확인용");
+						for(RecodeVO vo :recordList) {
+							System.out.println(vo);
+						}
+						
 						if(!recordList.isEmpty()) {
 							dos.writeUTF("RANKINGSUCCESS");
 							oos.writeObject(recordList);
