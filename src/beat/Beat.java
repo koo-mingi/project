@@ -265,7 +265,11 @@ public class Beat extends JPanel implements ActionListener {
 				}
 			}
 			else if(e.getActionCommand().equals("btsign") || e.getSource() == btsign) {
-				SignupPanel frame = new SignupPanel();
+				if(Main.serverConnection) {
+					SignupPanel frame = new SignupPanel();
+				}else {
+					JOptionPane.showMessageDialog(null, "서버가 끊겼네요. 회원가입이 불가능 합니다.", "끊김", JOptionPane.WARNING_MESSAGE);
+				}
 			}
 	}
 
