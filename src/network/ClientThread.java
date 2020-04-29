@@ -164,6 +164,7 @@ public class ClientThread extends Thread {
 	public void updateUserRecord(RecodeVO recordVO) {
 		if(dos!=null) {
 			try {
+				System.out.println("올릴 기록 : \n"+recordVO);
 				dos.writeUTF("UPDATEUSERRECORD");
 				oos.writeObject(recordVO);
 				while(dis!=null) {

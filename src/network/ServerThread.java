@@ -243,10 +243,13 @@ public class ServerThread extends Thread {
 						//recordList.removeAll(recordList);
 						break;
 					case UPDATEUSERRECORD:
-						RecodeVO recordVO =(RecodeVO)ois.readObject();
+						
+						RecodeVO recordVO = new RecodeVO();
+						recordVO =(RecodeVO)ois.readObject();
 						System.out.println("업데이트 기록 확인용:");
 						System.out.println(vo);
 						System.out.println(recordVO);
+
 						// DB가 켜져있을 시 가능
 //----------------------------------------------------------------------------------------------------------------
 						if(service.updateUserRecord(recordVO))
