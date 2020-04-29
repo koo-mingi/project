@@ -249,7 +249,7 @@ public class ServerThread extends Thread {
 						System.out.println("업데이트 기록 확인용:");
 						System.out.println(vo);
 						System.out.println(recordVO);
-						UserVO vo = (UserVO)ois.readObject();
+						
 
 						// DB가 켜져있을 시 가능
 //----------------------------------------------------------------------------------------------------------------

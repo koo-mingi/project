@@ -169,8 +169,7 @@ public class ClientThread extends Thread {
 				System.out.println("올릴 기록 : \n"+rvo);
 				dos.writeUTF("UPDATEUSERRECORD");
 				oos.writeObject(rvo);
-				oos.writeObject(new UserVO());
-				
+								
 				while(dis!=null) {
 					System.out.println("update 기록 DB에 보냄");
 					String receiveStr = dis.readUTF();
